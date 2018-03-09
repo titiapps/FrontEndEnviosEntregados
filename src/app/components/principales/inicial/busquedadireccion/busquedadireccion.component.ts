@@ -237,7 +237,7 @@ export class BusquedadireccionComponent implements OnInit {
         paquete_longitud: Math.round((this.largo.value / 2.54) * 10) / 10,
         paquete_anchura: Math.round((this.ancho.value / 2.54) * 10) / 10,
         paquete_altura: Math.round((this.alto.value / 2.54) * 10) / 10,
-        paquete_peso: Math.round((this.peso.value / 28.35) * 10) / 10
+        paquete_peso: Math.round((this.peso.value * 0.035274) * 10) / 10
       };
 
       this._direccionesService.datosParaCotizacion(
