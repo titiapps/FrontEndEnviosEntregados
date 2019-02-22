@@ -9,5 +9,5 @@ import { DireccionesService } from "./services/services.index";
 export class AppComponent {
   title = "FrontEndEntregando";
 
-  constructor(private _direccionesServices: DireccionesService) {}
+  constructor() {}
 }

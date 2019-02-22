@@ -1,3 +1,45 @@
-<p>
-  inicio works!
-</p>
+<form class="example-form">
+  <mat-form-field class="container" class="example-full-width">
+    <!--Este es el input para buscar el origen-->
+    <input
+      type="text"
+      placeholder="Origen del Paquete"
+      matInput
+      [formControl]="terminoBusqueda"
+      [matAutocomplete]="auto"
+    />
+    <mat-autocomplete
+      #auto="matAutocomplete"
+      (optionSelected)="cambio($event.option)"
+    >
+      <mat-option
+        (click)="onSelect(lugar, i)"
+        *ngFor="let lugar of lugares; let i = index"
+        [value]="lugar.label"
+      >
+        {{ lugar.label }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <mat-form-field class="container" class="example-full-width">
+    <!--Este es el input para buscar el origen-->
+    <input
+      type="text"
+      placeholder="Destino del Paquete"
+      matInput
+      [formControl]="terminoBusqueda"
+      [matAutocomplete]="auto"
+    />
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option
+        (click)="onSelect(i)"
+        (onSelectionChange)="onSelect(i)"
+        *ngFor="let lugar of lugares; let i = index"
+        [value]="lugar.label"
+      >
+        {{ lugar.label }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>

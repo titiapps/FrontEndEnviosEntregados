@@ -8,6 +8,8 @@ import { appRouting } from "./app.routing";
 import { CommonModule } from "@angular/common";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ServicesModule } from "./services/services.module";
+import { AgmaterialModule } from "./agmaterial.module";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [AppComponent, InicioComponent, Pagina404Component],
@@ -16,7 +18,10 @@ import { ServicesModule } from "./services/services.module";
     BrowserModule,
     CommonModule,
     BrowserAnimationsModule,
-    ServicesModule
+    ServicesModule,
+    AgmaterialModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
