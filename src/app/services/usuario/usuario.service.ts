@@ -8,7 +8,9 @@ import "rxjs/add/operator/map";
 
 @Injectable()
 export class UsuarioService {
-  constructor(private _http: HttpClient) {}
+  constructor(private _http: HttpClient) {
+    console.log("arriba");
+  }
 
   crearUsuario(usuario: Usuario) {
     let url = URL_ENVIOS_BACK + "usuario/usuario";
