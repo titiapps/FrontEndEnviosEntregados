@@ -36,17 +36,21 @@ export class InicioComponent implements OnInit {
 
   /* En este asignamos hacia que lado se va a ir esa madre */
   seleccionarOrigen(index) {
+    console.log(this.lugares[index]);
     this.lugarOrigen = this.lugares[index];
   }
   seleccionarDestino(index) {
+    console.log(this.lugares[index]);
     this.lugarDestino = this.lugares[index];
   }
 
   //SE EVALUA QUE TENGA UNA DIRECCION RELATIVAMENTE COMPLETA
   evaluarDatosDireccion() {
     let ori = this.lugarOrigen.address; //origen de los datos buscados
+    let countryCode_ori = this.lugarOrigen.countryCode;
 
     let dest = this.lugarDestino.address; //destino de los datos buscados
+    let countryCode_dest = this.lugarDestino.countryCode;
 
     let arrayorigen = [
       ori.street,
@@ -81,7 +85,8 @@ export class InicioComponent implements OnInit {
         state: ori.state,
         postalCode: ori.postalCode,
         country: ori.country,
-        county: ori.county
+        county: ori.county,
+        countryCode: countryCode_ori
       };
 
       let destino = {
@@ -92,7 +97,8 @@ export class InicioComponent implements OnInit {
         state: dest.state,
         postalCode: dest.postalCode,
         country: dest.country,
-        county: dest.county
+        county: dest.county,
+        countryCode: countryCode_dest
       };
 
       this.asignarValores(origen, destino);
@@ -105,12 +111,9 @@ export class InicioComponent implements OnInit {
   asignarValores(origen, destino) {
     this.origen = origen;
     this.origen.persona = "PERSONA 1 PRUEBA";
-   /*  console.log(origen); */
+
     this.destino = destino;
     this.destino.persona = "PERSONA 2 PRUEBA";
-
-     console.log(this.origen);
-    /* console.log(this.destino);  */
 
     let paquete = { longitud: 9, anchura: 6, altura: 2, peso: 10 };
 

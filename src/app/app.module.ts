@@ -10,9 +10,18 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ServicesModule } from "./services/services.module";
 import { AgmaterialModule } from "./agmaterial.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { LoginComponent } from "./components/login/login.component";
+import { RegisterComponent } from "./components/register/register.component";
+import { SharedModule } from "./components/shared/shared.module";
 
 @NgModule({
-  declarations: [AppComponent, InicioComponent, Pagina404Component],
+  declarations: [
+    AppComponent,
+    InicioComponent,
+    Pagina404Component,
+    LoginComponent,
+    RegisterComponent
+  ],
   imports: [
     appRouting,
     BrowserModule,
@@ -21,7 +30,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     ServicesModule,
     AgmaterialModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
