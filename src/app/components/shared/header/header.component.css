@@ -1,0 +1,31 @@
+header {
+    color: white;
+    display: flex;
+    background-color: #263238;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0.5rem;
+    align-items: center;
+}
+
+.header .logo img {
+    max-width: 3rem;
+}
+
+.header .navegacion {
+    color: white;
+    padding: 1rem;
+}
+
+.header .navegacion a {
+    padding: 0.5rem;
+    text-decoration: none;
+    color: white;
+    margin-right: 1rem;
+    border-bottom: 2px solid transparent;
+    transition: width .5s ease, border-bottom .5s ease;
+}
+
+.header .navegacion a:hover {
+    border-bottom: 2px solid white;
+}

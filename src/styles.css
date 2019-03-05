@@ -1,5 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* @import "~bootstrap/dist/css/bootstrap.css"; */
+
 @import "~font-awesome/css/font-awesome.css";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+:root {
+    --fuente-principal: 'Questrial', sans-serif;
+    --primario: #da595e;
+}
+
+html {
+    box-sizing: border-box;
+    margin:0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--fuente-principal);
+    margin: 0;
+    padding: 0;
+}
+
+.contenedor {
+    max-width: 1400px;
+    margin: 0 auto;
+}

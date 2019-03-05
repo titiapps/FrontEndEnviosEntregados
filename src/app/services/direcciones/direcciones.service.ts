@@ -20,9 +20,8 @@ export class DireccionesService {
   cotizacion(origen: any, destino: any, paquete: any) {
     let datosenvios = { origen, destino, paquete };
 
-
     console.log(datosenvios);
-    let url = URL_ENVIOS_BACK;
+    let url = URL_ENVIOS_BACK + "paqueterias/cotizaEnvio";
 
     return this._http.post(url, datosenvios);
   }

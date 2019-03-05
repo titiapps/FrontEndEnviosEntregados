@@ -11,8 +11,8 @@ import { ServicesModule } from "./services/services.module";
 import { AgmaterialModule } from "./agmaterial.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { LoginComponent } from "./components/login/login.component";
-import { RegisterComponent } from "./components/register/register.component";
 import { SharedModule } from "./components/shared/shared.module";
+import { RegistrarComponent } from './components/registrar/registrar.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,7 @@ import { SharedModule } from "./components/shared/shared.module";
     InicioComponent,
     Pagina404Component,
     LoginComponent,
-    RegisterComponent
+    RegistrarComponent
   ],
   imports: [
     appRouting,

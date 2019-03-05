@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { DireccionesService } from "src/app/services/services.index";
 import { FormsModule, FormControl } from "@angular/forms";
-import { DireccionEnvio } from "src/app/models/DireccionesEnvio";
+import { DireccionEnvio } from "src/app/models/DireccionesEnvio.model";
 
 export interface User {
   name: string;
