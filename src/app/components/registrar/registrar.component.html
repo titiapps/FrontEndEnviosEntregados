@@ -1,3 +1,5 @@
-<p>
-  registrar works!
-</p>
+<p>Registrar</p>
+
+<form #formRegistrar="ngForm" (ngSubmit)="registrar(formRegistrar)">
+  <input type="text" name="email" id="email" [(ngModel)]="email" />
+</form>

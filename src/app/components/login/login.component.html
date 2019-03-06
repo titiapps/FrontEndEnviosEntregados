@@ -1,4 +1,15 @@
 <app-header></app-header>
 
-
-
+<form #formLogin="ngForm" (ngSubmit)="ingresar(formLogin)">
+  <label>EMAIL</label>
+  <input type="text" name="email" id="password" [(ngModel)]="usuario.email" />
+  <br>
+  <label>PASSWORD</label>
+  <input
+    type="text"
+    name="password"
+    id="password"
+    [(ngModel)]="usuario.password"
+  />
+  <button type="submit">Ingresar</button>
+</form>
