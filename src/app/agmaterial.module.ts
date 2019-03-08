@@ -6,6 +6,7 @@ import {
   MatFormFieldControl
 } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material";
+import { MatIconModule } from "@angular/material/icon";
 
 @NgModule({
   declarations: [],
@@ -13,13 +14,15 @@ import { MatInputModule } from "@angular/material";
     MatButtonModule,
     MatAutocompleteModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatIconModule
   ],
   imports: [
     MatButtonModule,
     MatAutocompleteModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatIconModule
   ]
 })
 export class AgmaterialModule {}

@@ -23,8 +23,10 @@ export class RegistrarComponent implements OnInit {
   guardar(forma) {
     console.log("jsdja");
     console.log(this.user);
+
     this._userService.crearUsuario(this.user).subscribe(resp => {
       console.log(resp);
+      
     });
   }
 

@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { UsuarioService } from "src/app/services/services.index";
 import { Usuario } from "src/app/models/usuario.model";
 import { NgForm } from "@angular/forms";
+import { FormControl, FormGroupDirective, Validators } from "@angular/forms";
+import { ErrorStateMatcher } from "@angular/material/core";
 
 @Component({
   selector: "app-login",
@@ -10,6 +12,7 @@ import { NgForm } from "@angular/forms";
   providers: [UsuarioService]
 })
 export class LoginComponent implements OnInit {
+  hide=true;
   email: string;
   usuario: Usuario = {
     nombre: "",
@@ -23,8 +26,8 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   ingresar() {
-    this.usuario.email = "rodrigoh00per1@gmail.com";
-    this.usuario.password = "1234567";
+/*     this.usuario.email = "rodrigoh00per1@gmail.com";
+    this.usuario.password = "1234567"; */
 
     this._usuarioService.login(this.usuario).subscribe(
       resp => {

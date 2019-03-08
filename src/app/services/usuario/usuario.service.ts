@@ -5,16 +5,18 @@ import { HttpClient } from "@angular/common/http";
 import { Usuario } from "src/app/models/usuario.model";
 import { URL_ENVIOS_BACK } from "src/config/config";
 import "rxjs/add/operator/map";
+import Swal from "sweetalert2";
 
 @Injectable()
 export class UsuarioService {
   token: string;
+  usuario: Usuario;
 
   constructor(private _http: HttpClient) {
     this.cargarDatos();
   }
 
-  crearUsuario(usuario: Usuario) {
+  crearUsuario(usuario: Usuario): Observable<any> {
     let url = URL_ENVIOS_BACK + "usuario/usuario";
 
     return this._http.post(url, usuario).map(resp => {
@@ -32,12 +34,21 @@ export class UsuarioService {
 
     return this._http
       .post(url, credenciales)
-      .map(resp => {
+      .map((resp: any) => {
+        this.guardarStorage(resp._id, resp.token, resp.usuario);
         return resp;
       })
       .catch(err => {
+        Swal.fire("Error", "Tu usuario o contraseña no son correctos", "error");
         return Observable.throw(err); //ES PARA EL MANEJO DE LOS ERRORES
       });
+  }
+
+  guardarStorage(id: string, token: string, usuario: Usuario) {
+    localStorage.setItem("id", id);
+    localStorage.setItem("token", token);
+    localStorage.setItem("usuario", JSON.stringify(usuario));
+    console.log(localStorage.getItem("usuario"));
   }
 
   cargarDatos() {

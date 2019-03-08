@@ -1,15 +1,52 @@
 <app-header></app-header>
+<div class="contenido_principal">
+  <div class="contenido_login">
+    <!--   <form #formLogin="ngForm" (ngSubmit)="ingresar(formLogin)">
+    <label>EMAIL</label>
+    <input type="text" name="password" id="password" [(ngModel)]="usuario.email" />
+    <br />
+    <label>PASSWORD</label>
+    <input
+      type="text"
+      name="password"
+      id="password"
+      [(ngModel)]="usuario.password"
+    />
+    <button type="submit">Ingresar</button>
+  </form>
+   -->
+    <div class="encabezados">
+      <h1>Bienvenido a Entregando</h1>
+      <h2>Ingresa tus credenciales:</h2>
+    </div>
+    <div class="formulario">
+      <mat-form-field class="example-full-width">
+        <input
+          matInput
+          placeholder="Introduce tu correo electronico"
+          name="email"
+          id="email"
+          [(ngModel)]="usuario.email"
+        />
+      </mat-form-field>
 
-<form #formLogin="ngForm" (ngSubmit)="ingresar(formLogin)">
-  <label>EMAIL</label>
-  <input type="text" name="email" id="password" [(ngModel)]="usuario.email" />
-  <br>
-  <label>PASSWORD</label>
-  <input
-    type="text"
-    name="password"
-    id="password"
-    [(ngModel)]="usuario.password"
-  />
-  <button type="submit">Ingresar</button>
-</form>
+      <mat-form-field>
+        <input
+          name="password"
+          id="password"
+          [(ngModel)]="usuario.password"
+          matInput
+          placeholder="Introduce la contraseña"
+          [type]="hide ? 'password' : 'text'"
+        />
+        <mat-icon matSuffix (click)="hide = !hide">{{
+          hide ? "visibility_off" : "visibility"
+        }}</mat-icon>
+      </mat-form-field>
+    </div>
+
+    <button mat-flat-button color="primary" (click)="ingresar()" class="btn-ingresar">
+      Ingresar
+    </button>
+  </div>
+</div>
