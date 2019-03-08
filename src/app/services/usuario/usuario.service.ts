@@ -21,6 +21,20 @@ export class UsuarioService {
 
     return this._http.post(url, usuario).map(resp => {
       return resp;
+    })
+    .catch(err => {
+      if(err.error.errores.errors.email.kind != undefined){
+        Swal.fire("Error", "Ooopsie dopsie!!! la cuenta ya existe, ma' fren...", "error");
+        return Observable.throw(err); //ES PARA EL MANEJO DE LOS ERRORES
+
+      }else{
+        //console.log("el error es ",err.error.errores.errors);
+        Swal.fire("Error", "Ooopsie dopsie!!! ocurrio un error, ma' fren...", "error");
+        return Observable.throw(err); //ES PARA EL MANEJO DE LOS ERRORES
+
+
+      }
+    
     });
   }
 
