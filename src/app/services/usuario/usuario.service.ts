@@ -44,6 +44,8 @@ export class UsuarioService {
       });
   }
 
+  
+
   guardarStorage(id: string, token: string, usuario: Usuario) {
     localStorage.setItem("id", id);
     localStorage.setItem("token", token);
@@ -54,8 +56,10 @@ export class UsuarioService {
   cargarDatos() {
     if (localStorage.getItem("token")) {
       this.token = localStorage.getItem("token");
+      this.usuario = JSON.parse(localStorage.getItem("usuario"));
     } else {
       this.token = "";
+      this.usuario = null;
       console.log("no hay token");
     }
   }
