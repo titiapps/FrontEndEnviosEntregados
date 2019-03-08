@@ -1,7 +1,7 @@
 .contenido_principal {
    display: grid;
    height: 80vh;
-   grid-template-rows: 10% 70% 20%;
+   grid-template-rows: 0% 100% 0%;
    background-size: cover;
 }
 
@@ -13,7 +13,7 @@
    grid-row: 2/3;
    display: grid;
    grid-template-columns: 5% auto 5%;
-   grid-template-rows: 40% 20% 40%;
+   grid-template-rows: 25% 30% 50%;
 }
 
 .contenido_login .encabezados {
@@ -41,7 +41,7 @@
 
 .btn-ingresar {
    justify-self: center;
-   margin-top: 6rem;
+   margin-top: 12rem;
    font-size: 1.0rem;
    font-weight: 400;
    width: 100%;
@@ -54,7 +54,7 @@
 @media(min-width:768px) {
    .btn-ingresar {
        justify-self: center;
-       margin-top: 6.4rem;
+       margin-top: 12rem;
        font-size: 1.0rem;
        font-weight: 400;
        max-width: 59%;
