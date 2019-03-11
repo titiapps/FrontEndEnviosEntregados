@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { LoginComponent } from "./components/login/login.component";
 import { SharedModule } from "./components/shared/shared.module";
 import { RegistrarComponent } from './components/registrar/registrar.component';
+import { ConektaComponent } from './components/pruebas/conekta/conekta.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { RegistrarComponent } from './components/registrar/registrar.component';
     InicioComponent,
     Pagina404Component,
     LoginComponent,
-    RegistrarComponent
+    RegistrarComponent,
+    ConektaComponent
   ],
   imports: [
     appRouting,

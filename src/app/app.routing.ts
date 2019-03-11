@@ -4,12 +4,14 @@ import { Pagina404Component } from "./components/shared/pagina404/pagina404.comp
 import { LoginComponent } from "./components/login/login.component";
 import { RegistrarComponent } from "./components/registrar/registrar.component";
 import { LoginguardGuard } from "./services/services.index";
+import { ConektaComponent } from "./components/pruebas/conekta/conekta.component";
 
 //COMPONENTES COMPARTIDOS
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "register", component: RegistrarComponent },
+  { path: "conekta", component: ConektaComponent },
   { path: "", component: InicioComponent, canActivate: [LoginguardGuard] },
   { path: "**", component: Pagina404Component }
 ];
