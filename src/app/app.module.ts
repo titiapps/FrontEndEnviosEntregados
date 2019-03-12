@@ -1,19 +1,23 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-
+import { SharedModule } from "./components/shared/shared.module";
 import { AppComponent } from "./app.component";
 import { InicioComponent } from "./components/inicio/inicio.component";
-import { Pagina404Component } from "./components/shared/pagina404/pagina404.component";
-import { appRouting } from "./app.routing";
-import { CommonModule } from "@angular/common";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ServicesModule } from "./services/services.module";
+import { appRouting } from "./app.routing";
+import { CommonModule } from "@angular/common";
 import { AgmaterialModule } from "./agmaterial.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { NgPaymentCardModule } from "ng-payment-card";
+import { CreditCardDirectivesModule } from "angular-cc-library";
+
+//COMPONENTENTES
 import { LoginComponent } from "./components/login/login.component";
-import { SharedModule } from "./components/shared/shared.module";
-import { RegistrarComponent } from './components/registrar/registrar.component';
-import { ConektaComponent } from './components/pruebas/conekta/conekta.component';
+import { RegistrarComponent } from "./components/registrar/registrar.component";
+import { Pagina404Component } from "./components/shared/pagina404/pagina404.component";
+import { ConektaComponent } from "./components/pruebas/conekta/conekta.component";
+import { PrincipalesComponent } from "./components/principales/principales.component";
 
 @NgModule({
   declarations: [
@@ -22,7 +26,8 @@ import { ConektaComponent } from './components/pruebas/conekta/conekta.component
     Pagina404Component,
     LoginComponent,
     RegistrarComponent,
-    ConektaComponent
+    ConektaComponent,
+    PrincipalesComponent
   ],
   imports: [
     appRouting,
@@ -33,7 +38,9 @@ import { ConektaComponent } from './components/pruebas/conekta/conekta.component
     AgmaterialModule,
     ReactiveFormsModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    NgPaymentCardModule,
+    CreditCardDirectivesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

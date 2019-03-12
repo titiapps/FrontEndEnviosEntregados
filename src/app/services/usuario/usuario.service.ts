@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs/Rx";
 import { Router } from "@angular/router";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Usuario } from "src/app/models/usuario.model";
 import { URL_ENVIOS_BACK } from "src/config/config";
 import "rxjs/add/operator/map";
@@ -19,23 +19,29 @@ export class UsuarioService {
   crearUsuario(usuario: Usuario): Observable<any> {
     let url = URL_ENVIOS_BACK + "usuario/usuario";
 
-    return this._http.post(url, usuario).map(resp => {
-      return resp;
-    })
-    .catch(err => {
-      if(err.error.errores.errors.email.kind != undefined){
-        Swal.fire("Error", "Ooopsie dopsie!!! la cuenta ya existe, ma' fren...", "error");
-        return Observable.throw(err); //ES PARA EL MANEJO DE LOS ERRORES
-
-      }else{
-        //console.log("el error es ",err.error.errores.errors);
-        Swal.fire("Error", "Ooopsie dopsie!!! ocurrio un error, ma' fren...", "error");
-        return Observable.throw(err); //ES PARA EL MANEJO DE LOS ERRORES
-
-
-      }
-    
-    });
+    return this._http
+      .post(url, usuario)
+      .map(resp => {
+        return resp;
+      })
+      .catch(err => {
+        if (err.error.errores.errors.email.kind != undefined) {
+          Swal.fire(
+            "Error",
+            "Ooopsie dopsie!!! la cuenta ya existe, ma' fren...",
+            "error"
+          );
+          return Observable.throw(err); //ES PARA EL MANEJO DE LOS ERRORES
+        } else {
+          //console.log("el error es ",err.error.errores.errors);
+          Swal.fire(
+            "Error",
+            "Ooopsie dopsie!!! ocurrio un error, ma' fren...",
+            "error"
+          );
+          return Observable.throw(err); //ES PARA EL MANEJO DE LOS ERRORES
+        }
+      });
   }
 
   //VERIFICACION DE USUARIOS
@@ -58,8 +64,6 @@ export class UsuarioService {
       });
   }
 
-  
-
   guardarStorage(id: string, token: string, usuario: Usuario) {
     localStorage.setItem("id", id);
     localStorage.setItem("token", token);
@@ -80,4 +84,21 @@ export class UsuarioService {
   estaLogueado() {
     return this.token.length > 4 ? true : false;
   }
+
+  /* renovarToken() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json",
+        Authorization: this.token
+      })
+    };
+       let url = URL_ENVIOS_BACK +  
+      this._http.post(url,);
+    let url = URL_ENVIOS_BACK+"autorizacion/renovartoken";
+
+
+    this._http.post(url,{},httpOptions).map()
+  
+  } 
+} */
 }

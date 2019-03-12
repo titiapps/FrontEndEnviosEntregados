@@ -5,14 +5,25 @@ import { LoginComponent } from "./components/login/login.component";
 import { RegistrarComponent } from "./components/registrar/registrar.component";
 import { LoginguardGuard } from "./services/services.index";
 import { ConektaComponent } from "./components/pruebas/conekta/conekta.component";
+import { PrincipalesComponent } from "./components/principales/principales.component";
 
 //COMPONENTES COMPARTIDOS
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
-  { path: "register", component: RegistrarComponent },
+  { path: "registrarse", component: RegistrarComponent },
   { path: "conekta", component: ConektaComponent },
-  { path: "", component: InicioComponent, canActivate: [LoginguardGuard] },
+  {
+    path: "algoasi",
+    component: InicioComponent,
+    canActivate: [LoginguardGuard]
+  },
+  {
+    path: "",
+    component: PrincipalesComponent,
+    loadChildren:
+      "./components/principales/principales.module#PrincipalesModule"
+  },
   { path: "**", component: Pagina404Component }
 ];
 
