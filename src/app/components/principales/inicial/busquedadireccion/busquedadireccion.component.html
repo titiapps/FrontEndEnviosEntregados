@@ -1,0 +1,57 @@
+<!-- ORIGEN -->
+<form class="example-form">
+  <mat-form-field class="container" class="example-full-width">
+    <!--Este es el input para buscar el origen-->
+    <input type="text" placeholder="Origen del Paquete" matInput [formControl]="busquedaDir" [matAutocomplete]="auto1" />
+    <mat-autocomplete #auto1="matAutocomplete">
+      <mat-option (click)="seleccionarOrigen(i)" (onSelectionChange)="seleccionarOrigen(i)"
+        *ngFor="let lugar of lugares; let i = index" [value]="lugar.label">
+        {{ lugar.label }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
+<!-- DESTINO -->
+<form class="example-form">
+  <mat-form-field class="container" class="example-full-width">
+    <input type="text" placeholder="Destino del Paquete" matInput [formControl]="busquedaDir" [matAutocomplete]="auto" />
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option (click)="seleccionarDestino(i)" (onSelectionChange)="seleccionarDestino(i)"
+        *ngFor="let lugar of lugares; let i = index" [value]="lugar.label">
+        {{ lugar.label }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
+
+<button mat-raised-button color="primary" (click)="evaluarDatosDireccion()">
+  Verificar
+</button>
+
+<br /><br />
+
+<div *ngIf="lugarOrigen.street!==''">
+  <label>Calle</label>
+  <input  type="text" name="calle" id="" [(ngModel)]="lugarOrigen.street"
+   
+  />
+
+  <label for="">Numero</label>
+  <input type="text" name="numerocasa" [(ngModel)]="lugarOrigen.houseNumber" name="" id="">
+<br>
+<br>
+  <label for="">Interior,Departamento,Piso</label>
+  <input type="text" name="" [(ngModel)]="lugarOrigen.street2" id="">
+<br>
+<br>
+<label for="">Delegación o Municipio</label>
+<input type="text" name="or_city" [(ngModel)]="lugarOrigen.city" name="" id="">
+<label for="">Codigo Postal</label>
+<input type="text" name="or_postalCode" [(ngModel)]="lugarOrigen.postalCode" name="" id="">
+
+<br>
+<label for="">Estado</label>
+<input type="text" name="or_postalCode" [(ngModel)]="lugarOrigen.state" name="" id="">
+
+
+</div>

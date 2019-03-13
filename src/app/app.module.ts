@@ -2,7 +2,6 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { SharedModule } from "./components/shared/shared.module";
 import { AppComponent } from "./app.component";
-import { InicioComponent } from "./components/inicio/inicio.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ServicesModule } from "./services/services.module";
 import { appRouting } from "./app.routing";
@@ -19,15 +18,16 @@ import { Pagina404Component } from "./components/shared/pagina404/pagina404.comp
 import { ConektaComponent } from "./components/pruebas/conekta/conekta.component";
 import { PrincipalesComponent } from "./components/principales/principales.component";
 
+
 @NgModule({
   declarations: [
     AppComponent,
-    InicioComponent,
     Pagina404Component,
     LoginComponent,
     RegistrarComponent,
     ConektaComponent,
-    PrincipalesComponent
+    PrincipalesComponent,
+   
   ],
   imports: [
     appRouting,

@@ -7,11 +7,17 @@ export interface User {
   name: string;
 }
 @Component({
-  selector: "app-inicio",
-  templateUrl: "./inicio.component.html",
-  styleUrls: ["./inicio.component.css"]
+  selector: "app-busquedadireccion",
+  templateUrl: "./busquedadireccion.component.html",
+  styleUrls: ["./busquedadireccion.component.css"]
 })
-export class InicioComponent implements OnInit {
+export class BusquedadireccionComponent implements OnInit {
+  /* 
+  vamos a traer los campos y llenarlos en inputs
+  */
+  direccion: String;
+
+  ///
   lugares = <any>[]; //este nos sirve para que ahi guarde las busquedas de here
   lugarOrigen: any;
   lugarDestino: any;
@@ -19,8 +25,23 @@ export class InicioComponent implements OnInit {
   destino: DireccionEnvio;
   busquedaDir: FormControl;
 
+  //creamos uno nuevo por si las moscas
+  elOrigen: any;
+
   constructor(private _direccionesService: DireccionesService) {
     this.busquedaDir = new FormControl();
+
+    this.lugarOrigen = {
+      street: "",
+      street2: "",
+      houseNumber: "",
+      city: "",
+      state: "",
+      postalCode: "",
+      country: "",
+      county: "",
+      countryCode: ""
+    };
   }
 
   ngOnInit() {
@@ -36,8 +57,50 @@ export class InicioComponent implements OnInit {
 
   /* En este asignamos hacia que lado se va a ir esa madre */
   seleccionarOrigen(index) {
-    console.log(this.lugares[index]);
-    this.lugarOrigen = this.lugares[index];
+    /*  console.log(this.lugares[index]); */
+
+    console.log(this.lugares[index].address);
+
+    this.lugarOrigen.street =
+      this.lugares[index].address.street !== undefined
+        ? this.lugares[index].address.street
+        : "";
+    this.lugarOrigen.houseNumber =
+      this.lugares[index].address.houseNumber !== undefined
+        ? this.lugares[index].address.houseNumber
+        : "";
+
+    this.lugarOrigen.city =
+      this.lugares[index].address.city !== undefined
+        ? this.lugares[index].address.city
+        : "";
+
+    this.lugarOrigen.state =
+      this.lugares[index].address.state !== undefined
+        ? this.lugares[index].address.state
+        : "";
+
+    this.lugarOrigen.postalCode =
+      this.lugares[index].address.postalCode !== undefined
+        ? this.lugares[index].address.postalCode
+        : "";
+
+    this.lugarOrigen.country =
+      this.lugares[index].address.country !== undefined
+        ? this.lugares[index].address.country
+        : "";
+
+    this.lugarOrigen.county =
+      this.lugares[index].address.county !== undefined
+        ? this.lugares[index].address.county
+        : "";
+
+    this.lugarOrigen.countryCode =
+      this.lugares[index].address.countryCode !== undefined
+        ? this.lugares[index].address.countryCode
+        : "";
+
+    /* this.lugarOrigen = this.lugares[index]; */
   }
   seleccionarDestino(index) {
     console.log(this.lugares[index]);
