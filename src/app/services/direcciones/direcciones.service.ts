@@ -2,9 +2,16 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { URL_MAPAS_HERE, URL_ENVIOS_BACK } from "../../../config/config";
 import "rxjs/add/operator/map";
+import { DireccionEnvio } from "src/app/models/DireccionesEnvio.model";
 @Injectable()
 export class DireccionesService {
+  origen: DireccionEnvio;
+  destino: DireccionEnvio;
+ 
+  private paquete: Array<any>;
+
   constructor(private _http: HttpClient) {
+    console.log(this.origen);
     console.log("SERVICIO CARGADO");
   }
   //ESTE SE CONECTA A LOS SERVICIOS DE HERE PARA PODER TRAER DATA
@@ -13,6 +20,11 @@ export class DireccionesService {
     return this._http.get(url).map((resultados: any) => {
       return resultados;
     });
+  }
+
+  datosParaCotizacion(origen, destino) {
+    this.origen = origen;
+    this.destino = destino;
   }
 
   //ESTE SERVICIOS MANDA TANTO EL ORIGEN,DESTINO LO QUE CONLLEVA EL PAQUETE

@@ -30,28 +30,75 @@
 
 <br /><br />
 
-<div *ngIf="lugarOrigen.street!==''">
-  <label>Calle</label>
-  <input  type="text" name="calle" id="" [(ngModel)]="lugarOrigen.street"
-   
-  />
-
-  <label for="">Numero</label>
-  <input type="text" name="numerocasa" [(ngModel)]="lugarOrigen.houseNumber" name="" id="">
-<br>
-<br>
-  <label for="">Interior,Departamento,Piso</label>
-  <input type="text" name="" [(ngModel)]="lugarOrigen.street2" id="">
-<br>
-<br>
-<label for="">Delegación o Municipio</label>
-<input type="text" name="or_city" [(ngModel)]="lugarOrigen.city" name="" id="">
-<label for="">Codigo Postal</label>
-<input type="text" name="or_postalCode" [(ngModel)]="lugarOrigen.postalCode" name="" id="">
-
-<br>
-<label for="">Estado</label>
-<input type="text" name="or_postalCode" [(ngModel)]="lugarOrigen.state" name="" id="">
-
-
+<!-- <div *ngIf="lugarOrigen.street!==''"> -->
+<div class="destinos">
+  <div class="origen">
+    <h2>Origen</h2>
+    <label>Calle</label>
+    <input type="text" name="calle" id="" [(ngModel)]="lugarOrigen.street" />
+    <br />
+    <br />
+    <label for="">Numero</label>
+    <input type="text" name="numerocasa" [(ngModel)]="lugarOrigen.houseNumber" name="" id="" />
+    <br />
+    <br />
+    <label for="">Interior,Departamento,Piso</label>
+    <input type="text" name="" [(ngModel)]="lugarOrigen.street2" id="" />
+    <br />
+    <br />
+    <label for=""
+      >Estado:{{ lugarOrigen.county }},{{ lugarOrigen.state }}</label
+    >
+    <br />
+    <br />
+    <label for="">Delegación o Municipio</label>
+    <input type="text" name="or_city" [(ngModel)]="lugarOrigen.city" name="" id="" />
+    <br />
+    <br />
+    <!-- ESTE ES OPCIONAL EL DE LA COLONIA VERIFICAR CON EL TEAM -->
+    <h4>--VERIFICAR ANTES DE--</h4>
+    <label for="">Colonia</label>
+    <input type="text" name="or_district" id="" [(ngModel)]="lugarOrigen.district" />
+    <br />
+    <br />
+    <label for="">Codigo Postal</label>
+    <input type="text" name="or_postalCode" [(ngModel)]="lugarOrigen.postalCode" name="" id="" />
+    <br />
+    <br />
+  </div>
+  <div class="destino">
+      <h2>Destino</h2>
+      <label>Calle</label>
+      <input type="text" name="calle" id="" [(ngModel)]="lugarDestino.street" />
+      <br />
+      <br />
+      <label for="">Numero</label>
+      <input type="text" name="numerocasa" [(ngModel)]="lugarDestino.houseNumber" name="" id="" />
+      <br />
+      <br />
+      <label for="">Interior,Departamento,Piso</label>
+      <input type="text" name="" [(ngModel)]="lugarDestino.street2" id="" />
+      <br />
+      <br />
+      <label for=""
+        >Estado:{{ lugarDestino.county }},{{ lugarDestino.state }}</label
+      >
+      <br />
+      <br />
+      <label for="">Delegación o Municipio</label>
+      <input type="text" name="or_city" [(ngModel)]="lugarDestino.city" name="" id="" />
+      <br />
+      <br />
+      <!-- ESTE ES OPCIONAL EL DE LA COLONIA VERIFICAR CON EL TEAM -->
+      <h4>--VERIFICAR ANTES DE--</h4>
+      <label for="">Colonia</label>
+      <input type="text" name="or_district" id="" [(ngModel)]="lugarDestino.district" />
+      <br />
+      <br />
+      <label for="">Codigo Postal</label>
+      <input type="text" name="or_postalCode" [(ngModel)]="lugarDestino.postalCode" name="" id="" />
+      <br />
+      <br />
+    </div>
 </div>
+<!-- </div> -->

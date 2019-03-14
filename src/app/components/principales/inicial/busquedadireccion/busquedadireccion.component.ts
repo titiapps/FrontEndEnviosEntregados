@@ -1,4 +1,5 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ɵConsole } from "@angular/core";
+import {Router} from "@angular/router";
 import { DireccionesService } from "src/app/services/services.index";
 import { FormsModule, FormControl } from "@angular/forms";
 import { DireccionEnvio } from "src/app/models/DireccionesEnvio.model";
@@ -12,26 +13,15 @@ export interface User {
   styleUrls: ["./busquedadireccion.component.css"]
 })
 export class BusquedadireccionComponent implements OnInit {
-  /* 
-  vamos a traer los campos y llenarlos en inputs
-  */
-  direccion: String;
-
-  ///
   lugares = <any>[]; //este nos sirve para que ahi guarde las busquedas de here
-  lugarOrigen: any;
-  lugarDestino: any;
-  origen: DireccionEnvio;
-  destino: DireccionEnvio;
+  lugarOrigen: DireccionEnvio;
+  lugarDestino: DireccionEnvio;
   busquedaDir: FormControl;
 
-  //creamos uno nuevo por si las moscas
-  elOrigen: any;
-
-  constructor(private _direccionesService: DireccionesService) {
+  constructor(private _direccionesService: DireccionesService,private _router:Router) {
     this.busquedaDir = new FormControl();
-
     this.lugarOrigen = {
+      persona: "",
       street: "",
       street2: "",
       houseNumber: "",
@@ -40,7 +30,22 @@ export class BusquedadireccionComponent implements OnInit {
       postalCode: "",
       country: "",
       county: "",
-      countryCode: ""
+      countryCode: "",
+      district: "" //no se usa la colonia pero aun asi ponla para aparentar
+    };
+
+    this.lugarDestino = {
+      persona: "",
+      street: "",
+      street2: "",
+      houseNumber: "",
+      city: "",
+      state: "",
+      postalCode: "",
+      country: "",
+      county: "",
+      countryCode: "",
+      district: "" //no se usa la colonia pero aun asi ponla para aparentar
     };
   }
 
@@ -57,9 +62,13 @@ export class BusquedadireccionComponent implements OnInit {
 
   /* En este asignamos hacia que lado se va a ir esa madre */
   seleccionarOrigen(index) {
-    /*  console.log(this.lugares[index]); */
+/*     console.log(this.lugares[index]); */
+    this.lugarOrigen.countryCode =
+      this.lugares[index].countryCode !== undefined
+        ? this.lugares[index].countryCode
+        : "";
 
-    console.log(this.lugares[index].address);
+    console.log(this.lugarOrigen.countryCode);
 
     this.lugarOrigen.street =
       this.lugares[index].address.street !== undefined
@@ -96,24 +105,70 @@ export class BusquedadireccionComponent implements OnInit {
         : "";
 
     this.lugarOrigen.countryCode =
-      this.lugares[index].address.countryCode !== undefined
-        ? this.lugares[index].address.countryCode
+      this.lugares[index].countryCode !== undefined
+        ? this.lugares[index].countryCode
         : "";
 
+    /* opcionales */
+    this.lugarOrigen.district =
+      this.lugares[index].address.district !== undefined
+        ? this.lugares[index].address.district
+        : "";
     /* this.lugarOrigen = this.lugares[index]; */
   }
   seleccionarDestino(index) {
-    console.log(this.lugares[index]);
-    this.lugarDestino = this.lugares[index];
+/*     console.log(this.lugares[index]); */
+    this.lugarDestino.street =
+      this.lugares[index].address.street !== undefined
+        ? this.lugares[index].address.street
+        : "";
+    this.lugarDestino.houseNumber =
+      this.lugares[index].address.houseNumber !== undefined
+        ? this.lugares[index].address.houseNumber
+        : "";
+
+    this.lugarDestino.city =
+      this.lugares[index].address.city !== undefined
+        ? this.lugares[index].address.city
+        : "";
+
+    this.lugarDestino.state =
+      this.lugares[index].address.state !== undefined
+        ? this.lugares[index].address.state
+        : "";
+
+    this.lugarDestino.postalCode =
+      this.lugares[index].address.postalCode !== undefined
+        ? this.lugares[index].address.postalCode
+        : "";
+
+    this.lugarDestino.country =
+      this.lugares[index].address.country !== undefined
+        ? this.lugares[index].address.country
+        : "";
+
+    this.lugarDestino.county =
+      this.lugares[index].address.county !== undefined
+        ? this.lugares[index].address.county
+        : "";
+
+    this.lugarDestino.countryCode =
+      this.lugares[index].countryCode !== undefined
+        ? this.lugares[index].countryCode
+        : "";
+
+    /* opcionales */
+    this.lugarDestino.district =
+      this.lugares[index].address.district !== undefined
+        ? this.lugares[index].address.district
+        : "";
   }
 
   //SE EVALUA QUE TENGA UNA DIRECCION RELATIVAMENTE COMPLETA
   evaluarDatosDireccion() {
-    let ori = this.lugarOrigen.address; //origen de los datos buscados
-    let countryCode_ori = this.lugarOrigen.countryCode;
+    let ori = this.lugarOrigen; //origen de los datos buscados
 
-    let dest = this.lugarDestino.address; //destino de los datos buscados
-    let countryCode_dest = this.lugarDestino.countryCode;
+    let dest = this.lugarDestino; //destino de los datos buscados
 
     let arrayorigen = [
       ori.street,
@@ -132,58 +187,23 @@ export class BusquedadireccionComponent implements OnInit {
       dest.country
     ];
 
-    let resultadoorigen = arrayorigen.filter(
-      elemento => elemento !== undefined
-    );
-    let resultadodestino = arraydestino.filter(
-      elemento => elemento !== undefined
-    );
+    let resultadoorigen = arrayorigen.filter(elemento => elemento !== "");
+    let resultadodestino = arraydestino.filter(elemento => elemento !== "");
+
     if (resultadoorigen.length === 6 && resultadodestino.length === 6) {
-      console.log("direccion completa");
-      let origen = {
-        street: ori.street,
-        street2: "",
-        houseNumber: ori.houseNumber,
-        city: ori.city,
-        state: ori.state,
-        postalCode: ori.postalCode,
-        country: ori.country,
-        county: ori.county,
-        countryCode: countryCode_ori
-      };
+      this.lugarOrigen.persona = "PERSONA 1 PRUEBA";
+      this.lugarDestino.persona = "PERSONA 2 PRUEBA";
+      let paquete = { longitud: 9, anchura: 6, altura: 2, peso: 10 };
+     /*  console.log("------LUGARES----------");
+      console.log(this.lugarOrigen);
+      console.log(this.lugarDestino); */
 
-      let destino = {
-        street: dest.street,
-        street2: "",
-        houseNumber: dest.houseNumber,
-        city: dest.city,
-        state: dest.state,
-        postalCode: dest.postalCode,
-        country: dest.country,
-        county: dest.county,
-        countryCode: countryCode_dest
-      };
+  this._direccionesService.datosParaCotizacion(this.lugarOrigen,this.lugarDestino);
+      this._router.navigate(["/tarifas"]);
 
-      this.asignarValores(origen, destino);
+      
     } else {
       console.log("incompleta direccion");
     }
-  }
-
-  //Este se guarda en un objeto una vez que se verifico que todo estuviera al tiro
-  asignarValores(origen, destino) {
-    this.origen = origen;
-    this.origen.persona = "PERSONA 1 PRUEBA";
-
-    this.destino = destino;
-    this.destino.persona = "PERSONA 2 PRUEBA";
-
-    let paquete = { longitud: 9, anchura: 6, altura: 2, peso: 10 };
-
-    this._direccionesService
-      .cotizacion(origen, destino, paquete)
-      .subscribe(resp => {
-        console.log(resp);
-      });
   }
 }
