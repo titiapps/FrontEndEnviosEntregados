@@ -1,0 +1,32 @@
+<h1 mat-dialog-title>Destino</h1>
+<div mat-dialog-content>
+  <span>Calle</span>
+  <mat-form-field>
+    <input matInput [(ngModel)]="lugarDestino.street" />
+  </mat-form-field>
+  <span>Numero</span>
+  <mat-form-field>
+    <input matInput [(ngModel)]="lugarDestino.houseNumber" />
+  </mat-form-field>
+  <span>Interior,Departamento,Piso</span>
+  <mat-form-field>
+    <input matInput [(ngModel)]="lugarDestino.street2" />
+  </mat-form-field>
+  <span>Delegación o Municipio</span>
+  <mat-form-field>
+    <input matInput [(ngModel)]="lugarDestino.city" />
+  </mat-form-field>
+  <span>Colonia</span>
+  <mat-form-field>
+    <input matInput [(ngModel)]="lugarDestino.district" />
+  </mat-form-field>
+  <span>Codigo Postal</span>
+  <mat-form-field>
+    <input matInput [(ngModel)]="lugarDestino.postalCode" />
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="lugarDestino" cdkFocusInitial>
+    Guardar
+  </button>
+</div>

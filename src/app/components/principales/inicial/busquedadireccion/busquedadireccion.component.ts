@@ -1,8 +1,9 @@
-import { Component, OnInit, ɵConsole } from "@angular/core";
-import {Router} from "@angular/router";
+import { Component, OnInit, ɵConsole, Inject } from "@angular/core";
+import { Router } from "@angular/router";
 import { DireccionesService } from "src/app/services/services.index";
 import { FormsModule, FormControl } from "@angular/forms";
 import { DireccionEnvio } from "src/app/models/DireccionesEnvio.model";
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from "@angular/material";
 
 export interface User {
   name: string;
@@ -17,8 +18,14 @@ export class BusquedadireccionComponent implements OnInit {
   lugarOrigen: DireccionEnvio;
   lugarDestino: DireccionEnvio;
   busquedaDir: FormControl;
+  animal: string;
+  name: string;
 
-  constructor(private _direccionesService: DireccionesService,private _router:Router) {
+  constructor(
+    private _direccionesService: DireccionesService,
+    private _router: Router,
+    public dialog: MatDialog
+  ) {
     this.busquedaDir = new FormControl();
     this.lugarOrigen = {
       persona: "",
@@ -62,7 +69,7 @@ export class BusquedadireccionComponent implements OnInit {
 
   /* En este asignamos hacia que lado se va a ir esa madre */
   seleccionarOrigen(index) {
-/*     console.log(this.lugares[index]); */
+    /*     console.log(this.lugares[index]); */
     this.lugarOrigen.countryCode =
       this.lugares[index].countryCode !== undefined
         ? this.lugares[index].countryCode
@@ -117,7 +124,7 @@ export class BusquedadireccionComponent implements OnInit {
     /* this.lugarOrigen = this.lugares[index]; */
   }
   seleccionarDestino(index) {
-/*     console.log(this.lugares[index]); */
+    /*     console.log(this.lugares[index]); */
     this.lugarDestino.street =
       this.lugares[index].address.street !== undefined
         ? this.lugares[index].address.street
@@ -194,16 +201,123 @@ export class BusquedadireccionComponent implements OnInit {
       this.lugarOrigen.persona = "PERSONA 1 PRUEBA";
       this.lugarDestino.persona = "PERSONA 2 PRUEBA";
       let paquete = { longitud: 9, anchura: 6, altura: 2, peso: 10 };
-     /*  console.log("------LUGARES----------");
+      /*  console.log("------LUGARES----------");
       console.log(this.lugarOrigen);
       console.log(this.lugarDestino); */
+      let arraypaquete = [paquete];
 
-  this._direccionesService.datosParaCotizacion(this.lugarOrigen,this.lugarDestino);
+      this._direccionesService.datosParaCotizacion(
+        this.lugarOrigen,
+        this.lugarDestino,
+        arraypaquete
+      );
       this._router.navigate(["/tarifas"]);
-
-      
     } else {
       console.log("incompleta direccion");
     }
   }
+
+  openDialogOrigen(): void {
+    const dialogRef = this.dialog.open(DialogOrigen, {
+      width: "250px",
+      data: {
+        street: this.lugarOrigen.street,
+        houseNumber: this.lugarOrigen.houseNumber,
+        street2: this.lugarOrigen.street2,
+        city: this.lugarOrigen.city,
+        district: this.lugarOrigen.district,
+        postalCode: this.lugarOrigen.postalCode
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log("The dialog was closed");
+      console.log(result);
+      if (result !== undefined) {
+        let {
+          street,
+          houseNumber,
+          street2,
+          city,
+          district,
+          postalCode
+        } = result;
+
+        this.lugarOrigen = {
+          street,
+          street2,
+          houseNumber,
+          city,
+          country: this.lugarOrigen.country,
+          county: this.lugarOrigen.county,
+          district,
+          state: this.lugarOrigen.state,
+          postalCode,
+          persona: this.lugarOrigen.persona,
+          countryCode: this.lugarOrigen.countryCode
+        };
+      }
+    });
+  }
+  openDialogDestino(): void {
+    const dialogRefe = this.dialog.open(DialogDestino, {
+      width: "250px",
+      data: {
+        street: this.lugarDestino.street,
+        houseNumber: this.lugarDestino.houseNumber,
+        street2: this.lugarDestino.street2,
+        city: this.lugarDestino.city,
+        district: this.lugarDestino.district,
+        postalCode: this.lugarDestino.postalCode
+      }
+    });
+
+    dialogRefe.afterClosed().subscribe(result => {
+      console.log(result);
+      if (result !== undefined) {
+        let {
+          street,
+          houseNumber,
+          street2,
+          city,
+          district,
+          postalCode
+        } = result;
+
+        this.lugarDestino = {
+          street,
+          street2,
+          houseNumber,
+          city,
+          country: this.lugarDestino.country,
+          county: this.lugarDestino.county,
+          district,
+          state: this.lugarDestino.state,
+          postalCode,
+          persona: this.lugarDestino.persona,
+          countryCode: this.lugarDestino.countryCode
+        };
+      }
+    });
+  }
+}
+
+@Component({
+  templateUrl: "dialogorigen.html"
+})
+export class DialogOrigen {
+  constructor(
+    public dialogRef: MatDialogRef<DialogOrigen>,
+    @Inject(MAT_DIALOG_DATA) public lugarOrigen: DireccionEnvio
+  ) {}
+}
+
+@Component({
+  templateUrl: "dialogdestino.html"
+})
+export class DialogDestino {
+  constructor(
+    public dialogRef: MatDialogRef<DialogDestino>,
+    @Inject(MAT_DIALOG_DATA) public lugarDestino: DireccionEnvio
+  ) {}
 }

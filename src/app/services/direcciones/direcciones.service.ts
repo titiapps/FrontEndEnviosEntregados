@@ -7,8 +7,7 @@ import { DireccionEnvio } from "src/app/models/DireccionesEnvio.model";
 export class DireccionesService {
   origen: DireccionEnvio;
   destino: DireccionEnvio;
- 
-  private paquete: Array<any>;
+  paquetes: Array<any>;
 
   constructor(private _http: HttpClient) {
     console.log(this.origen);
@@ -22,9 +21,10 @@ export class DireccionesService {
     });
   }
 
-  datosParaCotizacion(origen, destino) {
+  datosParaCotizacion(origen, destino,arraypaquete) {
     this.origen = origen;
     this.destino = destino;
+    this.paquetes = arraypaquete;
   }
 
   //ESTE SERVICIOS MANDA TANTO EL ORIGEN,DESTINO LO QUE CONLLEVA EL PAQUETE

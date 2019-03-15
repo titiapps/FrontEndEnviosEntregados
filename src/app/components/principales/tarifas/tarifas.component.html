@@ -1,0 +1,55 @@
+<div *ngIf="cargando" class="list pl0 mt0 measure center">
+  <h4>Cargando tarifas espere...</h4>
+  <mat-spinner></mat-spinner>
+</div>
+<br />
+<div *ngIf="!cargando">
+  <div *ngIf="cotizaciones.length === 0">
+    No hay tarifas a mostrar de momento
+  </div>
+
+  <div *ngIf="cotizaciones.length > 0">
+    <ul
+      class="list pl0 mt0 measure center"
+      *ngFor="let cotizaciontemp of cotizaciones; let i = index"
+    >
+      <li
+        class="flex items-center lh-copy pa3 ph0-l bb b--black-10"
+        *ngFor="let tarifa of cotizaciontemp.tarifas; let j = index"
+      >
+        <img
+          class="w2 h2 w3-ns h3-ns br-100"
+          src="assets/img/{{ tarifa.carrier }}.jpg"
+        />
+        <div class="pl3 flex-auto">
+          <div>
+            <span class="f6 db black-70"
+              ><strong>{{ tarifa.service }}</strong></span
+            >
+            <span class="f6 db black-70"
+              ><strong>${{ tarifa.rate }}pesos</strong></span
+            >
+          </div>
+          <div class="">
+            <span class="f6"
+              >Entrega Estimada:{{ tarifa.delivery_days }}dias</span
+            >
+          </div>
+        </div>
+
+        <div>
+          <button
+            class="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue"
+            href="#0"
+            (click)="escogerTarifa(i, j)"
+          >
+            Seleccionar
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+

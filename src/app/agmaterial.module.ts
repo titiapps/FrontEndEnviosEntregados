@@ -7,6 +7,8 @@ import {
 } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material";
 import { MatIconModule } from "@angular/material/icon";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { MatDialogModule } from "@angular/material/dialog";
 
 @NgModule({
   declarations: [],
@@ -15,14 +17,18 @@ import { MatIconModule } from "@angular/material/icon";
     MatAutocompleteModule,
     MatFormFieldModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    MatProgressSpinnerModule,
+    MatDialogModule
   ],
   imports: [
     MatButtonModule,
     MatAutocompleteModule,
     MatFormFieldModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    MatProgressSpinnerModule,
+    MatDialogModule
   ]
 })
 export class AgmaterialModule {}
