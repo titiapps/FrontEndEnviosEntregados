@@ -26,11 +26,11 @@ export class ConektaComponent implements OnInit {
     return new Promise((resolve, reject) => {
       var tokenParams = {
         card: {
-          number: "4242424242424242",
-          name: "Fulanito Pérez",
-          exp_year: "2020",
-          exp_month: "12",
-          cvc: "123"
+          number: "4152313344278284",
+          name: "Rodrigo Bolita Perez",
+          exp_year: "22",
+          exp_month: "09",
+          cvc: "346"
         }
       };
       Conekta.Token.create(

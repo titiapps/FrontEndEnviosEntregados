@@ -17,6 +17,7 @@ import { RegistrarComponent } from "./components/registrar/registrar.component";
 import { Pagina404Component } from "./components/shared/pagina404/pagina404.component";
 import { ConektaComponent } from "./components/pruebas/conekta/conekta.component";
 import { PrincipalesComponent } from "./components/principales/principales.component";
+import { StripeComponent } from './components/pruebas/stripe/stripe.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { PrincipalesComponent } from "./components/principales/principales.compo
     RegistrarComponent,
     ConektaComponent,
     PrincipalesComponent,
+    StripeComponent,
    
   ],
   imports: [

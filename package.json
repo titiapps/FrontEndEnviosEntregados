@@ -21,6 +21,8 @@
     "@angular/platform-browser": "~7.2.0",
     "@angular/platform-browser-dynamic": "~7.2.0",
     "@angular/router": "~7.2.0",
+    "@nomadreservations/ngx-stripe": "^1.1.0",
+    "@types/stripejs": "^3.0.4",
     "angular-cc-library": "^1.2.5",
     "bootstrap": "^4.3.1",
     "core-js": "^2.5.4",
