@@ -13,7 +13,7 @@
    grid-row: 2/3;
    display: grid;
    grid-template-columns: 5% auto 5%;
-   grid-template-rows: 25% 30% 50%;
+   grid-template-rows: 15% 35% 50%;
 }
 
 .contenido_login .encabezados {
@@ -41,7 +41,7 @@
 
 .btn-ingresar {
    justify-self: center;
-   margin-top: 12rem;
+   margin-top: 14rem;
    font-size: 1.0rem;
    font-weight: 400;
    width: 100%;
@@ -54,7 +54,7 @@
 @media(min-width:768px) {
    .btn-ingresar {
        justify-self: center;
-       margin-top: 12rem;
+       margin-top: 14rem;
        font-size: 1.0rem;
        font-weight: 400;
        max-width: 59%;

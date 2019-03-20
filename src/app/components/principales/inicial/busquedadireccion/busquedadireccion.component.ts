@@ -313,7 +313,7 @@ export class DialogOrigen {
 }
 
 @Component({
-  templateUrl: "dialogdestino.html"
+  templateUrl: "dialogDestino.html"
 })
 export class DialogDestino {
   constructor(

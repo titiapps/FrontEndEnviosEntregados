@@ -16,6 +16,8 @@ export class ConektaComponent implements OnInit {
     this.conseguirTokenConekta()
       .then(token => {
         console.log(token);
+
+      
       })
       .catch(error => {
         console.log(error);

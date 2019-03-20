@@ -10,13 +10,17 @@ import {
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AgmaterialModule } from "src/app/agmaterial.module";
 import { TarifasComponent } from "./tarifas/tarifas.component";
+import { PagoComponent } from "./pago/pago.component";
+import { PizzaPartyComponent } from "../login/login.component";
 
 @NgModule({
   declarations: [
     InicialComponent,
     BusquedadireccionComponent,
     TarifasComponent,
-    DialogOrigen,DialogDestino
+    DialogOrigen,
+    DialogDestino,
+    PagoComponent
   ],
   exports: [InicialComponent],
   imports: [
@@ -26,6 +30,6 @@ import { TarifasComponent } from "./tarifas/tarifas.component";
     ReactiveFormsModule,
     AgmaterialModule
   ],
-  entryComponents: [DialogOrigen,DialogDestino]
+  entryComponents: [DialogOrigen, DialogDestino]
 })
 export class PrincipalesModule {}

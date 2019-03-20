@@ -63,7 +63,6 @@
         grid-column: 2/3;
         grid-row: 3/3;
     }
-    
     .contenido_login .formulario {
         width: 50%;
     }
@@ -72,4 +71,12 @@
 .contenido_login form input, .contenido_login form button {
     margin: 0 auto;
     width: 20rem;
+}
+
+::ng-deep snack-bar-container.custom-class {
+    background: #228B22;
+}
+
+::ng-deep .custom-class .mat-simple-snackbar {
+    color: white;
 }

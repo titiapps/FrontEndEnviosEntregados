@@ -12,13 +12,15 @@ import { NgPaymentCardModule } from "ng-payment-card";
 import { CreditCardDirectivesModule } from "angular-cc-library";
 
 //COMPONENTENTES
-import { LoginComponent } from "./components/login/login.component";
+import {
+  LoginComponent,
+  PizzaPartyComponent
+} from "./components/login/login.component";
 import { RegistrarComponent } from "./components/registrar/registrar.component";
 import { Pagina404Component } from "./components/shared/pagina404/pagina404.component";
 import { ConektaComponent } from "./components/pruebas/conekta/conekta.component";
 import { PrincipalesComponent } from "./components/principales/principales.component";
-import { StripeComponent } from './components/pruebas/stripe/stripe.component';
-
+import { StripeComponent } from "./components/pruebas/stripe/stripe.component";
 
 @NgModule({
   declarations: [
@@ -29,7 +31,7 @@ import { StripeComponent } from './components/pruebas/stripe/stripe.component';
     ConektaComponent,
     PrincipalesComponent,
     StripeComponent,
-   
+    PizzaPartyComponent
   ],
   imports: [
     appRouting,
@@ -45,6 +47,7 @@ import { StripeComponent } from './components/pruebas/stripe/stripe.component';
     CreditCardDirectivesModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [PizzaPartyComponent]
 })
 export class AppModule {}

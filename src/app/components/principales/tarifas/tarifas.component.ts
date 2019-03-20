@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { DireccionesService } from "src/app/services/services.index";
 import { DireccionEnvio } from "src/app/models/DireccionesEnvio.model";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-tarifas",
@@ -12,9 +13,12 @@ export class TarifasComponent implements OnInit {
   destino: DireccionEnvio;
   paquetes: Array<any>;
   cotizaciones: Array<any>;
-  cargando:boolean;
+  cargando: boolean;
 
-  constructor(private _direccionesService: DireccionesService) {
+  constructor(
+    private _direccionesService: DireccionesService,
+    private _router: Router
+  ) {
     this.origen = this._direccionesService.origen;
     this.destino = this._direccionesService.destino;
     this.paquetes = this._direccionesService.paquetes;
@@ -42,16 +46,11 @@ export class TarifasComponent implements OnInit {
           }
         );
     }
-    /*  console.log(this.origen);
-    console.log(this.destino);
-
-    console.log(this.paquetes); */
-
-    // })
   }
-  escogerTarifa(i,j){
+  escogerTarifa(i, j) {
     console.log(i);
     console.log(j);
+    this._router.navigate(["/pago"]);
   }
 
   //vamos a suscribirnos para que nos traiga las tarifas
