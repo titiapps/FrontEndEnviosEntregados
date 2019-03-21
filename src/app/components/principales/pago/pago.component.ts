@@ -5,6 +5,9 @@ import {
 } from "src/app/services/services.index";
 import Swal from "sweetalert2";
 import { Router } from "@angular/router";
+import { CreditCardValidator } from "angular-cc-library";
+import { FormBuilder, FormGroup, NgForm, Validators } from "@angular/forms";
+
 declare var Conekta: any;
 
 @Component({
@@ -13,10 +16,14 @@ declare var Conekta: any;
   styleUrls: ["./pago.component.css"]
 })
 export class PagoComponent implements OnInit {
+  form: FormGroup;
+  submitted: boolean;
+
   token_conekta: String;
   seleccionUsuario: any;
   private datos_pago: any;
   constructor(
+    private _fb: FormBuilder,
     private _pagoService: PagosService,
     private _router: Router,
     private _direccionesService: DireccionesService
@@ -24,8 +31,7 @@ export class PagoComponent implements OnInit {
     Conekta.setPublicKey("key_EypWVrLqbLYcrmkqE5r9rqQ");
     this.datos_pago = {
       numero_tarjeta: "",
-      ano: "",
-      mes: "",
+      fecha: "",
       cvc: "",
       nombre: ""
     };
@@ -33,6 +39,18 @@ export class PagoComponent implements OnInit {
 
   ngOnInit() {
     this.seleccionUsuario = this._direccionesService.seleccionTarifaUsuario;
+    this.form = this._fb.group({
+      creditCard: ["", [<any>CreditCardValidator.validateCCNumber]],
+      expDate: ["", [<any>CreditCardValidator.validateExpDate]],
+      cvc: [
+        "",
+        [
+          <any>Validators.required,
+          <any>Validators.minLength(3),
+          <any>Validators.maxLength(4)
+        ]
+      ]
+    });
   }
 
   conseguirTokenConekta() {
@@ -41,8 +59,8 @@ export class PagoComponent implements OnInit {
         card: {
           number: this.datos_pago.numero_tarjeta,
           name: this.datos_pago.nombre,
-          exp_year: this.datos_pago.ano,
-          exp_month: this.datos_pago.mes,
+          exp_year: this.datos_pago.fecha.toString().slice(5, 7),
+          exp_month: this.datos_pago.fecha.toString().slice(0, 2),
           cvc: this.datos_pago.cvc
         }
       };
@@ -58,6 +76,7 @@ export class PagoComponent implements OnInit {
     });
   }
   realizarPago() {
+    this.submitted = true;
     this.conseguirTokenConekta()
       .then((token: any) => {
         console.log(token);
