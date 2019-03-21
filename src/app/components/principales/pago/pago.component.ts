@@ -1,5 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import { PagosService } from "src/app/services/services.index";
+import {
+  PagosService,
+  DireccionesService
+} from "src/app/services/services.index";
 import Swal from "sweetalert2";
 import { Router } from "@angular/router";
 declare var Conekta: any;
@@ -11,12 +14,51 @@ declare var Conekta: any;
 })
 export class PagoComponent implements OnInit {
   token_conekta: String;
-  constructor(private _pagoService: PagosService, private _router: Router) {
+  seleccionUsuario: any;
+  private datos_pago: any;
+  constructor(
+    private _pagoService: PagosService,
+    private _router: Router,
+    private _direccionesService: DireccionesService
+  ) {
     Conekta.setPublicKey("key_EypWVrLqbLYcrmkqE5r9rqQ");
+    this.datos_pago = {
+      numero_tarjeta: "",
+      ano: "",
+      mes: "",
+      cvc: "",
+      nombre: ""
+    };
   }
 
   ngOnInit() {
-    /*  this.conseguirTokenConekta()
+    this.seleccionUsuario = this._direccionesService.seleccionTarifaUsuario;
+  }
+
+  conseguirTokenConekta() {
+    return new Promise((resolve, reject) => {
+      var tokenParams = {
+        card: {
+          number: this.datos_pago.numero_tarjeta,
+          name: this.datos_pago.nombre,
+          exp_year: this.datos_pago.ano,
+          exp_month: this.datos_pago.mes,
+          cvc: this.datos_pago.cvc
+        }
+      };
+      Conekta.Token.create(
+        tokenParams,
+        token => {
+          resolve(token);
+        },
+        error => {
+          reject(error);
+        }
+      );
+    });
+  }
+  realizarPago() {
+    this.conseguirTokenConekta()
       .then((token: any) => {
         console.log(token);
         this.token_conekta = token.id;
@@ -45,30 +87,7 @@ export class PagoComponent implements OnInit {
           "Error de Validacion",
           "Hubo un problema con los datos de tu tarjeta verificala",
           "error"
-        ); */
-    // });
-  }
-
-  conseguirTokenConekta() {
-    return new Promise((resolve, reject) => {
-      var tokenParams = {
-        card: {
-          number: "4242424242424242",
-          name: "Fulanito Pérez",
-          exp_year: "2020",
-          exp_month: "12",
-          cvc: "123"
-        }
-      };
-      Conekta.Token.create(
-        tokenParams,
-        token => {
-          resolve(token);
-        },
-        error => {
-          reject(error);
-        }
-      );
-    });
+        );
+      });
   }
 }

@@ -42,7 +42,7 @@ export class VerificatokenGuard implements CanActivate {
           },
           () => {
             this.router.navigate["/login"];
-            reject(false);
+           // reject(false);
           }
         );
       }

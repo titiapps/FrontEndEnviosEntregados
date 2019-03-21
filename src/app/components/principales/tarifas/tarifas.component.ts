@@ -48,8 +48,18 @@ export class TarifasComponent implements OnInit {
     }
   }
   escogerTarifa(i, j) {
-    console.log(i);
-    console.log(j);
+    let seleccionusuario = this.cotizaciones[i].tarifas[j];
+    /*    console.log(this.cotizaciones[i].tarifas[j]); */
+    let datosPaquete = {
+      paqueteria: seleccionusuario.carrier,
+      carrier_account_id: seleccionusuario.carrier_account_id,
+      costo: seleccionusuario.rate,
+      id: seleccionusuario.id,
+      shipment_id: seleccionusuario.shipment_id,
+      servicio: seleccionusuario.service
+    };
+    this._direccionesService.seleccionTarifaUsuario = datosPaquete;
+
     this._router.navigate(["/pago"]);
   }
 
