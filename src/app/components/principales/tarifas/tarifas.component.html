@@ -24,10 +24,10 @@
         <div class="pl3 flex-auto">
           <div>
             <span class="f6 db black-70"
-              ><strong>{{ tarifa.service |description: true}}</strong></span
+            ><h2>{{ tarifa.service |description: true}}</h2></span
             >
-            <span class="f6 db black-70"
-            ><strong>{{ tarifa.service |description: false}}</strong></span
+            <span class="f6 db black-70 pa3"
+            ><strong><p align="justify">{{ tarifa.service |description: false}}</p></strong></span
             >
             <span class="f6 db black-70"
               ><strong>${{ tarifa.rate }}pesos</strong></span
@@ -39,8 +39,7 @@
             >
           </div>
         </div>
-
-        <div>
+        <div class="btn">
           <button
             class="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue"
             href="#0"

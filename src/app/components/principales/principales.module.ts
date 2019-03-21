@@ -10,10 +10,9 @@ import {
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AgmaterialModule } from "src/app/agmaterial.module";
 import { TarifasComponent } from "./tarifas/tarifas.component";
-import { DescriptionPipe} from '../pipes/descriptionPipe';
 import { PagoComponent } from "./pago/pago.component";
-import { PizzaPartyComponent } from "../login/login.component";
 import { PipesModule } from '../pipes/pipes.module';
+import { CartComponent } from '../pruebas/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +21,8 @@ import { PipesModule } from '../pipes/pipes.module';
     TarifasComponent,
     DialogOrigen,
     DialogDestino,
-    PagoComponent
+    PagoComponent,
+    CartComponent
   ],
   exports: [InicialComponent],
   imports: [
