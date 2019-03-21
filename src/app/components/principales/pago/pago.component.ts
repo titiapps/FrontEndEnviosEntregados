@@ -88,7 +88,8 @@ export class PagoComponent implements OnInit {
               "Tu pago se realizo de manera correcta",
               "success"
             );
-            console.log(resp);
+            //aqui mandamos los datos al backend
+            this._router.navigate(["/compraEnvio"]);
           },
           error => {
             console.log(error);

@@ -4,8 +4,7 @@ import { TarifasComponent } from "./tarifas/tarifas.component";
 import { PagoComponent } from "./pago/pago.component";
 import { LoginguardGuard } from "src/app/services/services.index";
 import { VerificatokenGuard } from "src/app/services/guards/verificatoken.guard";
-import { CartComponent } from '../pruebas/cart/cart.component';
-
+import { CompraEnvioComponent } from "./compra-envio/compra-envio.component";
 
 const routes: Routes = [
   {
@@ -16,13 +15,12 @@ const routes: Routes = [
     path: "tarifas",
     component: TarifasComponent
   },
-  { path: 'cart', component: CartComponent },
-
   {
     path: "pago",
     canActivate: [LoginguardGuard, VerificatokenGuard],
     component: PagoComponent
   },
+  { path: "compraEnvio", component: CompraEnvioComponent },
 
   { path: "", pathMatch: "full", redirectTo: "/inicio" }
 ];

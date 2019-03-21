@@ -11,9 +11,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AgmaterialModule } from "src/app/agmaterial.module";
 import { TarifasComponent } from "./tarifas/tarifas.component";
 import { PagoComponent } from "./pago/pago.component";
-import { PipesModule } from '../pipes/pipes.module';
-import { CartComponent } from '../pruebas/cart/cart.component';
-
+import { PipesModule } from "../pipes/pipes.module";
+import { CompraEnvioComponent } from "./compra-envio/compra-envio.component";
 
 @NgModule({
   declarations: [
@@ -23,7 +22,7 @@ import { CartComponent } from '../pruebas/cart/cart.component';
     DialogOrigen,
     DialogDestino,
     PagoComponent,
-    CartComponent
+    CompraEnvioComponent
   ],
   exports: [InicialComponent],
   imports: [
