@@ -21,7 +21,6 @@ import { Pagina404Component } from "./components/shared/pagina404/pagina404.comp
 import { ConektaComponent } from "./components/pruebas/conekta/conekta.component";
 import { PrincipalesComponent } from "./components/principales/principales.component";
 import { CardValComponent } from './components/pruebas/card-val/card-val.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { StripeComponent } from "./components/pruebas/stripe/stripe.component";
 
 @NgModule({
@@ -48,7 +47,6 @@ import { StripeComponent } from "./components/pruebas/stripe/stripe.component";
     SharedModule,
     NgPaymentCardModule,
     CreditCardDirectivesModule,
-    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent],

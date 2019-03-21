@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { DireccionesService } from "./services/services.index";
+
 
 @Component({
   selector: "app-root",

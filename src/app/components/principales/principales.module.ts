@@ -13,13 +13,13 @@ import { TarifasComponent } from "./tarifas/tarifas.component";
 import { DescriptionPipe} from '../pipes/descriptionPipe';
 import { PagoComponent } from "./pago/pago.component";
 import { PizzaPartyComponent } from "../login/login.component";
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
   declarations: [
     InicialComponent,
     BusquedadireccionComponent,
     TarifasComponent,
-    DescriptionPipe,
     DialogOrigen,
     DialogDestino,
     PagoComponent
@@ -30,7 +30,8 @@ import { PizzaPartyComponent } from "../login/login.component";
     principalesRoutes,
     FormsModule,
     ReactiveFormsModule,
-    AgmaterialModule
+    AgmaterialModule,
+    PipesModule
   ],
   entryComponents: [DialogOrigen, DialogDestino]
 })

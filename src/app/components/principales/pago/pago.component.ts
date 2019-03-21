@@ -16,7 +16,7 @@ export class PagoComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.conseguirTokenConekta()
+    /*  this.conseguirTokenConekta()
       .then((token: any) => {
         console.log(token);
         this.token_conekta = token.id;
@@ -45,8 +45,8 @@ export class PagoComponent implements OnInit {
           "Error de Validacion",
           "Hubo un problema con los datos de tu tarjeta verificala",
           "error"
-        );
-      });
+        ); */
+    // });
   }
 
   conseguirTokenConekta() {
