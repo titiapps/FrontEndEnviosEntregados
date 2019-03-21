@@ -6,14 +6,15 @@ import { LoginguardGuard } from "./services/services.index";
 import { ConektaComponent } from "./components/pruebas/conekta/conekta.component";
 import { PrincipalesComponent } from "./components/principales/principales.component";
 import { StripeComponent } from "./components/pruebas/stripe/stripe.component";
-
-//COMPONENTES COMPARTIDOS
+import { CardValComponent } from "./components/pruebas/card-val/card-val.component";
+// COMPONENTES COMPARTIDOS
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "registrarse", component: RegistrarComponent },
   { path: "conekta", component: ConektaComponent },
   { path: "stripe", component: StripeComponent },
+  { path: "card", component: CardValComponent },
 
   {
     path: "",

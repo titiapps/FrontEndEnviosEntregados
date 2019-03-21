@@ -303,7 +303,7 @@ export class BusquedadireccionComponent implements OnInit {
 }
 
 @Component({
-  templateUrl: "dialogorigen.html"
+  templateUrl: "dialogOrigen.html"
 })
 export class DialogOrigen {
   constructor(
@@ -313,7 +313,7 @@ export class DialogOrigen {
 }
 
 @Component({
-  templateUrl: "dialogdestino.html"
+  templateUrl: "dialogDestino.html"
 })
 export class DialogDestino {
   constructor(

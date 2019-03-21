@@ -24,7 +24,10 @@
         <div class="pl3 flex-auto">
           <div>
             <span class="f6 db black-70"
-              ><strong>{{ tarifa.service }}</strong></span
+              ><strong>{{ tarifa.service |description: true}}</strong></span
+            >
+            <span class="f6 db black-70"
+            ><strong>{{ tarifa.service |description: false}}</strong></span
             >
             <span class="f6 db black-70"
               ><strong>${{ tarifa.rate }}pesos</strong></span

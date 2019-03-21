@@ -10,13 +10,15 @@ import {
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AgmaterialModule } from "src/app/agmaterial.module";
 import { TarifasComponent } from "./tarifas/tarifas.component";
+import { DescriptionPipe} from '../pipes/descriptionPipe';
 
 @NgModule({
   declarations: [
     InicialComponent,
     BusquedadireccionComponent,
     TarifasComponent,
-    DialogOrigen,DialogDestino
+    DialogOrigen,DialogDestino,
+    DescriptionPipe
   ],
   exports: [InicialComponent],
   imports: [
