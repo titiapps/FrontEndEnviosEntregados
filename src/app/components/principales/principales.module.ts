@@ -14,6 +14,7 @@ import { PagoComponent } from "./pago/pago.component";
 import { PipesModule } from '../pipes/pipes.module';
 import { CartComponent } from '../pruebas/cart/cart.component';
 
+
 @NgModule({
   declarations: [
     InicialComponent,

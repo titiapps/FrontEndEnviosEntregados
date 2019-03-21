@@ -8,6 +8,7 @@ export class DireccionesService {
   origen: DireccionEnvio;
   destino: DireccionEnvio;
   paquetes: Array<any>;
+  seleccionTarifaUsuario: any;
 
   constructor(private _http: HttpClient) {
     console.log(this.origen);
@@ -21,7 +22,7 @@ export class DireccionesService {
     });
   }
 
-  datosParaCotizacion(origen, destino,arraypaquete) {
+  datosParaCotizacion(origen, destino, arraypaquete) {
     this.origen = origen;
     this.destino = destino;
     this.paquetes = arraypaquete;

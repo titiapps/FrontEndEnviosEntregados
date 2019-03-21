@@ -1,3 +1,86 @@
-<p>
-  pago works!
-</p>
+<div class="elementos">
+  <article class="mw5  ma2 bg-white br3 pa3 pa4-ns mv3 ba b--black-10 ">
+    <div class="tc">
+      <img
+        src="assets/img/{{ seleccionUsuario.paqueteria }}.jpg"
+        class="br-100 h3 w3 dib"
+      />
+      <h1 class="f4">{{ seleccionUsuario.paqueteria }}</h1>
+      <hr class="mw3 bb bw1 b--black-10" />
+    </div>
+    <p class="lh-copy measure center f6 black-70">
+      Servicio:{{ seleccionUsuario.servicio }}
+    </p>
+    <p class="lh-copy measure center f6 black-70">
+      Costo:{{ seleccionUsuario.costo }}
+    </p>
+  </article>
+  <main class="pa4 black-80">
+    <form class="measure center" (ngSubmit)="realizarPago()">
+      <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
+        <legend class="f4 fw6 ph0 mh0">Pagar</legend>
+        <div class="mt3">
+          <label class="db fw6 lh-copy f6" for="nombre"
+            >Nombre Completo Titular</label
+          >
+          <input
+            class="pa2 input-reset ba bg-transparent  w-100"
+            type="text"
+            name="nombre"
+            [(ngModel)]="datos_pago.nombre"
+            id="nombre"
+          />
+        </div>
+        <div class="mt3">
+          <label class="db fw6 lh-copy f6" for="numero_tarjeta"
+            >Numero de Tarjeta</label
+          >
+          <input
+            class="pa2 input-reset ba bg-transparent  w-100"
+            type="text"
+            name="numero_tarjeta"
+            [(ngModel)]="datos_pago.numero_tarjeta"
+            id="numero_tarjeta"
+          />
+        </div>
+        <div class="mt3">
+          <label class="db fw6 lh-copy f6" for="ano">Año</label>
+          <input
+            class="pa2 input-reset ba bg-transparent  w-50"
+            type="text"
+            name="ano"
+            [(ngModel)]="datos_pago.ano"
+            id="ano"
+          />
+        </div>
+        <div class="mt3">
+          <label class="db fw6 lh-copy f6" for="mes">Mes</label>
+          <input
+            class="pa2 input-reset ba bg-transparent  w-50"
+            type="text"
+            name="mes"
+            [(ngModel)]="datos_pago.mes"
+            id="mes"
+          />
+        </div>
+        <div class="mt3">
+          <label class="db fw6 lh-copy f6" for="cvc">CVC</label>
+          <input
+            class="pa2 input-reset ba bg-transparent  w-50"
+            type="text"
+            name="cvc"
+            [(ngModel)]="datos_pago.cvc"
+            id="cvc"
+          />
+        </div>
+      </fieldset>
+      <div class="">
+        <input
+          class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
+          type="submit"
+          value="Pagar"
+        />
+      </div>
+    </form>
+  </main>
+</div>
