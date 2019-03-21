@@ -12,6 +12,7 @@ import { AgmaterialModule } from "src/app/agmaterial.module";
 import { TarifasComponent } from "./tarifas/tarifas.component";
 import { PagoComponent } from "./pago/pago.component";
 import { PipesModule } from "../pipes/pipes.module";
+import { CompraEnvioComponent } from "./compra-envio/compra-envio.component";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,9 @@ import { PipesModule } from "../pipes/pipes.module";
     TarifasComponent,
     DialogOrigen,
     DialogDestino,
-    PagoComponent
+    PagoComponent,
+
+    CompraEnvioComponent
   ],
   exports: [InicialComponent],
   imports: [

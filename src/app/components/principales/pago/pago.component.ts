@@ -23,11 +23,11 @@ export class PagoComponent implements OnInit {
   ) {
     Conekta.setPublicKey("key_EypWVrLqbLYcrmkqE5r9rqQ");
     this.datos_pago = {
-      numero_tarjeta: "",
-      ano: "",
-      mes: "",
-      cvc: "",
-      nombre: ""
+      numero_tarjeta: "4242424242424242",
+      ano: 2020,
+      mes: 12,
+      cvc: 123,
+      nombre: "Fulanito Perez"
     };
   }
 
@@ -69,7 +69,8 @@ export class PagoComponent implements OnInit {
               "Tu pago se realizo de manera correcta",
               "success"
             );
-            console.log(resp);
+            //aqui mandamos los datos al backend
+            this._router.navigate(["/compraEnvio"]);
           },
           error => {
             console.log(error);

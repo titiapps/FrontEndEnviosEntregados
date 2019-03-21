@@ -5,10 +5,17 @@ import { HttpClientModule } from "@angular/common/http";
 import { UsuarioService } from "./usuario/usuario.service";
 import { LoginguardGuard } from "./guards/loginguard.guard";
 import { PagosService } from "./pagos/pagos.service";
+import { PagoEnvioService } from "./pagos/pago-envio.service";
 
 @NgModule({
   declarations: [],
   imports: [CommonModule, HttpClientModule],
-  providers: [DireccionesService, UsuarioService, LoginguardGuard, PagosService]
+  providers: [
+    DireccionesService,
+    UsuarioService,
+    LoginguardGuard,
+    PagosService,
+    PagoEnvioService
+  ]
 })
 export class ServicesModule {}
