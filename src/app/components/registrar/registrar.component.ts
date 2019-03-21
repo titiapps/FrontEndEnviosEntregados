@@ -98,21 +98,22 @@ import { ErrorStateMatcher } from "@angular/material/core";
   providers: [UsuarioService]
 })
 export class RegistrarComponent implements OnInit {
-  hide=true;
+  hide = true;
   email: string;
   usuario: Usuario = {
     nombre: "",
     apellido_materno: "",
     apellido_paterno: "",
     email: "",
-    password: ""
+    password: "",
+    telefono: null
   };
   constructor(private _usuarioService: UsuarioService) {}
 
   ngOnInit() {}
 
   guardar() {
-/*     this.usuario.email = "rodrigoh00per1@gmail.com";
+    /*     this.usuario.email = "rodrigoh00per1@gmail.com";
     this.usuario.password = "1234567"; */
 
     this._usuarioService.crearUsuario(this.usuario).subscribe(
@@ -125,4 +126,3 @@ export class RegistrarComponent implements OnInit {
     );
   }
 }
-

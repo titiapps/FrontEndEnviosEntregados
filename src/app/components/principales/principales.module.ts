@@ -11,14 +11,18 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AgmaterialModule } from "src/app/agmaterial.module";
 import { TarifasComponent } from "./tarifas/tarifas.component";
 import { DescriptionPipe} from '../pipes/descriptionPipe';
+import { PagoComponent } from "./pago/pago.component";
+import { PizzaPartyComponent } from "../login/login.component";
 
 @NgModule({
   declarations: [
     InicialComponent,
     BusquedadireccionComponent,
     TarifasComponent,
-    DialogOrigen,DialogDestino,
-    DescriptionPipe
+    DescriptionPipe,
+    DialogOrigen,
+    DialogDestino,
+    PagoComponent
   ],
   exports: [InicialComponent],
   imports: [
@@ -28,6 +32,6 @@ import { DescriptionPipe} from '../pipes/descriptionPipe';
     ReactiveFormsModule,
     AgmaterialModule
   ],
-  entryComponents: [DialogOrigen,DialogDestino]
+  entryComponents: [DialogOrigen, DialogDestino]
 })
 export class PrincipalesModule {}

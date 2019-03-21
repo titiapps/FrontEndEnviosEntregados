@@ -12,7 +12,7 @@ export class UsuarioService {
   token: string;
   usuario: Usuario;
 
-  constructor(private _http: HttpClient) {
+  constructor(private _http: HttpClient, private _router: Router) {
     this.cargarDatos();
   }
 
@@ -55,7 +55,7 @@ export class UsuarioService {
     return this._http
       .post(url, credenciales)
       .map((resp: any) => {
-        this.guardarStorage(resp._id, resp.token, resp.usuario);
+        this.guardarStorage(resp.id, resp.token, resp.usuario);
         return resp;
       })
       .catch(err => {
@@ -85,20 +85,29 @@ export class UsuarioService {
     return this.token.length > 4 ? true : false;
   }
 
-  /* renovarToken() {
+  renovarToken() {
+    var headers = new HttpHeaders().set("Authorization", this.token);
+    let url = URL_ENVIOS_BACK + "autorizacion/renovartoken";
     const httpOptions = {
-      headers: new HttpHeaders({
-        "Content-Type": "application/json",
-        Authorization: this.token
-      })
+      headers
     };
-       let url = URL_ENVIOS_BACK +  
-      this._http.post(url,);
-    let url = URL_ENVIOS_BACK+"autorizacion/renovartoken";
-
-
-    this._http.post(url,{},httpOptions).map()
-  
-  } 
-} */
+    return this._http
+      .post(url, {}, httpOptions)
+      .map((respuesta: any) => {
+        this.token = respuesta.token;
+        localStorage.setItem("token", this.token);
+        console.log("token renovado");
+        return true;
+      })
+      .catch(err => {
+        console.log(err);
+        Swal.fire(
+          "Hubo un problema con tu sesion",
+          "Es importante volver a proporcionar tus credenciales",
+          "warning"
+        );
+        this._router.navigate(["/login"]);
+        return Observable.throw(err);
+      });
+  }
 }

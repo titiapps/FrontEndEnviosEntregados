@@ -4,6 +4,12 @@ import { Usuario } from "src/app/models/usuario.model";
 import { NgForm } from "@angular/forms";
 import { FormControl, FormGroupDirective, Validators } from "@angular/forms";
 import { ErrorStateMatcher } from "@angular/material/core";
+import { Router } from "@angular/router";
+import {
+  MatSnackBarModule,
+  MatSnackBar,
+  MatSnackBarConfig
+} from "@angular/material/snack-bar";
 
 @Component({
   selector: "app-login",
@@ -12,26 +18,37 @@ import { ErrorStateMatcher } from "@angular/material/core";
   providers: [UsuarioService]
 })
 export class LoginComponent implements OnInit {
-  hide=true;
+  hide = true;
   email: string;
   usuario: Usuario = {
     nombre: "",
     apellido_materno: "",
     apellido_paterno: "",
     email: "",
-    password: ""
+    password: "",
+    telefono: null
   };
-  constructor(private _usuarioService: UsuarioService) {}
+  constructor(
+    private _usuarioService: UsuarioService,
+    private _router: Router,
+    private _snackBar: MatSnackBar
+  ) {}
 
   ngOnInit() {}
 
   ingresar() {
-/*     this.usuario.email = "rodrigoh00per1@gmail.com";
+    /*     this.usuario.email = "rodrigoh00per1@gmail.com";
     this.usuario.password = "1234567"; */
-
+    let config = new MatSnackBarConfig();
+    config.panelClass = "custom-class";
+    config.duration = 2000;
     this._usuarioService.login(this.usuario).subscribe(
-      resp => {
+      (resp: any) => {
         console.log(resp);
+        if (resp.id != undefined) {
+          this._snackBar.openFromComponent(PizzaPartyComponent, config);
+          this._router.navigate(["/inicio"]);
+        }
       },
       error => {
         console.log(error);
@@ -39,3 +56,17 @@ export class LoginComponent implements OnInit {
     );
   }
 }
+
+@Component({
+  selector: "snack-bar-component-example-snack",
+  templateUrl: "snackbar.html",
+  styles: [
+    `
+      .example-pizza-party {
+        color: #90ee90;
+        background: "#D3D3D3";
+      }
+    `
+  ]
+})
+export class PizzaPartyComponent {}

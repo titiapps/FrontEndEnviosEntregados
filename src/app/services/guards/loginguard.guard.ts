@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { CanActivate, Router } from "@angular/router";
 import { UsuarioService } from "../services.index";
+import Swal from "sweetalert2";
 
 @Injectable({
   providedIn: "root"
@@ -13,14 +14,17 @@ export class LoginguardGuard implements CanActivate {
     private _router: Router
   ) {}
   canActivate(): boolean {
-    console.log("estoy entrando al guard");
     if (this._usuarioService.estaLogueado()) {
+      console.log("estoy logueado");
       return true;
     } else {
-    /*     console.log("no esta logueado el chavo");
-      this._router.navigate(["/login"]); */
-      return true;
-    
+      Swal.fire(
+        "Credenciales",
+        "Necesitas iniciar sesion para poder acceder a este apartado",
+        "warning"
+      );
+      this._router.navigate(["/login"]);
+      return false;
     }
   }
 }

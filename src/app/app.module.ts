@@ -11,17 +11,18 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NgPaymentCardModule } from "ng-payment-card";
 import { CreditCardDirectivesModule } from "angular-cc-library";
 
-//COMPONENTENTES
-import { LoginComponent } from "./components/login/login.component";
+// COMPONENTENTES
+import {
+  LoginComponent,
+  PizzaPartyComponent
+} from "./components/login/login.component";
 import { RegistrarComponent } from "./components/registrar/registrar.component";
 import { Pagina404Component } from "./components/shared/pagina404/pagina404.component";
 import { ConektaComponent } from "./components/pruebas/conekta/conekta.component";
 import { PrincipalesComponent } from "./components/principales/principales.component";
-import { StripeComponent } from './components/pruebas/stripe/stripe.component';
 import { CardValComponent } from './components/pruebas/card-val/card-val.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-
-
+import { StripeComponent } from "./components/pruebas/stripe/stripe.component";
 
 @NgModule({
   declarations: [
@@ -32,9 +33,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     ConektaComponent,
     PrincipalesComponent,
     StripeComponent,
-    CardValComponent
-
-
+    CardValComponent,
+    PizzaPartyComponent
   ],
   imports: [
     appRouting,
@@ -51,6 +51,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     NgbModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [PizzaPartyComponent]
 })
 export class AppModule {}

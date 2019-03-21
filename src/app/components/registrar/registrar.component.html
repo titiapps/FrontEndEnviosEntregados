@@ -48,7 +48,16 @@
           required
         />
       </mat-form-field>
-
+      <mat-form-field class="example-full-width">
+        <input
+          matInput
+          placeholder="Introduce tu telefono"
+          name="telefono"
+          id="telefono"
+          [(ngModel)]="usuario.telefono"
+          required
+        />
+      </mat-form-field>
       <mat-form-field>
         <input
           name="password"
