@@ -43,7 +43,7 @@ export class PagoComponent implements OnInit {
     this.seleccionUsuario = this._direccionesService.seleccionTarifaUsuario;
 
     this.form = this._fb.group({
-      nombre: '',
+      nombre: "",
       creditCard: ["", [<any>CreditCardValidator.validateCCNumber]],
       expDate: ["", [<any>CreditCardValidator.validateExpDate]],
       cvc: [
@@ -59,9 +59,10 @@ export class PagoComponent implements OnInit {
 
   conseguirTokenConekta() {
     return new Promise((resolve, reject) => {
+      console.log(this.datos_pago);
       const tokenParams = {
         card: {
-          number: this.datos_pago.numero_tarjeta,
+          number: this.datos_pago.number,
           name: this.datos_pago.nombre,
           exp_year: this.datos_pago.exp_year,
           exp_month: this.datos_pago.exp_month,
@@ -79,8 +80,6 @@ export class PagoComponent implements OnInit {
       );
     });
   }
-
-
 
   realizarPago() {
     this.submitted = true;
@@ -123,10 +122,11 @@ export class PagoComponent implements OnInit {
     this.datos_pago.nombre = form.value.nombre;
     this.datos_pago.number = form.value.creditCard;
     this.datos_pago.exp_month = form.value.expDate.slice(0, 2);
-    this.datos_pago.exp_year = form.value.expDate.slice(5, 7);
+    this.datos_pago.exp_year = form.value.expDate.slice(5, 9);
+    this.datos_pago.cvc = form.value.cvc; //no estaba pedazo de
+    console.log(this.datos_pago);
     this.realizarPago();
 
     console.log(form);
   }
-
 }
