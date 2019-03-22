@@ -40,8 +40,8 @@ export class PagoComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.seleccionUsuario = this._direccionesService.seleccionTarifaUsuario;
-
+    this.seleccionUsuario = this._direccionesService.seleccionTarifaUsuario; //esta es la seleccion de paquete que hizo el usuario
+    console.log(this.seleccionUsuario);
     this.form = this._fb.group({
       nombre: "",
       creditCard: ["", [<any>CreditCardValidator.validateCCNumber]],
@@ -89,6 +89,7 @@ export class PagoComponent implements OnInit {
         this.token_conekta = token.id;
         this._pagoService.realizarPagoConekta(this.token_conekta).subscribe(
           resp => {
+            console.log(resp);
             Swal.fire(
               "Finalizado",
               "Tu pago se realizo de manera correcta",
@@ -119,12 +120,12 @@ export class PagoComponent implements OnInit {
 
   onSubmit(form) {
     this.submitted = true;
-    this.datos_pago.nombre = form.value.nombre;
-    this.datos_pago.number = form.value.creditCard;
-    this.datos_pago.exp_month = form.value.expDate.slice(0, 2);
-    this.datos_pago.exp_year = form.value.expDate.slice(5, 9);
-    this.datos_pago.cvc = form.value.cvc; //no estaba pedazo de
-    console.log(this.datos_pago);
+    this.datos_pago.nombre = "Fulanito Perez";
+    this.datos_pago.number = "4242424242424242";
+    this.datos_pago.exp_month = 12;
+    this.datos_pago.exp_year = 2020;
+    this.datos_pago.cvc = 123; //no estaba pedazo de
+    /*    console.log(this.datos_pago); */
     this.realizarPago();
 
     console.log(form);
