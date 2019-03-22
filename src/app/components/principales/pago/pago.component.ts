@@ -59,14 +59,12 @@ export class PagoComponent implements OnInit {
 
   conseguirTokenConekta() {
     return new Promise((resolve, reject) => {
-      console.log(this.datos_pago.fecha.toString().slice(5, 7));
-      console.log(this.datos_pago.fecha.slice(0, 2));
       const tokenParams = {
         card: {
           number: this.datos_pago.numero_tarjeta,
           name: this.datos_pago.nombre,
-          exp_year: this.datos_pago.fecha.slice(5, 7),
-          exp_month: this.datos_pago.fecha.slice(0, 2),
+          exp_year: this.datos_pago.exp_year,
+          exp_month: this.datos_pago.exp_month,
           cvc: this.datos_pago.cvc
         }
       };
@@ -124,8 +122,8 @@ export class PagoComponent implements OnInit {
     this.submitted = true;
     this.datos_pago.nombre = form.value.nombre;
     this.datos_pago.number = form.value.creditCard;
-    this.datos_pago.exp_month = form.value.expDate.toString().slice(0, 2);
-    this.datos_pago.exp_year = form.value.expDate.toString().slice(5, 7);
+    this.datos_pago.exp_month = form.value.expDate.slice(0, 2);
+    this.datos_pago.exp_year = form.value.expDate.slice(5, 7);
     this.realizarPago();
 
     console.log(form);
