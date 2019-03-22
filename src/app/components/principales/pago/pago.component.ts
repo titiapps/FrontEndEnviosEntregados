@@ -124,6 +124,7 @@ export class PagoComponent implements OnInit {
     this.datos_pago.number = form.value.creditCard;
     this.datos_pago.exp_month = form.value.expDate.slice(0, 2);
     this.datos_pago.exp_year = form.value.expDate.slice(5, 7);
+    this.datos_pago.cvc = form.value.cvc;
     this.realizarPago();
 
     console.log(form);
