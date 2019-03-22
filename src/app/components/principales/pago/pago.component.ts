@@ -22,6 +22,7 @@ export class PagoComponent implements OnInit {
   token_conekta: String;
   seleccionUsuario: any;
   private datos_pago: any;
+
   constructor(
     private _fb: FormBuilder,
     private _pagoService: PagosService,
@@ -40,7 +41,9 @@ export class PagoComponent implements OnInit {
 
   ngOnInit() {
     this.seleccionUsuario = this._direccionesService.seleccionTarifaUsuario;
+
     this.form = this._fb.group({
+      nombre: '',
       creditCard: ["", [<any>CreditCardValidator.validateCCNumber]],
       expDate: ["", [<any>CreditCardValidator.validateExpDate]],
       cvc: [
@@ -56,12 +59,14 @@ export class PagoComponent implements OnInit {
 
   conseguirTokenConekta() {
     return new Promise((resolve, reject) => {
-      var tokenParams = {
+      console.log(this.datos_pago.fecha.toString().slice(5, 7));
+      console.log(this.datos_pago.fecha.slice(0, 2));
+      const tokenParams = {
         card: {
           number: this.datos_pago.numero_tarjeta,
           name: this.datos_pago.nombre,
-          exp_year: this.datos_pago.fecha.toString().slice(5, 7),
-          exp_month: this.datos_pago.fecha.toString().slice(0, 2),
+          exp_year: this.datos_pago.fecha.slice(5, 7),
+          exp_month: this.datos_pago.fecha.slice(0, 2),
           cvc: this.datos_pago.cvc
         }
       };
@@ -76,16 +81,7 @@ export class PagoComponent implements OnInit {
       );
     });
   }
-  onSubmit(form) {
-    this.submitted = true;
-    this.datos_pago.nombre = form.value.nombre;
-    this.datos_pago.number = form.value.creditCard;
-    this.datos_pago.exp_month = form.value.expDate.toString().slice(0, 2);
-    this.datos_pago.exp_year = form.value.expDate.toString().slice(5, 7);
-    this.realizarPago();
 
-    console.log(form);
-  }
 
 
   realizarPago() {
@@ -123,4 +119,16 @@ export class PagoComponent implements OnInit {
         );
       });
   }
+
+  onSubmit(form) {
+    this.submitted = true;
+    this.datos_pago.nombre = form.value.nombre;
+    this.datos_pago.number = form.value.creditCard;
+    this.datos_pago.exp_month = form.value.expDate.toString().slice(0, 2);
+    this.datos_pago.exp_year = form.value.expDate.toString().slice(5, 7);
+    this.realizarPago();
+
+    console.log(form);
+  }
+
 }

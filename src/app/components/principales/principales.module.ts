@@ -13,6 +13,8 @@ import { TarifasComponent } from "./tarifas/tarifas.component";
 import { PagoComponent } from "./pago/pago.component";
 import { PipesModule } from "../pipes/pipes.module";
 import { CompraEnvioComponent } from "./compra-envio/compra-envio.component";
+import { CreditCardDirectivesModule } from "angular-cc-library";
+
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { CompraEnvioComponent } from "./compra-envio/compra-envio.component";
     FormsModule,
     ReactiveFormsModule,
     AgmaterialModule,
-    PipesModule
+    PipesModule,
+    CreditCardDirectivesModule
   ],
   entryComponents: [DialogOrigen, DialogDestino]
 })

@@ -19,16 +19,17 @@
     <form class="measure center" [formGroup]="form" (ngSubmit)="onSubmit(form)" novalidate>
       <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
         <legend class="f4 fw6 ph0 mh0">Pagar</legend>
-        <div class="mt3">
-          <label class="db fw6 lh-copy f6" for="nombre"
+        <div class="form-group mt3">
+          <label class="control-label db fw6 lh-copy f6"
+                 for="nombre"
             >Nombre Completo Titular</label
           >
 
           <input
-            class="pa2 input-reset ba bg-transparent  w-100"
+            class="input-lg form-control pa2 input-reset ba bg-transparent  w-100"
             type="text"
-            name="nombre"
-            id="nombre"
+            formControlName="nombre"
+            id="nombre" name="nombre"
           />
         </div>
         <div class="form-group mt3">
@@ -43,7 +44,6 @@
             autocomplete="off"
             placeholder="•••• •••• •••• ••••"
             ccNumber
-            name="numero_tarjeta"
           />
         </div>
         <div class="form-group mt3">
@@ -52,10 +52,10 @@
             id="cc-exp"
             formControlName="expDate"
             type="tel"
-            class="nput-lg form-control cc-exp pa2 input-reset ba bg-transparent  w-50"
+            class="input-lg form-control cc-exp pa2 input-reset ba bg-transparent  w-50"
             autocomplete="off"
-            placeholder="•• / ••" ccExp
-            name="ano"
+            placeholder="•• / ••"
+            ccExp
           />
         </div>
 
@@ -66,7 +66,6 @@
             formControlName="cvc"
             type="tel"
             class="input-lg form-control cc-cvc pa2 input-reset ba bg-transparent  w-50"
-            name="cvc"
             autocomplete="off"
             placeholder="•••"
             required ccCVC

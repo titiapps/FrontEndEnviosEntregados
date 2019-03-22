@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-
 import { CreditCardValidator } from "angular-cc-library";
 import { Card } from "../../../models/card.model";
 import { FormBuilder, FormGroup, NgForm, Validators } from "@angular/forms";
