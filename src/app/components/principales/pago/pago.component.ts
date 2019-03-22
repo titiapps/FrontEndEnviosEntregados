@@ -30,8 +30,9 @@ export class PagoComponent implements OnInit {
   ) {
     Conekta.setPublicKey("key_EypWVrLqbLYcrmkqE5r9rqQ");
     this.datos_pago = {
-      numero_tarjeta: "",
-      fecha: "",
+      number: "",
+      exp_month: "",
+      exp_year: "",
       cvc: "",
       nombre: ""
     };
@@ -75,6 +76,18 @@ export class PagoComponent implements OnInit {
       );
     });
   }
+  onSubmit(form) {
+    this.submitted = true;
+    this.datos_pago.nombre = form.value.nombre;
+    this.datos_pago.number = form.value.creditCard;
+    this.datos_pago.exp_month = form.value.expDate.toString().slice(0, 2);
+    this.datos_pago.exp_year = form.value.expDate.toString().slice(5, 7);
+    this.realizarPago();
+
+    console.log(form);
+  }
+
+
   realizarPago() {
     this.submitted = true;
     this.conseguirTokenConekta()

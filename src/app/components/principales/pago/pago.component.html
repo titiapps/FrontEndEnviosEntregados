@@ -16,7 +16,7 @@
     </p>
   </article>
   <main class="pa4 black-80">
-    <form class="measure center" [formGroup]="form" (ngSubmit)="realizarPago()" novalidate>
+    <form class="measure center" [formGroup]="form" (ngSubmit)="onSubmit(form)" novalidate>
       <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
         <legend class="f4 fw6 ph0 mh0">Pagar</legend>
         <div class="mt3">
@@ -28,7 +28,6 @@
             class="pa2 input-reset ba bg-transparent  w-100"
             type="text"
             name="nombre"
-            [(ngModel)]="datos_pago.nombre"
             id="nombre"
           />
         </div>
@@ -45,11 +44,10 @@
             placeholder="•••• •••• •••• ••••"
             ccNumber
             name="numero_tarjeta"
-            [(ngModel)]="datos_pago.numero_tarjeta"
           />
         </div>
         <div class="form-group mt3">
-          <label for="cc-exp" class="control-label db fw6 lh-copy f6" for="ano">Fecha de expiracion</label>
+          <label for="cc-exp" class="control-label db fw6 lh-copy f6">Fecha de expiracion</label>
           <input
             id="cc-exp"
             formControlName="expDate"
@@ -58,12 +56,11 @@
             autocomplete="off"
             placeholder="•• / ••" ccExp
             name="ano"
-            [(ngModel)]="datos_pago.fecha"
           />
         </div>
 
         <div class="form-group mt3">
-          <label for="cc-cvc" class="control-label db fw6 lh-copy f6" for="cvc">CVC</label>
+          <label for="cc-cvc" class="control-label db fw6 lh-copy f6" >CVC</label>
           <input
             id="cc-cvc"
             formControlName="cvc"
@@ -73,16 +70,15 @@
             autocomplete="off"
             placeholder="•••"
             required ccCVC
-            [(ngModel)]="datos_pago.cvc"
+
           />
         </div>
       </fieldset>
       <div class="">
-        <input
-          class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
+        <button
           type="submit"
-          value="Pagar"
-        >
+          class="btn btn-lg btn-primary b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib ">Pagar</button>
+
       </div>
       <div class="errors" *ngIf="submitted">
         <div *ngIf="!form.controls.creditCard.valid" class="alert alert-danger">La tarjeta es invalida</div>
