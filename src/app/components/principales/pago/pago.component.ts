@@ -45,7 +45,9 @@ export class PagoComponent implements OnInit {
     this.form = this._fb.group({
       nombre: "",
       creditCard: ["", [<any>CreditCardValidator.validateCCNumber]],
-      expDate: ["", [<any>CreditCardValidator.validateExpDate]],
+      expDate: ["", [<any>CreditCardValidator.validateExpDate,
+                     <any>Validators.minLength(9),
+                     <any>Validators.maxLength(10)]],
       cvc: [
         "",
         [
@@ -120,12 +122,11 @@ export class PagoComponent implements OnInit {
 
   onSubmit(form) {
     this.submitted = true;
-    this.datos_pago.nombre = "Fulanito Perez";
-    this.datos_pago.number = "4242424242424242";
-    this.datos_pago.exp_month = 12;
-    this.datos_pago.exp_year = 2020;
-    this.datos_pago.cvc = 123; //no estaba pedazo de
-    /*    console.log(this.datos_pago); */
+    this.datos_pago.nombre = form.value.nombre;
+    this.datos_pago.number = form.value.creditCard;
+    this.datos_pago.exp_month = form.value.expDate.slice(0, 2);
+    this.datos_pago.exp_year = form.value.expDate.slice(5, 9);
+    this.datos_pago.cvc = form.value.cvc;
     this.realizarPago();
 
     console.log(form);

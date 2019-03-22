@@ -16,7 +16,7 @@ export class DescriptionPipe implements PipeTransform{
         case 'DomesticExpress':
           return 'DHL Express Domestic™';
         case 'ExpressEasy':
-          return '';
+          return 'Express Easy™';
         case 'DomesticEconomySelect':
           return 'DHL Economy Select Domestic™';
 
