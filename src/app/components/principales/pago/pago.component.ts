@@ -45,7 +45,9 @@ export class PagoComponent implements OnInit {
     this.form = this._fb.group({
       nombre: "",
       creditCard: ["", [<any>CreditCardValidator.validateCCNumber]],
-      expDate: ["", [<any>CreditCardValidator.validateExpDate]],
+      expDate: ["", [<any>CreditCardValidator.validateExpDate,
+                     <any>Validators.minLength(9),
+                     <any>Validators.maxLength(10)]],
       cvc: [
         "",
         [
