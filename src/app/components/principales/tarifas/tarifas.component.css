@@ -1,5 +1,11 @@
 /* codigo tachyons */
 
+.btn{
+  align-items: end;
+
+
+}
+
 .bb {
     border-bottom-style: solid;
     border-bottom-width: 1px;
@@ -95,6 +101,9 @@
 
 .pl3 {
     padding-left: 1rem;
+}
+.pr3 {
+  padding-right: 1rem;
 }
 
 .mt0 {
@@ -299,9 +308,6 @@
     text-transform: uppercase;
 }
 
-.f6 {
-    font-size: .875rem;
-}
 
 .dim {
     opacity: 1;

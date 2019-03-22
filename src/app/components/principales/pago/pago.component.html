@@ -16,71 +16,76 @@
     </p>
   </article>
   <main class="pa4 black-80">
-    <form class="measure center" (ngSubmit)="realizarPago()">
+    <form class="measure center" [formGroup]="form" (ngSubmit)="onSubmit(form)" novalidate>
       <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
         <legend class="f4 fw6 ph0 mh0">Pagar</legend>
         <div class="mt3">
           <label class="db fw6 lh-copy f6" for="nombre"
             >Nombre Completo Titular</label
           >
+
           <input
             class="pa2 input-reset ba bg-transparent  w-100"
             type="text"
             name="nombre"
-            [(ngModel)]="datos_pago.nombre"
             id="nombre"
           />
         </div>
-        <div class="mt3">
-          <label class="db fw6 lh-copy f6" for="numero_tarjeta"
-            >Numero de Tarjeta</label
+        <div class="form-group mt3">
+          <label for="cc-number"
+                 class="control-label db fw6 lh-copy f6"
+            >Numero de Tarjeta<small class="text-muted">[<span class="cc-brand"></span>]</small></label
           >
           <input
-            class="pa2 input-reset ba bg-transparent  w-100"
-            type="text"
+            id="cc-number" formControlName="creditCard"
+            type="tel"
+            class="input-lg form-control cc-number pa2 input-reset ba bg-transparent  w-100"
+            autocomplete="off"
+            placeholder="•••• •••• •••• ••••"
+            ccNumber
             name="numero_tarjeta"
-            [(ngModel)]="datos_pago.numero_tarjeta"
-            id="numero_tarjeta"
           />
         </div>
-        <div class="mt3">
-          <label class="db fw6 lh-copy f6" for="ano">Año</label>
+        <div class="form-group mt3">
+          <label for="cc-exp" class="control-label db fw6 lh-copy f6">Fecha de expiracion</label>
           <input
-            class="pa2 input-reset ba bg-transparent  w-50"
-            type="text"
+            id="cc-exp"
+            formControlName="expDate"
+            type="tel"
+            class="nput-lg form-control cc-exp pa2 input-reset ba bg-transparent  w-50"
+            autocomplete="off"
+            placeholder="•• / ••" ccExp
             name="ano"
-            [(ngModel)]="datos_pago.ano"
-            id="ano"
           />
         </div>
-        <div class="mt3">
-          <label class="db fw6 lh-copy f6" for="mes">Mes</label>
+
+        <div class="form-group mt3">
+          <label for="cc-cvc" class="control-label db fw6 lh-copy f6" >CVC</label>
           <input
-            class="pa2 input-reset ba bg-transparent  w-50"
-            type="text"
-            name="mes"
-            [(ngModel)]="datos_pago.mes"
-            id="mes"
-          />
-        </div>
-        <div class="mt3">
-          <label class="db fw6 lh-copy f6" for="cvc">CVC</label>
-          <input
-            class="pa2 input-reset ba bg-transparent  w-50"
-            type="text"
+            id="cc-cvc"
+            formControlName="cvc"
+            type="tel"
+            class="input-lg form-control cc-cvc pa2 input-reset ba bg-transparent  w-50"
             name="cvc"
-            [(ngModel)]="datos_pago.cvc"
-            id="cvc"
+            autocomplete="off"
+            placeholder="•••"
+            required ccCVC
+
           />
         </div>
       </fieldset>
       <div class="">
-        <input
-          class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
+        <button
           type="submit"
-          value="Pagar"
-        />
+          class="btn btn-lg btn-primary b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib ">Pagar</button>
+
+      </div>
+      <div class="errors" *ngIf="submitted">
+        <div *ngIf="!form.controls.creditCard.valid" class="alert alert-danger">La tarjeta es invalida</div>
+        <div *ngIf="!form.controls.expDate.valid" class="alert alert-danger">La fecha de expiracion es necesaria</div>
+        <div *ngIf="!form.controls.cvc.valid" class="alert alert-danger">el numero CVC es requerido</div>
       </div>
     </form>
   </main>
 </div>
+

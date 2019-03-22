@@ -22,7 +22,6 @@ import { CompraEnvioComponent } from "./compra-envio/compra-envio.component";
     DialogOrigen,
     DialogDestino,
     PagoComponent,
-
     CompraEnvioComponent
   ],
   exports: [InicialComponent],
