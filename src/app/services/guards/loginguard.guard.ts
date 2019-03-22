@@ -15,15 +15,16 @@ export class LoginguardGuard implements CanActivate {
   ) {}
   canActivate(): boolean {
     if (this._usuarioService.estaLogueado()) {
-      console.log("estoy logueado");
       return true;
+
     } else {
       Swal.fire(
         "Credenciales",
         "Necesitas iniciar sesion para poder acceder a este apartado",
         "warning"
       );
-      this._router.navigate(["/login"]);
+
+      this._usuarioService.logOut();
       return false;
     }
   }

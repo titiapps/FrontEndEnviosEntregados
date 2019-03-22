@@ -9,6 +9,7 @@ import {
   templateUrl: "./compra-envio.component.html",
   styleUrls: ["./compra-envio.component.css"]
 })
+//este componente es de cuando ya pagan la orden
 export class CompraEnvioComponent implements OnInit {
   constructor(
     private _pagoEnvioService: PagoEnvioService,

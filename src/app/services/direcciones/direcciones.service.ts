@@ -10,10 +10,7 @@ export class DireccionesService {
   paquetes: Array<any>;
   seleccionTarifaUsuario: any;
 
-  constructor(private _http: HttpClient) {
-    console.log(this.origen);
-    console.log("SERVICIO CARGADO");
-  }
+  constructor(private _http: HttpClient) {}
   //ESTE SE CONECTA A LOS SERVICIOS DE HERE PARA PODER TRAER DATA
   busquedaLugares(busque: String) {
     let url = `${URL_MAPAS_HERE}&query=${busque}`;
@@ -38,6 +35,4 @@ export class DireccionesService {
 
     return this._http.post(url, datosenvios);
   }
-
-
 }

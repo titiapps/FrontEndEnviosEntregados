@@ -25,7 +25,6 @@ export class PagosService {
     return this._http
       .post(url, body, httpOptions)
       .map(resp => {
-        console.log("entre a la respuesta");
         return resp;
       })
       .catch(err => {

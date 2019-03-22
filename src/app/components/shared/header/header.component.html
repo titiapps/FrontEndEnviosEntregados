@@ -9,9 +9,21 @@
     </div>
     <nav class="navegacion">
       <a href="">Inicio</a>
-      <a href="">Contacto</a>
-      <a href="">Registro</a>
+      <a [routerLink]="['/registrarse']" routerLinkActive="router-link-active"
+        >Registrarse</a
+      >
+      <a
+        *ngIf="!logueado; else cerrarSesion"
+        [routerLink]="['/login']" 
+        routerLinkActive="router-link-active"
+        >Iniciar Sesion</a
+      >
+
+      <ng-template #cerrarSesion>
+        <a (click)="cerrarSesio()" routerLinkActive="router-link-active"
+          >Cerrar Sesión</a
+        >
+      </ng-template>
     </nav>
   </header>
 </div>
-

@@ -28,15 +28,15 @@ export class UsuarioService {
         if (err.error.errores.errors.email.kind != undefined) {
           Swal.fire(
             "Error",
-            "Ooopsie dopsie!!! la cuenta ya existe, ma' fren...",
+            "El correo que quieres registrar ya existe",
             "error"
           );
           return Observable.throw(err); //ES PARA EL MANEJO DE LOS ERRORES
         } else {
-          //console.log("el error es ",err.error.errores.errors);
+        
           Swal.fire(
             "Error",
-            "Ooopsie dopsie!!! ocurrio un error, ma' fren...",
+            "El correo que quieres registrar ya existe",
             "error"
           );
           return Observable.throw(err); //ES PARA EL MANEJO DE LOS ERRORES
@@ -55,7 +55,10 @@ export class UsuarioService {
     return this._http
       .post(url, credenciales)
       .map((resp: any) => {
+        this.token = resp.token;
+        this.usuario = resp.usuario;
         this.guardarStorage(resp.id, resp.token, resp.usuario);
+
         return resp;
       })
       .catch(err => {
@@ -68,7 +71,6 @@ export class UsuarioService {
     localStorage.setItem("id", id);
     localStorage.setItem("token", token);
     localStorage.setItem("usuario", JSON.stringify(usuario));
-    console.log(localStorage.getItem("usuario"));
   }
 
   cargarDatos() {
@@ -78,11 +80,14 @@ export class UsuarioService {
     } else {
       this.token = "";
       this.usuario = null;
-      console.log("no hay token");
+     
     }
   }
   estaLogueado() {
-    return this.token.length > 4 ? true : false;
+    if (localStorage.getItem("token")) {
+      this.token = localStorage.getItem("token");
+    }
+    return this.token.length > 1 ? true : false;
   }
 
   renovarToken() {
@@ -96,18 +101,31 @@ export class UsuarioService {
       .map((respuesta: any) => {
         this.token = respuesta.token;
         localStorage.setItem("token", this.token);
-        console.log("token renovado");
         return true;
       })
       .catch(err => {
-        console.log(err);
         Swal.fire(
           "Hubo un problema con tu sesion",
           "Es importante volver a proporcionar tus credenciales",
           "warning"
         );
-        this._router.navigate(["/login"]);
+        this.logOut();
         return Observable.throw(err);
       });
+  }
+  logOut() {
+    this.token = "";
+    this.usuario = null;
+    if (localStorage.getItem("token")) {
+      localStorage.removeItem("token");
+    }
+    if (localStorage.getItem("usuario")) {
+      localStorage.removeItem("usuario");
+    }
+    if (localStorage.getItem("id")) {
+      localStorage.removeItem("id");
+    }
+
+    this._router.navigate(["/login"]);
   }
 }

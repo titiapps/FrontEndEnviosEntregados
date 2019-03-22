@@ -48,6 +48,5 @@ export class CardValComponent implements OnInit {
     this.card.exp_month = form.value.expDate.toString().slice(0, 2);
     this.card.exp_year = form.value.expDate.toString().slice(5, 7);
 
-    console.log(form);
   }
 }

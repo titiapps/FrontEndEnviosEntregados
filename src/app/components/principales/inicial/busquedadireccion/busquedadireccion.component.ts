@@ -69,13 +69,10 @@ export class BusquedadireccionComponent implements OnInit {
 
   /* En este asignamos hacia que lado se va a ir esa madre */
   seleccionarOrigen(index) {
-    /*     console.log(this.lugares[index]); */
     this.lugarOrigen.countryCode =
       this.lugares[index].countryCode !== undefined
         ? this.lugares[index].countryCode
         : "";
-
-    console.log(this.lugarOrigen.countryCode);
 
     this.lugarOrigen.street =
       this.lugares[index].address.street !== undefined
@@ -124,7 +121,6 @@ export class BusquedadireccionComponent implements OnInit {
     /* this.lugarOrigen = this.lugares[index]; */
   }
   seleccionarDestino(index) {
-    /*     console.log(this.lugares[index]); */
     this.lugarDestino.street =
       this.lugares[index].address.street !== undefined
         ? this.lugares[index].address.street
@@ -201,9 +197,7 @@ export class BusquedadireccionComponent implements OnInit {
       this.lugarOrigen.persona = "PERSONA 1 PRUEBA";
       this.lugarDestino.persona = "PERSONA 2 PRUEBA";
       let paquete = { longitud: 9, anchura: 6, altura: 2, peso: 10 };
-      /*  console.log("------LUGARES----------");
-      console.log(this.lugarOrigen);
-      console.log(this.lugarDestino); */
+
       let arraypaquete = [paquete];
 
       this._direccionesService.datosParaCotizacion(
@@ -231,7 +225,6 @@ export class BusquedadireccionComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log("The dialog was closed");
       console.log(result);
       if (result !== undefined) {
         let {

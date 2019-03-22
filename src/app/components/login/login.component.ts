@@ -37,17 +37,16 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   ingresar() {
-    /*     this.usuario.email = "rodrigoh00per1@gmail.com";
-    this.usuario.password = "1234567"; */
     let config = new MatSnackBarConfig();
     config.panelClass = "custom-class";
     config.duration = 2000;
     this._usuarioService.login(this.usuario).subscribe(
       (resp: any) => {
-        console.log(resp);
         if (resp.id != undefined) {
           this._snackBar.openFromComponent(PizzaPartyComponent, config);
-          this._router.navigate(["/inicio"]);
+          this._router
+            .navigateByUrl("/header", { skipLocationChange: true })
+            .then(() => this._router.navigate(["/inicio"]));
         }
       },
       error => {
