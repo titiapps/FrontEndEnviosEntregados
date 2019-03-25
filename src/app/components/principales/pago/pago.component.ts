@@ -91,6 +91,7 @@ export class PagoComponent implements OnInit {
         this.token_conekta = token.id;
         this._pagoService.realizarPagoConekta(this.token_conekta).subscribe(
           resp => {
+            console.log(resp);
             Swal.fire(
               "Finalizado",
               "Tu pago se realizo de manera correcta",
