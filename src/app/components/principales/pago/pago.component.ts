@@ -40,14 +40,19 @@ export class PagoComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.seleccionUsuario = this._direccionesService.seleccionTarifaUsuario;
-
+    this.seleccionUsuario = this._direccionesService.seleccionTarifaUsuario; //esta es la seleccion de paquete que hizo el usuario
+    console.log(this.seleccionUsuario);
     this.form = this._fb.group({
       nombre: "",
       creditCard: ["", [<any>CreditCardValidator.validateCCNumber]],
-      expDate: ["", [<any>CreditCardValidator.validateExpDate,
-                     <any>Validators.minLength(9),
-                     <any>Validators.maxLength(10)]],
+      expDate: [
+        "",
+        [
+          <any>CreditCardValidator.validateExpDate,
+          <any>Validators.minLength(9),
+          <any>Validators.maxLength(10)
+        ]
+      ],
       cvc: [
         "",
         [
@@ -90,7 +95,14 @@ export class PagoComponent implements OnInit {
         console.log(token);
         this.token_conekta = token.id;
         this._pagoService.realizarPagoConekta(this.token_conekta).subscribe(
-          resp => {
+          (resp: any) => {
+            //asignamos los datos  para poder mandar al backend
+            this._pagoService.pagoDataInfo = {
+              id_pago_plataforma: resp.id,
+              forma_pago: "Tarjeta",
+              monto: this.seleccionUsuario.costo //recuerda que aqui puede ser diferente porque puede enviarse mas envios
+            };
+
             console.log(resp);
             Swal.fire(
               "Finalizado",
@@ -122,11 +134,18 @@ export class PagoComponent implements OnInit {
 
   onSubmit(form) {
     this.submitted = true;
-    this.datos_pago.nombre = form.value.nombre;
+    /* this.datos_pago.nombre = form.value.nombre;
     this.datos_pago.number = form.value.creditCard;
     this.datos_pago.exp_month = form.value.expDate.slice(0, 2);
     this.datos_pago.exp_year = form.value.expDate.slice(5, 9);
-    this.datos_pago.cvc = form.value.cvc;
+    this.datos_pago.cvc = form.value.cvc; */
+
+    this.datos_pago.nombre = "Fulanito Perez";
+    this.datos_pago.number = "4242424242424242";
+    this.datos_pago.exp_month = 12;
+    this.datos_pago.exp_year = 2020;
+    this.datos_pago.cvc = 123; //no estaba pedazo de
+    /*    console.log(this.datos_pago); */
     this.realizarPago();
 
     console.log(form);
