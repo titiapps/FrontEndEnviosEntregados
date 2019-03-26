@@ -4,6 +4,13 @@
   <mat-form-field class="container" class="example-full-width">
     <!--Este es el input para buscar el origen-->
     <input
+      type = "text"
+      placeholder = "Quien envia?"
+      matInput
+      [formControl]="busquedaDir"
+
+      />
+    <input
       type="text"
       placeholder="Origen del Paquete"
       matInput
@@ -23,8 +30,16 @@
   </mat-form-field>
 </form>
 <!-- DESTINO -->
+
 <form class="example-form">
   <mat-form-field class="container" class="example-full-width">
+    <input
+    type = "text"
+    placeholder = "Quien recibe?"
+    matInput
+    [formControl]="busquedaDir"
+
+    />
     <input
       type="text"
       placeholder="Destino del Paquete"

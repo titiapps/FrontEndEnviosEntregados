@@ -18,7 +18,6 @@ export class BusquedadireccionComponent implements OnInit {
   lugarOrigen: DireccionEnvio;
   lugarDestino: DireccionEnvio;
   busquedaDir: FormControl;
-  animal: string;
   name: string;
 
   constructor(
@@ -174,6 +173,7 @@ export class BusquedadireccionComponent implements OnInit {
     let dest = this.lugarDestino; //destino de los datos buscados
 
     let arrayorigen = [
+      ori.persona,
       ori.street,
       ori.houseNumber,
       ori.city,
@@ -182,6 +182,7 @@ export class BusquedadireccionComponent implements OnInit {
       ori.country
     ];
     let arraydestino = [
+      dest.persona,
       dest.street,
       dest.houseNumber,
       dest.city,
