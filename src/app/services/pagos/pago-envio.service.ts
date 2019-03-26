@@ -33,4 +33,14 @@ export class PagoEnvioService {
     };
     return this._http.post(url, body, httpOptions);
   }
+
+  comprarEtiqueta(
+    carrier_account_id: String,
+    shipment_id: String,
+    rate_id: String
+  ) {
+    let url = URL_ENVIOS_BACK + "paqueterias/comprarEtiqueta";
+    let body = { carrier_account_id, shipment_id, rate_id };
+    return this._http.post(url, body);
+  }
 }
