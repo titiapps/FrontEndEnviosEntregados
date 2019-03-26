@@ -34,7 +34,7 @@ export class TarifasComponent implements OnInit {
         .cotizacion(this.origen, this.destino, this.paquetes[0])
         .subscribe(
           (tarif: any) => {
-            this.cotizaciones.push(tarif);
+            this.cotizaciones.push(tarif); //se pone en un arreglo debido a que puede ser muchos paquetes
           },
           error => {
             console.log(error);
@@ -48,17 +48,18 @@ export class TarifasComponent implements OnInit {
     }
   }
   escogerTarifa(i, j) {
-    let seleccionusuario = this.cotizaciones[i].tarifas[j];
+    let seleccionusuario = this.cotizaciones[i].tarifas[j]; //acuerdate que puede haber muchas cotizaciones
     /*    console.log(this.cotizaciones[i].tarifas[j]); */
-    let datosPaquete = {
+    let datosPaqueteTarifa = {
       paqueteria: seleccionusuario.carrier,
       carrier_account_id: seleccionusuario.carrier_account_id,
       costo: seleccionusuario.rate,
       id: seleccionusuario.id,
       shipment_id: seleccionusuario.shipment_id,
-      servicio: seleccionusuario.service
+      servicio: seleccionusuario.service,
+      paquete: this.paquetes[0]
     };
-    this._direccionesService.seleccionTarifaUsuario = datosPaquete;
+    this._direccionesService.seleccionTarifaPaquete = datosPaqueteTarifa;
 
     this._router.navigate(["/pago"]);
   }

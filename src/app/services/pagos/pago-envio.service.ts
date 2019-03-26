@@ -14,7 +14,7 @@ export class PagoEnvioService {
     origen: DireccionEnvio,
     destino: DireccionEnvio,
     pagoDataInfo: any,
-    paqueteSeleccionado: any
+    tarifa_Paquete_Seleccionada: any
   ) {
     var headers = new HttpHeaders().set(
       "Authorization",
@@ -25,7 +25,22 @@ export class PagoEnvioService {
       headers
     };
     let url = URL_ENVIOS_BACK + "paqueterias/pagoEnvio";
-    let body = { origen, destino, pagoDataInfo, paqueteSeleccionado };
+    let body = {
+      origen,
+      destino,
+      pagoDataInfo,
+      tarifa_Paquete_Seleccionada
+    };
     return this._http.post(url, body, httpOptions);
+  }
+
+  comprarEtiqueta(
+    carrier_account_id: String,
+    shipment_id: String,
+    rate_id: String
+  ) {
+    let url = URL_ENVIOS_BACK + "paqueterias/comprarEtiqueta";
+    let body = { carrier_account_id, shipment_id, rate_id };
+    return this._http.post(url, body);
   }
 }

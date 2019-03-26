@@ -18,7 +18,6 @@ declare var Conekta: any;
 export class PagoComponent implements OnInit {
   form: FormGroup;
   submitted: boolean;
-
   token_conekta: String;
   seleccionUsuario: any;
   private datos_pago: any;
@@ -40,7 +39,7 @@ export class PagoComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.seleccionUsuario = this._direccionesService.seleccionTarifaUsuario; //esta es la seleccion de paquete que hizo el usuario
+    this.seleccionUsuario = this._direccionesService.seleccionTarifaPaquete; //esta es la seleccion de paquete que hizo el usuario
     console.log(this.seleccionUsuario);
     this.form = this._fb.group({
       nombre: "",

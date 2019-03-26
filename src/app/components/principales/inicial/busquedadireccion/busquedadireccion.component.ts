@@ -197,14 +197,17 @@ export class BusquedadireccionComponent implements OnInit {
     if (resultadoorigen.length === 6 && resultadodestino.length === 6) {
       this.lugarOrigen.persona = "PERSONA 1 PRUEBA";
       this.lugarDestino.persona = "PERSONA 2 PRUEBA";
-      let paquete = { longitud: 9, anchura: 6, altura: 2, peso: 10 };
-
-      let arraypaquete = [paquete];
+      let paquete = {
+        paquete_longitud: 9,
+        paquete_anchura: 6,
+        paquete_altura: 2,
+        paquete_peso: 10
+      };
 
       this._direccionesService.datosParaCotizacion(
         this.lugarOrigen,
         this.lugarDestino,
-        arraypaquete
+        paquete
       );
       this._router.navigate(["/tarifas"]);
     } else {
