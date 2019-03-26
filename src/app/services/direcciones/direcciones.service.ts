@@ -8,9 +8,11 @@ export class DireccionesService {
   origen: DireccionEnvio;
   destino: DireccionEnvio;
   paquetes: Array<any>;
-  seleccionTarifaUsuario: any;
+  seleccionTarifaPaquete: any; //este es cuando ya seleccionaaste que quieres
 
-  constructor(private _http: HttpClient) {}
+  constructor(private _http: HttpClient) {
+    this.paquetes = []; //se agrega el paquete al array respectivo
+  }
   //ESTE SE CONECTA A LOS SERVICIOS DE HERE PARA PODER TRAER DATA
   busquedaLugares(busque: String) {
     let url = `${URL_MAPAS_HERE}&query=${busque}`;
@@ -22,7 +24,7 @@ export class DireccionesService {
   datosParaCotizacion(origen, destino, arraypaquete) {
     this.origen = origen;
     this.destino = destino;
-    this.paquetes = arraypaquete;
+    this.paquetes.push(arraypaquete);
   }
 
   //ESTE SERVICIOS MANDA TANTO EL ORIGEN,DESTINO LO QUE CONLLEVA EL PAQUETE

@@ -19,10 +19,12 @@ export class CompraEnvioComponent implements OnInit {
   ) {
     let origen = this._direccionesService.origen;
     let destino = this._direccionesService.destino;
+
     let pagoDataInfo = this._pagosService.pagoDataInfo;
-    let paqueteSeleccionado = this._direccionesService.seleccionTarifaUsuario;
+    let tarifa_Paquete_Seleccionada = this._direccionesService
+      .seleccionTarifaPaquete;
     this._pagoEnvioService
-      .pagoParaEnvio(origen, destino, pagoDataInfo,paqueteSeleccionado)
+      .pagoParaEnvio(origen, destino, pagoDataInfo, tarifa_Paquete_Seleccionada)
       .subscribe(resp => {
         console.log(resp);
       });
