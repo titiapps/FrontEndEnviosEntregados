@@ -1,5 +1,9 @@
 <h1 mat-dialog-title>Destino</h1>
 <div mat-dialog-content>
+  <span>Nombre</span>
+  <mat-form-field>
+    <input matInput [(ngModel)]="lugarDestino.persona" />
+  </mat-form-field>
   <span>Calle</span>
   <mat-form-field>
     <input matInput [(ngModel)]="lugarDestino.street" />

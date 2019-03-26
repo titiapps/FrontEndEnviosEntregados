@@ -3,10 +3,23 @@
     max-width: 800px;
     width: 100%;
   }
-  
+
   .example-full-width {
     width: 100%;
   }
+
+  .containerPack{
+    width: 30%;
+  }
+
+.flex-container {
+  display: flex;
+}
+
+.flex-container > mat-form-field {
+  margin: 10px;
+  padding: 20px;
+}
 
 
 
