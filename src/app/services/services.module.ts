@@ -7,6 +7,7 @@ import { LoginguardGuard } from "./guards/loginguard.guard";
 import { PagosService } from "./pagos/pagos.service";
 import { PagoEnvioService } from "./pagos/pago-envio.service";
 import { MovimientosService } from './movimientos/movimientos.service';
+import { TrackService } from './track/track.service';
 
 @NgModule({
   declarations: [],
@@ -17,7 +18,8 @@ import { MovimientosService } from './movimientos/movimientos.service';
     LoginguardGuard,
     PagosService,
     PagoEnvioService,
-    MovimientosService
+    MovimientosService,
+    TrackService
   ]
 })
 export class ServicesModule {}

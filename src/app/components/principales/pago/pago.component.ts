@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import { Router } from "@angular/router";
 import { CreditCardValidator } from "angular-cc-library";
 import { FormBuilder, FormGroup, NgForm, Validators } from "@angular/forms";
+import swal from 'sweetalert2';
 
 declare var Conekta: any;
 
@@ -133,20 +134,30 @@ export class PagoComponent implements OnInit {
 
   onSubmit(form) {
     this.submitted = true;
-    /* this.datos_pago.nombre = form.value.nombre;
-    this.datos_pago.number = form.value.creditCard;
-    this.datos_pago.exp_month = form.value.expDate.slice(0, 2);
-    this.datos_pago.exp_year = form.value.expDate.slice(5, 9);
-    this.datos_pago.cvc = form.value.cvc; */
+    if (form.get('creditCard').invalid && form.get('expDate').invalid && form.get('cvc').invalid ) {
 
-    this.datos_pago.nombre = "Fulanito Perez";
-    this.datos_pago.number = "4242424242424242";
-    this.datos_pago.exp_month = 12;
-    this.datos_pago.exp_year = 2020;
-    this.datos_pago.cvc = 123; //no estaba pedazo de
-    /*    console.log(this.datos_pago); */
-    this.realizarPago();
+      Swal.fire(
+        "Existe un error con los datos de tu tarjeta",
+        "Verifica tus datos",
+        "error"
+      );
+      // location.reload();
+    } else {
+      /* this.datos_pago.nombre = form.value.nombre;
+      this.datos_pago.number = form.value.creditCard;
+      this.datos_pago.exp_month = form.value.expDate.slice(0, 2);
+      this.datos_pago.exp_year = form.value.expDate.slice(5, 9);
+      this.datos_pago.cvc = form.value.cvc; */
 
-    console.log(form);
+      this.datos_pago.nombre = "Fulanito Perez";
+      this.datos_pago.number = "4242424242424242";
+      this.datos_pago.exp_month = 12;
+      this.datos_pago.exp_year = 2020;
+      this.datos_pago.cvc = 123; //no estaba pedazo de
+      /*    console.log(this.datos_pago); */
+      this.realizarPago();
+
+      console.log(form);
+    }
   }
 }

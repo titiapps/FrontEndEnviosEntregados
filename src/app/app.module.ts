@@ -22,6 +22,7 @@ import { ConektaComponent } from "./components/pruebas/conekta/conekta.component
 import { PrincipalesComponent } from "./components/principales/principales.component";
 import { CardValComponent } from './components/pruebas/card-val/card-val.component';
 import { StripeComponent } from "./components/pruebas/stripe/stripe.component";
+import { TrackComponent } from './components/pruebas/track/track.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { StripeComponent } from "./components/pruebas/stripe/stripe.component";
     PrincipalesComponent,
     StripeComponent,
     CardValComponent,
-    PizzaPartyComponent
+    PizzaPartyComponent,
+    TrackComponent
   ],
   imports: [
     appRouting,

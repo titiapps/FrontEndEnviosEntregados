@@ -29,12 +29,6 @@ export class BusquedadireccionComponent implements OnInit {
   peso: FormControl;
   nameOrig: string;
   nameDest: string;
-  pack: {
-   alto: number,
-   largo: number,
-   ancho: number,
-   peso: number
-};
 
   constructor(
     private _direccionesService: DireccionesService,
