@@ -1,0 +1,11 @@
+.etiqueta {
+    padding: 1rem;
+    width: 400px;
+    height: 700px;
+}
+
+.contenedor-etiqueta {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 10rem;
+}
