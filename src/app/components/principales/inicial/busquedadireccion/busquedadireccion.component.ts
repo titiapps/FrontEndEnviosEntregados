@@ -227,18 +227,15 @@ export class BusquedadireccionComponent implements OnInit {
     const resultadoorigen = arrayorigen.filter(elemento => elemento !== '');
     const resultadodestino = arraydestino.filter(elemento => elemento !== '');
 
-    if (resultadoorigen.length === 6 && resultadodestino.length === 6) {
+    if (resultadoorigen.length === 7 && resultadodestino.length === 7) {
       this.lugarOrigen.persona = this.nameOrig;
       this.lugarDestino.persona = this.nameDest;
-      this.pack.alto = this.alto.value;
-      this.pack.ancho = this.ancho.value;
-      this.pack.largo = this.largo.value;
-      this.pack.peso = this.peso.value;
+
       this.paquete = {
-        paquete_longitud: Math.round((this.pack.largo / 2.54) * 10) / 10,
-        paquete_anchura: Math.round((this.pack.ancho / 2.54) * 10) / 10,
-        paquete_altura: Math.round((this.pack.alto / 2.54) * 10) / 10,
-        paquete_peso: Math.round((this.pack.peso / 28.35) * 10) / 10
+        paquete_longitud: Math.round((this.largo.value / 2.54) * 10) / 10,
+        paquete_anchura: Math.round((this.ancho.value / 2.54) * 10) / 10,
+        paquete_altura: Math.round((this.alto.value / 2.54) * 10) / 10,
+        paquete_peso: Math.round((this.peso.value / 28.35) * 10) / 10
       };
 
       this._direccionesService.datosParaCotizacion(
