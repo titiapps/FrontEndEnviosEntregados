@@ -9,9 +9,10 @@ import { MatInputModule } from "@angular/material";
 import { MatIconModule } from "@angular/material/icon";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatDialogModule } from "@angular/material/dialog";
-import { MatSnackBarModule } from "@angular/material/snack-bar";MatGridListModule
-import { MatGridListModule } from '@angular/material/grid-list';
-
+import { MatSnackBarModule } from "@angular/material/snack-bar";
+MatGridListModule;
+import { MatGridListModule } from "@angular/material/grid-list";
+import { MatProgressBarModule } from "@angular/material/progress-bar";
 
 @NgModule({
   declarations: [],
@@ -24,7 +25,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatProgressSpinnerModule,
     MatDialogModule,
     MatSnackBarModule,
-    MatGridListModule
+    MatGridListModule,
+    MatProgressBarModule
   ],
   imports: [
     MatButtonModule,
@@ -35,7 +37,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatProgressSpinnerModule,
     MatDialogModule,
     MatSnackBarModule,
-    MatGridListModule
+    MatGridListModule,
+    MatProgressBarModule
   ]
 })
 export class AgmaterialModule {}

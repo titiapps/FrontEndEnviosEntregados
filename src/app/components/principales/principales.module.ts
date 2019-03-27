@@ -14,6 +14,7 @@ import { PagoComponent } from "./pago/pago.component";
 import { PipesModule } from "../pipes/pipes.module";
 import { CompraEnvioComponent } from "./compra-envio/compra-envio.component";
 import { CreditCardDirectivesModule } from "angular-cc-library";
+import { MovimientosComponent } from './movimientos/movimientos.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { CreditCardDirectivesModule } from "angular-cc-library";
     DialogOrigen,
     DialogDestino,
     PagoComponent,
-    CompraEnvioComponent
+    CompraEnvioComponent,
+    MovimientosComponent
   ],
   exports: [InicialComponent],
   imports: [

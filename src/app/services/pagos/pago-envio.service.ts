@@ -43,4 +43,16 @@ export class PagoEnvioService {
     let body = { carrier_account_id, shipment_id, rate_id };
     return this._http.post(url, body);
   }
+
+  guardarMovimiento_Etiqueta(
+    id_usuario: String,
+    id_envio: String,
+    id_pago: String,
+    etiqueta: String,
+    num_guia: String
+  ) {
+    let body = { id_usuario, id_envio, id_pago, etiqueta, num_guia };
+    let url = URL_ENVIOS_BACK + "paqueterias/guardarMovimientoEtiqueta";
+    return this._http.post(url, body);
+  }
 }
