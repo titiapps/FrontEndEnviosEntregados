@@ -1,0 +1,29 @@
+<div>
+  <header class="header contenedor">
+    <div class="logo">
+      <img
+        src="https://brandmark.io/logo-rank/random/beats.png"
+        alt=""
+        srcset=""
+      />
+    </div>
+    <nav class="navegacion">
+      <a href="">Inicio</a>
+      <a [routerLink]="['/registrarse']" routerLinkActive="router-link-active"
+        >Registrarse</a
+      >
+      <a
+        *ngIf="!logueado; else cerrarSesion"
+        [routerLink]="['/login']" 
+        routerLinkActive="router-link-active"
+        >Iniciar Sesion</a
+      >
+
+      <ng-template #cerrarSesion>
+        <a (click)="cerrarSesio()" routerLinkActive="router-link-active"
+          >Cerrar Sesión</a
+        >
+      </ng-template>
+    </nav>
+  </header>
+</div>

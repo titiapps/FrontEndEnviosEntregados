@@ -1,0 +1,75 @@
+.contenido_principal {
+   display: grid;
+   height: 80vh;
+   grid-template-rows: 0% 100% 0%;
+   background-size: cover;
+}
+
+.contenido_principal>* {
+   font-family: "Questrial";
+}
+
+.contenido_login {
+   grid-row: 2/3;
+   display: grid;
+   grid-template-columns: 5% auto 5%;
+   grid-template-rows: 15% 35% 50%;
+}
+
+.contenido_login .encabezados {
+   grid-column: 2/3;
+   grid-row: 1/3;
+   justify-self: center;
+}
+
+.contenido_login .encabezados>* {
+   text-align: center;
+}
+
+.contenido_login .formulario {
+   padding-top: 1rem;
+   justify-self: center;
+   grid-column: 2/3;
+   grid-row: 2/3;
+}
+
+.contenido_login .formulario {
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+}
+
+.btn-ingresar {
+   justify-self: center;
+   margin-top: 14rem;
+   font-size: 1.0rem;
+   font-weight: 400;
+   width: 100%;
+   max-width: 85%;
+   max-height: 3rem;
+   grid-column: 2/3;
+   grid-row: 3/3;
+}
+
+@media(min-width:768px) {
+   .btn-ingresar {
+       justify-self: center;
+       margin-top: 14rem;
+       font-size: 1.0rem;
+       font-weight: 400;
+       max-width: 59%;
+       width: 35%;
+       max-height: 3rem;
+       grid-column: 2/3;
+       grid-row: 3/3;
+   }
+   
+   .contenido_login .formulario {
+       width: 50%;
+   }
+}
+
+.contenido_login form input, .contenido_login form button {
+   margin: 0 auto;
+   width: 20rem;
+}

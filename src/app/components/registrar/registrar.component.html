@@ -1,0 +1,85 @@
+<app-header></app-header>
+<div class="contenido_principal">
+  <div class="contenido_login">
+    <div class="encabezados">
+      <h1>Bienvenido a Entregando</h1>
+      <h2>Introduce tus datos:</h2>
+    </div>
+    <div class="formulario">
+      <mat-form-field class="example-full-width">
+        <input
+          matInput
+          placeholder="Introduce tu nombre"
+          name="nombre"
+          id="nombre"
+          [(ngModel)]="usuario.nombre"
+          required
+          minlength="3"
+        />
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input
+          matInput
+          placeholder="Introduce tu apellido paterno"
+          name="apellido_paterno"
+          id="apellido_paterno"
+          [(ngModel)]="usuario.apellido_paterno"
+          required
+          minlength="3"
+        />
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input
+          matInput
+          placeholder="Introduce tu apellido materno"
+          name="apellido_materno"
+          id="apellido_materno"
+          [(ngModel)]="usuario.apellido_materno"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input
+          matInput
+          placeholder="Introduce tu correo electronico"
+          name="email"
+          id="email"
+          [(ngModel)]="usuario.email"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input
+          matInput
+          placeholder="Introduce tu telefono a 10 digitos"
+          name="telefono"
+          id="telefono"
+          [(ngModel)]="usuario.telefono"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          name="password"
+          id="password"
+          [(ngModel)]="usuario.password"
+          matInput
+          placeholder="Crea una contraseña"
+          [type]="hide ? 'password' : 'text'"
+          required
+        />
+        <mat-icon matSuffix (click)="hide = !hide">{{
+          hide ? "visibility_off" : "visibility"
+        }}</mat-icon>
+      </mat-form-field>
+    </div>
+    <button
+      mat-flat-button
+      color="primary"
+      (click)="guardar()"
+      class="btn-ingresar"
+    >
+      Ingresar
+    </button>
+  </div>
+</div>

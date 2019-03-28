@@ -1,0 +1,159 @@
+<!-- ORIGEN -->
+<h1>Entregando</h1>
+<form class="example-form">
+  <mat-form-field class="container example-full-width" >
+    <input
+      type = "text"
+      placeholder = "Quien envia?"
+      matInput
+      [formControl]="nombreOrig"
+    />
+
+  </mat-form-field>
+  <mat-form-field class="container" class="example-full-width">
+    <!--Este es el input para buscar el origen-->
+
+
+    <input
+      type="text"
+      placeholder="Origen del Paquete"
+      matInput
+      [formControl]="busquedaDir"
+      [matAutocomplete]="auto1"
+    />
+    <mat-autocomplete #auto1="matAutocomplete">
+      <mat-option
+        (click)="seleccionarOrigen(i)"
+        (onSelectionChange)="seleccionarOrigen(i)"
+        *ngFor="let lugar of lugares; let i = index"
+        [value]="lugar.label"
+      >
+        {{ lugar.label }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
+<!-- DESTINO -->
+
+<form class="example-form">
+  <mat-form-field class="container example-full-width" >
+    <input
+      type = "text"
+      placeholder = "Quien recibe?"
+      matInput
+      [formControl]="nombreDest"
+
+    />
+
+  </mat-form-field>
+
+  <mat-form-field class="container" class="example-full-width">
+   <input
+      type="text"
+      placeholder="Destino del Paquete"
+      matInput
+      [formControl]="busquedaDir"
+      [matAutocomplete]="auto"
+    />
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option
+        (click)="seleccionarDestino(i)"
+        (onSelectionChange)="seleccionarDestino(i)"
+        *ngFor="let lugar of lugares; let i = index"
+        [value]="lugar.label"
+      >
+        {{ lugar.label }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
+
+<button mat-raised-button color="primary" (click)="evaluarDatosDireccion()">
+  Verificar
+</button>
+
+<br /><br />
+<div *ngIf="lugarDestino.county !== ''" class="flex-container">
+  <h3>Dimensiones del paquete</h3>
+  <form class="example-form">
+    <mat-form-field  class="containerPack" >
+      <input
+      type="number"
+      matInput
+      placeholder="Alto en cm"
+      [formControl]="alto"
+      />
+    </mat-form-field>
+    <mat-form-field class="containerPack">
+      <input
+        type="number"
+        matInput
+        placeholder="Ancho en cm"
+        [formControl]="ancho"
+      />
+
+    </mat-form-field>
+    <mat-form-field class="containerPack">
+      <input
+        type="number"
+        matInput
+        placeholder="Largo en cm"
+        [formControl]="largo"
+      />
+
+    </mat-form-field>
+    <mat-form-field class="containerPack" >
+      <input
+        type="number"
+        matInput
+        placeholder="Peso en gr"
+        [formControl]="peso"
+      />
+
+    </mat-form-field>
+  </form>
+</div>
+<br/><br/>
+<!-- <div *ngIf="lugarOrigen.street!==''"> -->
+<div class="destinos">
+  <div *ngIf="lugarOrigen.county !== ''" class="origen">
+    <h5>
+      {{ lugarOrigen.persona }}
+    </h5>
+    <h5 for="">
+      {{ lugarOrigen.street }} {{ lugarOrigen.houseNumber }},{{
+        lugarOrigen.street2
+      }}
+    </h5>
+    <h5>{{ lugarOrigen.city }},{{ lugarOrigen.district }}</h5>
+    <h5>
+      {{ lugarOrigen.county }},{{ lugarOrigen.state }}
+      {{ lugarOrigen.postalCode }}
+    </h5>
+
+    <button mat-raised-button color="primary" (click)="openDialogOrigen()">
+      Modificar
+    </button>
+  </div>
+
+  <div *ngIf="lugarDestino.county !== ''" class="destino">
+    <h5>
+      {{ lugarDestino.persona }}
+    </h5>
+    <h5 for="">
+      {{ lugarDestino.street }} {{ lugarDestino.houseNumber }},{{
+        lugarDestino.street2
+      }}
+    </h5>
+    <h5>{{ lugarDestino.city }},{{ lugarDestino.district }}</h5>
+    <h5>
+      {{ lugarDestino.county }},{{ lugarDestino.state }}
+      {{ lugarDestino.postalCode }}
+    </h5>
+
+    <button mat-raised-button color="primary" (click)="openDialogDestino()">
+      Modificar
+    </button>
+  </div>
+</div>
+

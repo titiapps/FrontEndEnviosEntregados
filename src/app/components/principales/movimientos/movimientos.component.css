@@ -1,0 +1,17 @@
+.etiqueta {
+    padding: 1rem;
+    width: 400px;
+    height: 700px;
+    text-decoration: none;
+    
+}
+
+.contenedor-etiqueta {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 10rem;
+}
+.btn-imprimir{
+    text-decoration: none;
+    color: white;
+}
