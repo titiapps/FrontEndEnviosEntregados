@@ -82,6 +82,7 @@ export class BusquedadireccionComponent implements OnInit {
       if (termino != "") {
         this.nameOrig = this.nombreOrig.value;
         this.nameDest = this.nombreDest.value;
+
         this._direccionesService.busquedaLugares(termino).subscribe(data => {
           this.lugares = data.suggestions as any[];
         });
@@ -216,6 +217,7 @@ export class BusquedadireccionComponent implements OnInit {
     ];
     const arraydestino = [
       dest.persona,
+
       dest.street,
       dest.houseNumber,
       dest.city,
