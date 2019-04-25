@@ -1,22 +1,23 @@
-import {Component, OnInit, ɵConsole, Inject} from '@angular/core';
-import {Router} from '@angular/router';
-import {DireccionesService} from 'src/app/services/services.index';
-import {FormsModule, FormControl, FormGroup, FormBuilder} from '@angular/forms';
-import {DireccionEnvio} from 'src/app/models/DireccionesEnvio.model';
-import {Paquete} from 'src/app/models/paquete.model';
-import {MAT_DIALOG_DATA, MatDialogRef, MatDialog} from '@angular/material';
+import { Component, OnInit, ɵConsole, Inject } from "@angular/core";
+import { Router } from "@angular/router";
+import { DireccionesService } from "src/app/services/services.index";
+import { FormControl } from "@angular/forms";
+import { DireccionEnvio } from "src/app/models/DireccionesEnvio.model";
+import { Paquete } from "src/app/models/paquete.model";
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from "@angular/material";
+import Swal from "sweetalert2";
 
 export interface User {
   name: string;
 }
 
 @Component({
-  selector: 'app-busquedadireccion',
-  templateUrl: './busquedadireccion.component.html',
-  styleUrls: ['./busquedadireccion.component.css']
+  selector: "app-busquedadireccion",
+  templateUrl: "./busquedadireccion.component.html",
+  styleUrls: ["./busquedadireccion.component.css"]
 })
 export class BusquedadireccionComponent implements OnInit {
-  lugares = <any> []; // este nos sirve para que ahi guarde las busquedas de here
+  lugares = <any>[]; // este nos sirve para que ahi guarde las busquedas de here
   lugarOrigen: DireccionEnvio;
   lugarDestino: DireccionEnvio;
   paquete: Paquete;
@@ -35,52 +36,51 @@ export class BusquedadireccionComponent implements OnInit {
     private _router: Router,
     public dialog: MatDialog
   ) {
-      this.busquedaDir = new FormControl();
-      this.nombreOrig = new FormControl();
-      this.nombreDest = new FormControl();
-      this.alto = new FormControl();
-      this.largo = new FormControl();
-      this.ancho = new FormControl();
-      this.peso = new FormControl();
-      this.lugarOrigen = {
-      persona: '',
-      street: '',
-      street2: '',
-      houseNumber: '',
-      city: '',
-      state: '',
-      postalCode: '',
-      country: '',
-      county: '',
-      countryCode: '',
-      district: '' //no se usa la colonia pero aun asi ponla para aparentar
+    this.busquedaDir = new FormControl();
+    this.nombreOrig = new FormControl();
+    this.nombreDest = new FormControl();
+    this.alto = new FormControl();
+    this.largo = new FormControl();
+    this.ancho = new FormControl();
+    this.peso = new FormControl();
+    this.lugarOrigen = {
+      persona: "",
+      street: "",
+      street2: "",
+      houseNumber: "",
+      city: "",
+      state: "",
+      postalCode: "",
+      country: "",
+      county: "",
+      countryCode: "",
+      district: "" //no se usa la colonia pero aun asi ponla para aparentar
     };
 
-      this.lugarDestino = {
-      persona: '',
-      street: '',
-      street2: '',
-      houseNumber: '',
-      city: '',
-      state: '',
-      postalCode: '',
-      country: '',
-      county: '',
-      countryCode: '',
-      district: '' //no se usa la colonia pero aun asi ponla para aparentar
+    this.lugarDestino = {
+      persona: "",
+      street: "",
+      street2: "",
+      houseNumber: "",
+      city: "",
+      state: "",
+      postalCode: "",
+      country: "",
+      county: "",
+      countryCode: "",
+      district: "" //no se usa la colonia pero aun asi ponla para aparentar
     };
   }
 
   ngOnInit() {
-
-
     //este es para escuchar los cambios y asi poner generar el autocompletado
 
     this.busquedaDir.valueChanges.subscribe(termino => {
-      if (termino != '') {
+      if (termino != "") {
         this.nameOrig = this.nombreOrig.value;
         this.nameDest = this.nombreDest.value;
         this._direccionesService.busquedaLugares(termino).subscribe(data => {
+    
           this.lugares = data.suggestions as any[];
         });
       }
@@ -89,108 +89,111 @@ export class BusquedadireccionComponent implements OnInit {
 
   /* En este asignamos hacia que lado se va a ir esa madre */
   seleccionarOrigen(index) {
+    console.log(this.lugares[index]);
+    if (this.lugarOrigen === undefined || this.lugarOrigen === null) {
+      Swal.fire("Error", "No puedes dejar el lugar de origen vacio", "error");
+    } else {
+      this.lugarOrigen.persona = this.nameOrig;
 
-    this.lugarOrigen.persona = this.nameOrig;
+      this.lugarOrigen.countryCode =
+        this.lugares[index].countryCode !== undefined
+          ? this.lugares[index].countryCode
+          : "";
 
-    this.lugarOrigen.countryCode =
-      this.lugares[index].countryCode !== undefined
-        ? this.lugares[index].countryCode
-        : '';
+      this.lugarOrigen.street =
+        this.lugares[index].address.street !== undefined
+          ? this.lugares[index].address.street
+          : "";
+      this.lugarOrigen.houseNumber =
+        this.lugares[index].address.houseNumber !== undefined
+          ? this.lugares[index].address.houseNumber
+          : "";
 
-    this.lugarOrigen.street =
-      this.lugares[index].address.street !== undefined
-        ? this.lugares[index].address.street
-        : '';
-    this.lugarOrigen.houseNumber =
-      this.lugares[index].address.houseNumber !== undefined
-        ? this.lugares[index].address.houseNumber
-        : '';
+      this.lugarOrigen.city =
+        this.lugares[index].address.city !== undefined
+          ? this.lugares[index].address.city
+          : "";
 
-    this.lugarOrigen.city =
-      this.lugares[index].address.city !== undefined
-        ? this.lugares[index].address.city
-        : '';
+      this.lugarOrigen.state =
+        this.lugares[index].address.state !== undefined
+          ? this.lugares[index].address.state
+          : "";
 
-    this.lugarOrigen.state =
-      this.lugares[index].address.state !== undefined
-        ? this.lugares[index].address.state
-        : '';
+      this.lugarOrigen.postalCode =
+        this.lugares[index].address.postalCode !== undefined
+          ? this.lugares[index].address.postalCode
+          : "";
 
-    this.lugarOrigen.postalCode =
-      this.lugares[index].address.postalCode !== undefined
-        ? this.lugares[index].address.postalCode
-        : '';
+      this.lugarOrigen.country =
+        this.lugares[index].address.country !== undefined
+          ? this.lugares[index].address.country
+          : "";
 
-    this.lugarOrigen.country =
-      this.lugares[index].address.country !== undefined
-        ? this.lugares[index].address.country
-        : '';
+      this.lugarOrigen.county =
+        this.lugares[index].address.county !== undefined
+          ? this.lugares[index].address.county
+          : "";
 
-    this.lugarOrigen.county =
-      this.lugares[index].address.county !== undefined
-        ? this.lugares[index].address.county
-        : '';
+      this.lugarOrigen.countryCode =
+        this.lugares[index].countryCode !== undefined
+          ? this.lugares[index].countryCode
+          : "";
 
-    this.lugarOrigen.countryCode =
-      this.lugares[index].countryCode !== undefined
-        ? this.lugares[index].countryCode
-        : '';
-
-    /* opcionales */
-    this.lugarOrigen.district =
-      this.lugares[index].address.district !== undefined
-        ? this.lugares[index].address.district
-        : '';
-    /* this.lugarOrigen = this.lugares[index]; */
+      /* opcionales */
+      this.lugarOrigen.district =
+        this.lugares[index].address.district !== undefined
+          ? this.lugares[index].address.district
+          : "";
+      /* this.lugarOrigen = this.lugares[index]; */
+    }
   }
 
   seleccionarDestino(index) {
-
     this.lugarDestino.persona = this.nameDest;
     this.lugarDestino.street =
       this.lugares[index].address.street !== undefined
         ? this.lugares[index].address.street
-        : '';
+        : "";
     this.lugarDestino.houseNumber =
       this.lugares[index].address.houseNumber !== undefined
         ? this.lugares[index].address.houseNumber
-        : '';
+        : "";
 
     this.lugarDestino.city =
       this.lugares[index].address.city !== undefined
         ? this.lugares[index].address.city
-        : '';
+        : "";
 
     this.lugarDestino.state =
       this.lugares[index].address.state !== undefined
         ? this.lugares[index].address.state
-        : '';
+        : "";
 
     this.lugarDestino.postalCode =
       this.lugares[index].address.postalCode !== undefined
         ? this.lugares[index].address.postalCode
-        : '';
+        : "";
 
     this.lugarDestino.country =
       this.lugares[index].address.country !== undefined
         ? this.lugares[index].address.country
-        : '';
+        : "";
 
     this.lugarDestino.county =
       this.lugares[index].address.county !== undefined
         ? this.lugares[index].address.county
-        : '';
+        : "";
 
     this.lugarDestino.countryCode =
       this.lugares[index].countryCode !== undefined
         ? this.lugares[index].countryCode
-        : '';
+        : "";
 
     /* opcionales */
     this.lugarDestino.district =
       this.lugares[index].address.district !== undefined
         ? this.lugares[index].address.district
-        : '';
+        : "";
   }
 
   //SE EVALUA QUE TENGA UNA DIRECCION RELATIVAMENTE COMPLETA
@@ -218,8 +221,8 @@ export class BusquedadireccionComponent implements OnInit {
       dest.country
     ];
 
-    const resultadoorigen = arrayorigen.filter(elemento => elemento !== '');
-    const resultadodestino = arraydestino.filter(elemento => elemento !== '');
+    const resultadoorigen = arrayorigen.filter(elemento => elemento !== "");
+    const resultadodestino = arraydestino.filter(elemento => elemento !== "");
 
     if (resultadoorigen.length === 7 && resultadodestino.length === 7) {
       this.lugarOrigen.persona = this.nameOrig;
@@ -237,15 +240,15 @@ export class BusquedadireccionComponent implements OnInit {
         this.lugarDestino,
         this.paquete
       );
-      this._router.navigate(['/tarifas']);
+      this._router.navigate(["/tarifas"]);
     } else {
-      console.log('incompleta direccion');
+      console.log("incompleta direccion");
     }
   }
 
   openDialogOrigen(): void {
     const dialogRef = this.dialog.open(DialogOrigen, {
-      width: '250px',
+      width: "250px",
       data: {
         persona: this.lugarOrigen.persona,
         street: this.lugarOrigen.street,
@@ -289,7 +292,7 @@ export class BusquedadireccionComponent implements OnInit {
 
   openDialogDestino(): void {
     const dialogRefe = this.dialog.open(DialogDestino, {
-      width: '250px',
+      width: "250px",
 
       data: {
         persona: this.lugarDestino.persona,
@@ -334,7 +337,7 @@ export class BusquedadireccionComponent implements OnInit {
 }
 
 @Component({
-  templateUrl: 'dialogOrigen.html'
+  templateUrl: "dialogOrigen.html"
 })
 export class DialogOrigen {
   constructor(
@@ -344,7 +347,7 @@ export class DialogOrigen {
 }
 
 @Component({
-  templateUrl: 'dialogDestino.html'
+  templateUrl: "dialogDestino.html"
 })
 export class DialogDestino {
   constructor(

@@ -47,6 +47,7 @@ export class CompraEnvioComponent implements OnInit {
         respEnvio.envioGuardado.shipment_id,
         respEnvio.envioGuardado.rate_id
       );
+      console.log(compraCompletada);
     } catch (e) {
       console.log("Hubo un problema en la compra de la etiqueta");
       console.log(e);

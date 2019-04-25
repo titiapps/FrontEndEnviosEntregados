@@ -14,6 +14,7 @@ const routes: Routes = [
   },
   {
     path: "tarifas",
+    canActivate:[LoginguardGuard],
     component: TarifasComponent
   },
   {

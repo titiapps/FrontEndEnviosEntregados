@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { DireccionesService } from "src/app/services/services.index";
+import {
+  DireccionesService,
+  UsuarioService
+} from "src/app/services/services.index";
 import { DireccionEnvio } from "src/app/models/DireccionesEnvio.model";
 import { Router } from "@angular/router";
 
@@ -17,7 +20,8 @@ export class TarifasComponent implements OnInit {
 
   constructor(
     private _direccionesService: DireccionesService,
-    private _router: Router
+    private _router: Router,
+    private _usuarioService: UsuarioService
   ) {
     this.origen = this._direccionesService.origen;
     this.destino = this._direccionesService.destino;

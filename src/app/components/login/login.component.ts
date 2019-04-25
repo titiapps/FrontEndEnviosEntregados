@@ -1,10 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { UsuarioService } from "src/app/services/services.index";
-import { Usuario } from "src/app/models/usuario.model";
-import { NgForm } from "@angular/forms";
+import { Usuario } from "src/app/models/usuario.model"
 import Swal from "sweetalert2";
-import { FormControl, FormGroupDirective, Validators } from "@angular/forms";
-import { ErrorStateMatcher } from "@angular/material/core";
 import { Router } from "@angular/router";
 import {
   MatSnackBarModule,
@@ -52,11 +49,7 @@ export class LoginComponent implements OnInit {
       },
       error => {
         console.log(error);
-        Swal.fire(
-          "Error de login",
-          "Revisa tus credenciales...",
-          "error"
-        );
+        Swal.fire("Error de login", "Revisa tus credenciales...", "error");
       }
     );
   }

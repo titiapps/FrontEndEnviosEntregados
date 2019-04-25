@@ -1,21 +1,20 @@
 <!-- ORIGEN -->
 <h1>Entregando</h1>
+<!-- ORIGEN -->
 <form class="example-form">
-  <mat-form-field class="container example-full-width" >
+  <mat-form-field class="container example-full-width">
     <input
-      type = "text"
-      placeholder = "Quien envia?"
+      type="text"
+      placeholder="Quien envia?"
       matInput
       [formControl]="nombreOrig"
     />
-
   </mat-form-field>
   <mat-form-field class="container" class="example-full-width">
     <!--Este es el input para buscar el origen-->
 
-
     <input
-      type="text"
+      type="text" class="origen_input"
       placeholder="Origen del Paquete"
       matInput
       [formControl]="busquedaDir"
@@ -23,6 +22,7 @@
     />
     <mat-autocomplete #auto1="matAutocomplete">
       <mat-option
+        class="mat-origen"
         (click)="seleccionarOrigen(i)"
         (onSelectionChange)="seleccionarOrigen(i)"
         *ngFor="let lugar of lugares; let i = index"
@@ -33,23 +33,21 @@
     </mat-autocomplete>
   </mat-form-field>
 </form>
-<!-- DESTINO -->
 
+<!-- DESTINO -->
 <form class="example-form">
-  <mat-form-field class="container example-full-width" >
+  <mat-form-field class="container example-full-width">
     <input
-      type = "text"
-      placeholder = "Quien recibe?"
+      type="text"
+      placeholder="Quien recibe?"
       matInput
       [formControl]="nombreDest"
-
     />
-
   </mat-form-field>
 
   <mat-form-field class="container" class="example-full-width">
-   <input
-      type="text"
+    <input
+      type="text" class="destino_input"
       placeholder="Destino del Paquete"
       matInput
       [formControl]="busquedaDir"
@@ -57,6 +55,7 @@
     />
     <mat-autocomplete #auto="matAutocomplete">
       <mat-option
+        class="mat-destino"
         (click)="seleccionarDestino(i)"
         (onSelectionChange)="seleccionarDestino(i)"
         *ngFor="let lugar of lugares; let i = index"
@@ -67,21 +66,17 @@
     </mat-autocomplete>
   </mat-form-field>
 </form>
-
-<button mat-raised-button color="primary" (click)="evaluarDatosDireccion()">
-  Verificar
-</button>
-
 <br /><br />
-<div *ngIf="lugarDestino.county !== ''" class="flex-container">
+<!--======================= DIMENSIONES DEL PAQUETE ================= -->
+<div class="paquete-container">
   <h3>Dimensiones del paquete</h3>
-  <form class="example-form">
-    <mat-form-field  class="containerPack" >
+  <form class="paquete-container-form">
+    <mat-form-field class="containerPack">
       <input
-      type="number"
-      matInput
-      placeholder="Alto en cm"
-      [formControl]="alto"
+        type="number"
+        matInput
+        placeholder="Alto en cm"
+        [formControl]="alto"
       />
     </mat-form-field>
     <mat-form-field class="containerPack">
@@ -91,7 +86,6 @@
         placeholder="Ancho en cm"
         [formControl]="ancho"
       />
-
     </mat-form-field>
     <mat-form-field class="containerPack">
       <input
@@ -100,23 +94,21 @@
         placeholder="Largo en cm"
         [formControl]="largo"
       />
-
     </mat-form-field>
-    <mat-form-field class="containerPack" >
+    <mat-form-field class="containerPack">
       <input
         type="number"
         matInput
         placeholder="Peso en gr"
         [formControl]="peso"
       />
-
     </mat-form-field>
   </form>
 </div>
-<br/><br/>
-<!-- <div *ngIf="lugarOrigen.street!==''"> -->
+<br /><br />
+
 <div class="destinos">
-  <div *ngIf="lugarOrigen.county !== ''" class="origen">
+  <div *ngIf="lugarOrigen.street !== ''" class="origen">
     <h5>
       {{ lugarOrigen.persona }}
     </h5>
@@ -132,11 +124,11 @@
     </h5>
 
     <button mat-raised-button color="primary" (click)="openDialogOrigen()">
-      Modificar
+      <i class="fas fa-map-pin" style="padding:0.2rem"> </i>Modificar
     </button>
   </div>
 
-  <div *ngIf="lugarDestino.county !== ''" class="destino">
+  <div *ngIf="lugarDestino.street !== ''" class="destino">
     <h5>
       {{ lugarDestino.persona }}
     </h5>
@@ -152,8 +144,12 @@
     </h5>
 
     <button mat-raised-button color="primary" (click)="openDialogDestino()">
+      <i class="fas fa-map-pin" style="padding:0.2rem"> </i>
       Modificar
     </button>
   </div>
 </div>
 
+<button mat-raised-button color="primary" (click)="evaluarDatosDireccion()"  style="width:50%"  >
+  Verificar
+</button>

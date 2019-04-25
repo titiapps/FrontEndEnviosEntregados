@@ -1,29 +1,92 @@
 .example-form {
-    min-width: 150px;
-    max-width: 800px;
-    width: 100%;
-  }
+  min-width: 150px;
+  max-width: 800px;
+  width: 100%;
+}
 
-  .example-full-width {
-    width: 100%;
-  }
+.origen_input {
+  font-size: 0.75rem;
+}
 
-  .containerPack{
-    width: 30%;
+.destino_input {
+  font-size: 0.75rem;
+}
+
+@media(min-width:768px) {
+  .origen_input, .destino_input {
+    font-size: 1rem;
   }
+}
+
+.mat-origen, .mat-destino {
+  font-size: 0.75rem;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.containerPack {
+  width: 30%;
+}
 
 .flex-container {
   display: flex;
 }
 
-.flex-container > mat-form-field {
+.flex-container>mat-form-field {
   margin: 10px;
   padding: 20px;
 }
 
+.destinos {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 1.5rem;
+}
 
+.origen, .destino {
+  margin-right: 1.5rem;
+}
 
-  .destinos{
-    display: flex;
-    justify-content: space-around;
+.paquete-container-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.paquete-container-form>mat-form-field {
+  padding: 0.4rem;
+  width: 100%;
+}
+
+@media(min-width:768px) {
+  .mat-origen, .mat-destino {
+    font-size: 1rem;
   }
+}
+
+@media(min-width:960px) {
+  .mat-origen, .mat-destino {
+    font-size: 1rem;
+  }
+  .paquete-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .paquete-container h3 {
+    width: 100%;
+    flex: 0 1 100%;
+  }
+  .paquete-container-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+}
+
+.origen-seleccion {
+  font-size: 1rem;
+}
