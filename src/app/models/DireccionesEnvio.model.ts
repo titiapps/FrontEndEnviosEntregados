@@ -1,13 +1,14 @@
 export class DireccionEnvio {
-  persona:String;
-  street: String;
-  street2: String;
-  houseNumber: String;
-  city: String;
-  state: String;
-  postalCode: String;
-  country: String;
-  county: String;
-  countryCode: String;
-  district: String;
+  persona: string;
+  phone: string;
+  street: string;
+  street2: string;
+  houseNumber: string;
+  city: string;
+  state: string;
+  postalCode: string;
+  country: string;
+  county: string;
+  countryCode: string;
+  district: string;
 }

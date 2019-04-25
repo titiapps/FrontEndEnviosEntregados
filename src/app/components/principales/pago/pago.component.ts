@@ -21,6 +21,13 @@ export class PagoComponent implements OnInit {
   submitted: boolean;
   token_conekta: String;
   seleccionUsuario: any;
+  packageData: Array<any>;
+  packageOrig: any;
+  packageDest: any;
+  packageLong: any;
+  packageWidth: any;
+  packageHeight: any;
+  packageWeight: any;
   private datos_pago: any;
 
   constructor(
@@ -41,6 +48,14 @@ export class PagoComponent implements OnInit {
 
   ngOnInit() {
     this.seleccionUsuario = this._direccionesService.seleccionTarifaPaquete; //esta es la seleccion de paquete que hizo el usuario
+    this.packageData = this._direccionesService.paquetes;
+    this.packageLong = Math.round(this.packageData[0].paquete_longitud * 2.54);
+    this.packageWidth = Math.round(this.packageData[0].paquete_anchura * 2.54);
+    this.packageHeight = Math.round(this.packageData[0].paquete_altura * 2.54);
+    this.packageWeight = Math.round(this.packageData[0].paquete_peso * 28.35);
+    console.log(this.packageData);
+    this.packageOrig = this._direccionesService.origen;
+    this.packageDest = this._direccionesService.destino;
     console.log(this.seleccionUsuario);
     this.form = this._fb.group({
       nombre: "",

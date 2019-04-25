@@ -10,6 +10,21 @@
     />
 
   </mat-form-field>
+<div *ngIf="lugarOrigen.persona != '' ">
+
+  <mat-form-field class="container example-full-width" >
+    <input
+      type = "text"
+      placeholder = "Telefono"
+      matInput
+      [formControl]="telOrig"
+    />
+
+  </mat-form-field>
+
+</div>
+
+
   <mat-form-field class="container" class="example-full-width">
     <!--Este es el input para buscar el origen-->
 
@@ -47,6 +62,16 @@
 
   </mat-form-field>
 
+  <mat-form-field *ngIf="lugarDestino.persona != ''" class="container example-full-width" >
+    <input
+      type = "text"
+      placeholder = "Telefono"
+      matInput
+      [formControl]="telDest"
+    />
+
+  </mat-form-field>
+
   <mat-form-field class="container" class="example-full-width">
    <input
       type="text"
@@ -68,12 +93,9 @@
   </mat-form-field>
 </form>
 
-<button mat-raised-button color="primary" (click)="evaluarDatosDireccion()">
-  Verificar
-</button>
 
 <br /><br />
-<div *ngIf="lugarDestino.county !== ''" class="flex-container">
+<div *ngIf="lugarDestino.street !== ''" class="flex-container">
   <h3>Dimensiones del paquete</h3>
   <form class="example-form">
     <mat-form-field  class="containerPack" >
@@ -116,9 +138,12 @@
 <br/><br/>
 <!-- <div *ngIf="lugarOrigen.street!==''"> -->
 <div class="destinos">
-  <div *ngIf="lugarOrigen.county !== ''" class="origen">
+  <div *ngIf="lugarOrigen.street !== ''" class="origen">
     <h5>
       {{ lugarOrigen.persona }}
+    </h5>
+    <h5>
+      {{ lugarDestino.phone }}
     </h5>
     <h5 for="">
       {{ lugarOrigen.street }} {{ lugarOrigen.houseNumber }},{{
@@ -136,9 +161,12 @@
     </button>
   </div>
 
-  <div *ngIf="lugarDestino.county !== ''" class="destino">
+  <div *ngIf="lugarDestino.country !== ''" class="destino">
     <h5>
       {{ lugarDestino.persona }}
+    </h5>
+    <h5>
+      {{ lugarDestino.phone }}
     </h5>
     <h5 for="">
       {{ lugarDestino.street }} {{ lugarDestino.houseNumber }},{{
@@ -156,4 +184,9 @@
     </button>
   </div>
 </div>
+<span>
+  <button mat-raised-button color="primary" (click)="evaluarDatosDireccion()">
+  Verificar
+</button>
+</span>
 
