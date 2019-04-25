@@ -1,4 +1,4 @@
-import { Component, OnInit, ɵConsole, Inject } from "@angular/core";
+import { Component, OnInit, Inject } from "@angular/core";
 import { Router } from "@angular/router";
 import { DireccionesService } from "src/app/services/services.index";
 import { FormControl } from "@angular/forms";
@@ -18,12 +18,15 @@ export interface User {
 })
 export class BusquedadireccionComponent implements OnInit {
   lugares = <any>[]; // este nos sirve para que ahi guarde las busquedas de here
+
   lugarOrigen: DireccionEnvio;
   lugarDestino: DireccionEnvio;
   paquete: Paquete;
   busquedaDir: FormControl;
   nombreOrig: FormControl;
   nombreDest: FormControl;
+  telOrig: FormControl;
+  telDest: FormControl;
   alto: FormControl;
   largo: FormControl;
   ancho: FormControl;
@@ -68,7 +71,7 @@ export class BusquedadireccionComponent implements OnInit {
       country: "",
       county: "",
       countryCode: "",
-      district: "" //no se usa la colonia pero aun asi ponla para aparentar
+      district: "" //no se usa la colonia pero aun asi ponla para aparentar,
     };
   }
 
@@ -80,7 +83,6 @@ export class BusquedadireccionComponent implements OnInit {
         this.nameOrig = this.nombreOrig.value;
         this.nameDest = this.nombreDest.value;
         this._direccionesService.busquedaLugares(termino).subscribe(data => {
-    
           this.lugares = data.suggestions as any[];
         });
       }
@@ -196,14 +198,15 @@ export class BusquedadireccionComponent implements OnInit {
         : "";
   }
 
-  //SE EVALUA QUE TENGA UNA DIRECCION RELATIVAMENTE COMPLETA
+  // SE EVALUA QUE TENGA UNA DIRECCION RELATIVAMENTE COMPLETA
   evaluarDatosDireccion() {
-    let ori = this.lugarOrigen; //origen de los datos buscados
+    const ori = this.lugarOrigen; // origen de los datos buscados
 
-    let dest = this.lugarDestino; //destino de los datos buscados
+    const dest = this.lugarDestino; // destino de los datos buscados
 
-    let arrayorigen = [
+    const arrayorigen = [
       ori.persona,
+
       ori.street,
       ori.houseNumber,
       ori.city,
@@ -211,8 +214,9 @@ export class BusquedadireccionComponent implements OnInit {
       ori.postalCode,
       ori.country
     ];
-    let arraydestino = [
+    const arraydestino = [
       dest.persona,
+
       dest.street,
       dest.houseNumber,
       dest.city,
@@ -224,7 +228,7 @@ export class BusquedadireccionComponent implements OnInit {
     const resultadoorigen = arrayorigen.filter(elemento => elemento !== "");
     const resultadodestino = arraydestino.filter(elemento => elemento !== "");
 
-    if (resultadoorigen.length === 7 && resultadodestino.length === 7) {
+    if (resultadoorigen.length === 6 && resultadodestino.length === 6) {
       this.lugarOrigen.persona = this.nameOrig;
       this.lugarDestino.persona = this.nameDest;
 
@@ -265,6 +269,7 @@ export class BusquedadireccionComponent implements OnInit {
       if (result !== undefined) {
         const {
           persona,
+          phone,
           street,
           houseNumber,
           street2,
@@ -296,6 +301,7 @@ export class BusquedadireccionComponent implements OnInit {
 
       data: {
         persona: this.lugarDestino.persona,
+
         street: this.lugarDestino.street,
         houseNumber: this.lugarDestino.houseNumber,
         street2: this.lugarDestino.street2,
@@ -310,6 +316,7 @@ export class BusquedadireccionComponent implements OnInit {
       if (result !== undefined) {
         const {
           persona,
+          phone,
           street,
           houseNumber,
           street2,

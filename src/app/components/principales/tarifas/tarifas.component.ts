@@ -38,7 +38,7 @@ export class TarifasComponent implements OnInit {
         .cotizacion(this.origen, this.destino, this.paquetes[0])
         .subscribe(
           (tarif: any) => {
-            this.cotizaciones.push(tarif); //se pone en un arreglo debido a que puede ser muchos paquetes
+            this.cotizaciones.push(tarif); // se pone en un arreglo debido a que puede ser muchos paquetes
           },
           error => {
             console.log(error);

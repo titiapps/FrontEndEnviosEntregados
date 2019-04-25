@@ -10,11 +10,13 @@
       [formControl]="nombreOrig"
     />
   </mat-form-field>
+
   <mat-form-field class="container" class="example-full-width">
     <!--Este es el input para buscar el origen-->
 
     <input
-      type="text" class="origen_input"
+      type="text"
+      class="origen_input"
       placeholder="Origen del Paquete"
       matInput
       [formControl]="busquedaDir"
@@ -47,7 +49,8 @@
 
   <mat-form-field class="container" class="example-full-width">
     <input
-      type="text" class="destino_input"
+      type="text"
+      class="destino_input"
       placeholder="Destino del Paquete"
       matInput
       [formControl]="busquedaDir"
@@ -132,6 +135,7 @@
     <h5>
       {{ lugarDestino.persona }}
     </h5>
+
     <h5 for="">
       {{ lugarDestino.street }} {{ lugarDestino.houseNumber }},{{
         lugarDestino.street2
@@ -150,6 +154,11 @@
   </div>
 </div>
 
-<button mat-raised-button color="primary" (click)="evaluarDatosDireccion()"  style="width:50%"  >
+<button
+  mat-raised-button
+  color="primary"
+  (click)="evaluarDatosDireccion()"
+  style="width:50%"
+>
   Verificar
 </button>
