@@ -216,7 +216,6 @@ export class BusquedadireccionComponent implements OnInit {
     ];
     const arraydestino = [
       dest.persona,
-
       dest.street,
       dest.houseNumber,
       dest.city,
@@ -228,7 +227,7 @@ export class BusquedadireccionComponent implements OnInit {
     const resultadoorigen = arrayorigen.filter(elemento => elemento !== "");
     const resultadodestino = arraydestino.filter(elemento => elemento !== "");
 
-    if (resultadoorigen.length === 6 && resultadodestino.length === 6) {
+    if (resultadoorigen.length === 7 && resultadodestino.length === 7) {
       this.lugarOrigen.persona = this.nameOrig;
       this.lugarDestino.persona = this.nameDest;
 
