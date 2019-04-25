@@ -6,6 +6,7 @@ import { DireccionEnvio } from "src/app/models/DireccionesEnvio.model";
 import { Paquete } from "src/app/models/paquete.model";
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from "@angular/material";
 import Swal from "sweetalert2";
+import { parseHostBindings } from "@angular/compiler";
 
 export interface User {
   name: string;
@@ -18,18 +19,23 @@ export interface User {
 })
 export class BusquedadireccionComponent implements OnInit {
   lugares = <any>[]; // este nos sirve para que ahi guarde las busquedas de here
+
   lugarOrigen: DireccionEnvio;
   lugarDestino: DireccionEnvio;
   paquete: Paquete;
   busquedaDir: FormControl;
   nombreOrig: FormControl;
   nombreDest: FormControl;
+  telOrig: FormControl;
+  telDest: FormControl;
   alto: FormControl;
   largo: FormControl;
   ancho: FormControl;
   peso: FormControl;
   nameOrig: string;
   nameDest: string;
+  teleOrig: string;
+  teleDest: string;
 
   constructor(
     private _direccionesService: DireccionesService,
@@ -68,7 +74,7 @@ export class BusquedadireccionComponent implements OnInit {
       country: "",
       county: "",
       countryCode: "",
-      district: "" //no se usa la colonia pero aun asi ponla para aparentar
+      district: "" //no se usa la colonia pero aun asi ponla para aparentar,
     };
   }
 
@@ -79,8 +85,9 @@ export class BusquedadireccionComponent implements OnInit {
       if (termino != "") {
         this.nameOrig = this.nombreOrig.value;
         this.nameDest = this.nombreDest.value;
+        this.teleOrig = this.telOrig.value;
+        this.teleDest = this.telDest.value;
         this._direccionesService.busquedaLugares(termino).subscribe(data => {
-    
           this.lugares = data.suggestions as any[];
         });
       }
@@ -196,14 +203,15 @@ export class BusquedadireccionComponent implements OnInit {
         : "";
   }
 
-  //SE EVALUA QUE TENGA UNA DIRECCION RELATIVAMENTE COMPLETA
+  // SE EVALUA QUE TENGA UNA DIRECCION RELATIVAMENTE COMPLETA
   evaluarDatosDireccion() {
-    let ori = this.lugarOrigen; //origen de los datos buscados
+    const ori = this.lugarOrigen; // origen de los datos buscados
 
-    let dest = this.lugarDestino; //destino de los datos buscados
+    const dest = this.lugarDestino; // destino de los datos buscados
 
-    let arrayorigen = [
+    const arrayorigen = [
       ori.persona,
+
       ori.street,
       ori.houseNumber,
       ori.city,
@@ -211,8 +219,9 @@ export class BusquedadireccionComponent implements OnInit {
       ori.postalCode,
       ori.country
     ];
-    let arraydestino = [
+    const arraydestino = [
       dest.persona,
+
       dest.street,
       dest.houseNumber,
       dest.city,
@@ -227,6 +236,8 @@ export class BusquedadireccionComponent implements OnInit {
     if (resultadoorigen.length === 7 && resultadodestino.length === 7) {
       this.lugarOrigen.persona = this.nameOrig;
       this.lugarDestino.persona = this.nameDest;
+      this.lugarOrigen.phone = this.teleOrig;
+      this.lugarDestino.phone = this.teleDest;
 
       this.paquete = {
         paquete_longitud: Math.round((this.largo.value / 2.54) * 10) / 10,
@@ -251,6 +262,7 @@ export class BusquedadireccionComponent implements OnInit {
       width: "250px",
       data: {
         persona: this.lugarOrigen.persona,
+        phone: this.lugarOrigen.phone,
         street: this.lugarOrigen.street,
         houseNumber: this.lugarOrigen.houseNumber,
         street2: this.lugarOrigen.street2,
@@ -265,6 +277,7 @@ export class BusquedadireccionComponent implements OnInit {
       if (result !== undefined) {
         const {
           persona,
+          phone,
           street,
           houseNumber,
           street2,
@@ -283,6 +296,7 @@ export class BusquedadireccionComponent implements OnInit {
           district,
           state: this.lugarOrigen.state,
           postalCode,
+          phone: this.lugarOrigen.phone,
           persona: this.lugarOrigen.persona,
           countryCode: this.lugarOrigen.countryCode
         };
@@ -296,6 +310,7 @@ export class BusquedadireccionComponent implements OnInit {
 
       data: {
         persona: this.lugarDestino.persona,
+        phone: this.lugarDestino.phone,
         street: this.lugarDestino.street,
         houseNumber: this.lugarDestino.houseNumber,
         street2: this.lugarDestino.street2,
@@ -310,6 +325,7 @@ export class BusquedadireccionComponent implements OnInit {
       if (result !== undefined) {
         const {
           persona,
+          phone,
           street,
           houseNumber,
           street2,
@@ -329,6 +345,7 @@ export class BusquedadireccionComponent implements OnInit {
           state: this.lugarDestino.state,
           postalCode,
           persona: this.lugarDestino.persona,
+          phone: this.lugarDestino.phone,
           countryCode: this.lugarDestino.countryCode
         };
       }

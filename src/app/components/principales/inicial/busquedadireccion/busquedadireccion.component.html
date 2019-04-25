@@ -10,6 +10,13 @@
       [formControl]="nombreOrig"
     />
   </mat-form-field>
+<div *ngIf="lugarOrigen.persona != '' ">
+
+  </mat-form-field>
+
+</div>
+
+
   <mat-form-field class="container" class="example-full-width">
     <!--Este es el input para buscar el origen-->
 
@@ -45,6 +52,16 @@
     />
   </mat-form-field>
 
+  <mat-form-field *ngIf="lugarDestino.persona != ''" class="container example-full-width" >
+    <input
+      type = "text"
+      placeholder = "Telefono"
+      matInput
+      [formControl]="telDest"
+    />
+
+  </mat-form-field>
+
   <mat-form-field class="container" class="example-full-width">
     <input
       type="text" class="destino_input"
@@ -66,9 +83,16 @@
     </mat-autocomplete>
   </mat-form-field>
 </form>
+<<<<<<< HEAD
 <br /><br />
 <!--======================= DIMENSIONES DEL PAQUETE ================= -->
 <div class="paquete-container">
+=======
+
+
+<br /><br />
+<div *ngIf="lugarDestino.street !== ''" class="flex-container">
+>>>>>>> d74f61645f515fcb7b318a883b331c9405f7f45e
   <h3>Dimensiones del paquete</h3>
   <form class="paquete-container-form">
     <mat-form-field class="containerPack">
@@ -112,6 +136,9 @@
     <h5>
       {{ lugarOrigen.persona }}
     </h5>
+    <h5>
+      {{ lugarDestino.phone }}
+    </h5>
     <h5 for="">
       {{ lugarOrigen.street }} {{ lugarOrigen.houseNumber }},{{
         lugarOrigen.street2
@@ -128,9 +155,16 @@
     </button>
   </div>
 
+<<<<<<< HEAD
   <div *ngIf="lugarDestino.street !== ''" class="destino">
+=======
+  <div *ngIf="lugarDestino.country !== ''" class="destino">
+>>>>>>> d74f61645f515fcb7b318a883b331c9405f7f45e
     <h5>
       {{ lugarDestino.persona }}
+    </h5>
+    <h5>
+      {{ lugarDestino.phone }}
     </h5>
     <h5 for="">
       {{ lugarDestino.street }} {{ lugarDestino.houseNumber }},{{
@@ -149,6 +183,11 @@
     </button>
   </div>
 </div>
+<span>
+  <button mat-raised-button color="primary" (click)="evaluarDatosDireccion()">
+  Verificar
+</button>
+</span>
 
 <button mat-raised-button color="primary" (click)="evaluarDatosDireccion()"  style="width:50%"  >
   Verificar
