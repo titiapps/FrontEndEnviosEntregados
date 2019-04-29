@@ -21,10 +21,10 @@ import { Pagina404Component } from "./components/shared/pagina404/pagina404.comp
 import { ConektaComponent } from "./components/pruebas/conekta/conekta.component";
 import { PrincipalesComponent } from "./components/principales/principales.component";
 import { CardValComponent } from './components/pruebas/card-val/card-val.component';
-import { StripeComponent } from "./components/pruebas/stripe/stripe.component";
 import { TrackComponent } from './components/pruebas/track/track.component';
 import { UserComponent,
          AppPizzaPartyComponent} from './components/pruebas/user/user.component';
+import { PerfilComponent } from './components/pruebas/perfil/perfil.component';
 
 @NgModule({
   declarations: [
@@ -34,12 +34,12 @@ import { UserComponent,
     RegistrarComponent,
     ConektaComponent,
     PrincipalesComponent,
-    StripeComponent,
     CardValComponent,
     PizzaPartyComponent,
     TrackComponent,
     UserComponent,
-    AppPizzaPartyComponent
+    AppPizzaPartyComponent,
+    PerfilComponent
   ],
   imports: [
     appRouting,
@@ -52,7 +52,7 @@ import { UserComponent,
     FormsModule,
     SharedModule,
     NgPaymentCardModule,
-    CreditCardDirectivesModule,
+    CreditCardDirectivesModule
   ],
   providers: [],
   bootstrap: [AppComponent],
