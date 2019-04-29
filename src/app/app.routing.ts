@@ -8,6 +8,7 @@ import { PrincipalesComponent } from "./components/principales/principales.compo
 import { StripeComponent } from "./components/pruebas/stripe/stripe.component";
 import { CardValComponent } from "./components/pruebas/card-val/card-val.component";
 import { HeaderComponent } from "./components/shared/header/header.component";
+import { UserComponent} from './components/pruebas/user/user.component';
 // COMPONENTES COMPARTIDOS
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: "stripe", component: StripeComponent },
   { path: "card", component: CardValComponent },
   { path: "header", component: HeaderComponent },
+  { path: 'update', component: UserComponent},
 
   {
     path: "",

@@ -23,6 +23,8 @@ import { PrincipalesComponent } from "./components/principales/principales.compo
 import { CardValComponent } from './components/pruebas/card-val/card-val.component';
 import { StripeComponent } from "./components/pruebas/stripe/stripe.component";
 import { TrackComponent } from './components/pruebas/track/track.component';
+import { UserComponent,
+         AppPizzaPartyComponent} from './components/pruebas/user/user.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { TrackComponent } from './components/pruebas/track/track.component';
     StripeComponent,
     CardValComponent,
     PizzaPartyComponent,
-    TrackComponent
+    TrackComponent,
+    UserComponent,
+    AppPizzaPartyComponent
   ],
   imports: [
     appRouting,
@@ -52,6 +56,7 @@ import { TrackComponent } from './components/pruebas/track/track.component';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [PizzaPartyComponent]
+  entryComponents: [PizzaPartyComponent,
+                    AppPizzaPartyComponent]
 })
 export class AppModule {}
