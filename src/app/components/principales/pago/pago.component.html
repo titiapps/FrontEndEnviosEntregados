@@ -27,6 +27,9 @@
       Direccion destino:
     </p>
     <p class="lh-copy measure center f6 black-70">
+      {{packageDest.persona}}
+    </p>
+    <p class="lh-copy measure center f6 black-70">
       {{packageDest.street}} {{packageDest.houseNumber}}
     </p>
     <p class="lh-copy measure center f6 black-70">
@@ -40,6 +43,9 @@
     </p>
     <p class="lh-copy measure center f6 black-70">
       Direccion origen:
+    </p>
+    <p class="lh-copy measure center f6 black-70">
+      {{packageOrig.persona}}
     </p>
     <p class="lh-copy measure center f6 black-70">
       {{packageOrig.street}} {{packageOrig.houseNumber}}
@@ -126,6 +132,7 @@
         <div *ngIf="!form.controls.creditCard.valid" class="alert alert-danger">La tarjeta es invalida</div>
         <div *ngIf="!form.controls.expDate.valid" class="alert alert-danger">La fecha de expiracion es necesaria</div>
         <div *ngIf="!form.controls.cvc.valid" class="alert alert-danger">el numero CVC es requerido</div>
+
       </div>
     </form>
   </main>

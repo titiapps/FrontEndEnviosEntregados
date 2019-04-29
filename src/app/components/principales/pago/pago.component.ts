@@ -19,6 +19,7 @@ declare var Conekta: any;
 export class PagoComponent implements OnInit {
   form: FormGroup;
   submitted: boolean;
+  disable: boolean;
   token_conekta: String;
   seleccionUsuario: any;
   packageData: Array<any>;
@@ -52,7 +53,7 @@ export class PagoComponent implements OnInit {
     this.packageLong = Math.round(this.packageData[0].paquete_longitud * 2.54);
     this.packageWidth = Math.round(this.packageData[0].paquete_anchura * 2.54);
     this.packageHeight = Math.round(this.packageData[0].paquete_altura * 2.54);
-    this.packageWeight = Math.round(this.packageData[0].paquete_peso * 28.35);
+    this.packageWeight = Math.round(this.packageData[0].paquete_peso / 0.035274);
     console.log(this.packageData);
     this.packageOrig = this._direccionesService.origen;
     this.packageDest = this._direccionesService.destino;
@@ -158,6 +159,9 @@ export class PagoComponent implements OnInit {
       );
       // location.reload();
     } else {
+
+      // this.form.disable(true);
+
       /* this.datos_pago.nombre = form.value.nombre;
       this.datos_pago.number = form.value.creditCard;
       this.datos_pago.exp_month = form.value.expDate.slice(0, 2);
