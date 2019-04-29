@@ -20,9 +20,10 @@ import { RegistrarComponent } from "./components/registrar/registrar.component";
 import { Pagina404Component } from "./components/shared/pagina404/pagina404.component";
 import { ConektaComponent } from "./components/pruebas/conekta/conekta.component";
 import { PrincipalesComponent } from "./components/principales/principales.component";
-import { CardValComponent } from './components/pruebas/card-val/card-val.component';
-import { StripeComponent } from "./components/pruebas/stripe/stripe.component";
-import { TrackComponent } from './components/pruebas/track/track.component';
+import { CardValComponent } from "./components/pruebas/card-val/card-val.component";
+
+import { TrackComponent } from "./components/pruebas/track/track.component";
+import { PerfilComponent } from './components/pruebas/perfil/perfil.component';
 
 @NgModule({
   declarations: [
@@ -32,10 +33,10 @@ import { TrackComponent } from './components/pruebas/track/track.component';
     RegistrarComponent,
     ConektaComponent,
     PrincipalesComponent,
-    StripeComponent,
     CardValComponent,
     PizzaPartyComponent,
-    TrackComponent
+    TrackComponent,
+    PerfilComponent
   ],
   imports: [
     appRouting,
@@ -48,7 +49,7 @@ import { TrackComponent } from './components/pruebas/track/track.component';
     FormsModule,
     SharedModule,
     NgPaymentCardModule,
-    CreditCardDirectivesModule,
+    CreditCardDirectivesModule
   ],
   providers: [],
   bootstrap: [AppComponent],

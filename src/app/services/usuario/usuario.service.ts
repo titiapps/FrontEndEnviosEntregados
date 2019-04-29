@@ -16,6 +16,11 @@ export class UsuarioService {
     this.cargarDatos();
   }
 
+  getUsuario(id: String): Observable<any> {
+    let url = URL_ENVIOS_BACK + `usuario/usuario/${id}`;
+    return this._http.get(url);
+  }
+
   crearUsuario(usuario: Usuario): Observable<any> {
     let url = URL_ENVIOS_BACK + "usuario/usuario";
 
@@ -25,6 +30,7 @@ export class UsuarioService {
         return resp;
       })
       .catch(err => {
+        console.log(err);
         if (err.error.errores.errors.email.kind != undefined) {
           Swal.fire(
             "Error",
@@ -33,7 +39,6 @@ export class UsuarioService {
           );
           return Observable.throw(err); //ES PARA EL MANEJO DE LOS ERRORES
         } else {
-        
           Swal.fire(
             "Error",
             "El correo que quieres registrar ya existe",
@@ -80,7 +85,6 @@ export class UsuarioService {
     } else {
       this.token = "";
       this.usuario = null;
-     
     }
   }
   estaLogueado() {
