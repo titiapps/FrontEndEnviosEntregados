@@ -1,0 +1,73 @@
+<app-header></app-header>
+<div class="contenido_principal">
+  <div class="contenido_login">
+    <div class="encabezados">
+      <h2>Edita tus datos</h2>
+    </div>
+    <div class="formulario">
+      <mat-form-field class="example-full-width">
+        <input
+          matInput
+          placeholder="Nombre(s)"
+          name="name"
+          id="name"
+          [(ngModel)]="usuario.nombre"
+        />
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input
+          matInput
+          placeholder="Apellido paterno"
+          name="lastname"
+          id="lastname"
+          [(ngModel)]="usuario.apellido_paterno"
+        />
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input
+          matInput
+          placeholder="Apellido materno"
+          name="surname"
+          id="surname"
+          [(ngModel)]="usuario.apellido_materno"
+        />
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input
+          matInput
+          placeholder="Telefono"
+          name="tel"
+          id="tel"
+          [(ngModel)]="usuario.telefono"
+        />
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input
+          matInput
+          placeholder="Correo Electronico"
+          name="email"
+          id="email"
+          [(ngModel)]="usuario.email"
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          name="password"
+          id="password"
+          [(ngModel)]="usuario.password"
+          matInput
+          placeholder="Introduce la contraseña"
+          [type]="hide ? 'password' : 'text'"
+        />
+        <mat-icon matSuffix (click)="hide = !hide">{{
+          hide ? "visibility_off" : "visibility"
+          }}</mat-icon>
+      </mat-form-field>
+    </div>
+
+    <button mat-flat-button color="primary" (click)="updateData()" class="btn-ingresar">
+      Actualizar
+    </button>
+  </div>
+</div>

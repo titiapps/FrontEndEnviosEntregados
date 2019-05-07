@@ -54,9 +54,9 @@ export class UsuarioService {
       });
   }
 
-  //VERIFICACION DE USUARIOS
+  // VERIFICACION DE USUARIOS
   login(usuario: Usuario): Observable<any> {
-    let url = URL_ENVIOS_BACK + "autorizacion/login";
+    let url = URL_ENVIOS_BACK + 'autorizacion/login';
 
     let { email, password } = usuario;
 
@@ -76,6 +76,24 @@ export class UsuarioService {
         return Observable.throw(err); //ES PARA EL MANEJO DE LOS ERRORES
       });
   }
+
+  updateUser(user: Usuario): Observable<any> {
+    const url = URL_ENVIOS_BACK + 'usuarios_rutas/usuario';
+    const { nombre, apellido_paterno, apellido_materno, email, password, telefono } = user;
+    const data = { nombre, apellido_paterno, apellido_materno, email, password, telefono };
+    return this._http
+      .put(url, data)
+      .map((resp: any) => {
+
+        return resp;
+      })
+      .catch(err => {
+        Swal.fire('Error', 'Revisa los datos ingresados', 'error');
+        return Observable.throw(err); // ES PARA EL MANEJO DE LOS ERRORES
+      });
+  }
+
+
 
   guardarStorage(id: string, token: string, usuario: Usuario) {
     localStorage.setItem("id", id);
