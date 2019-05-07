@@ -9,19 +9,10 @@
       <hr class="mw3 bb bw1 b--black-10" />
     </div>
     <p class="lh-copy measure center f6 black-70">
-      Servicio:{{ seleccionUsuario.servicio }}
+      Servicio:{{ seleccionUsuario.servicio }} Costo:{{ seleccionUsuario.costo }}
     </p>
     <p class="lh-copy measure center f6 black-70">
-      Costo:{{ seleccionUsuario.costo }}
-    </p>
-    <p class="lh-copy measure center f6 black-70">
-      Paquete:
-    </p>
-    <p class="lh-copy measure center f6 black-70">
-      {{ packageLong }} X {{ packageWidth}} X {{packageHeight}}
-    </p>
-    <p class="lh-copy measure center f6 black-70">
-      Peso:{{ packageWeight }}
+      Paquete: {{ packageLong }} X {{ packageWidth}} X {{packageHeight}} Peso:{{ packageWeight }} kg
     </p>
     <p class="lh-copy measure center f6 black-70">
       Direccion destino:
@@ -30,17 +21,12 @@
       {{packageDest.persona}}
     </p>
     <p class="lh-copy measure center f6 black-70">
-      {{packageDest.street}} {{packageDest.houseNumber}}
+      {{packageDest.street}} {{packageDest.houseNumber}}, {{packageDest.street2}}
     </p>
     <p class="lh-copy measure center f6 black-70">
-      {{packageDest.street2}}
+      {{packageDest.state}} {{packageDest.city}}, {{packageDest.country}}, {{packageDest.postalCode}}
     </p>
-    <p class="lh-copy measure center f6 black-70">
-      {{packageDest.state}}, {{packageDest.city}}
-    </p>
-    <p class="lh-copy measure center f6 black-70">
-      {{packageDest.country}} {{packageDest.postalCode}}
-    </p>
+
     <p class="lh-copy measure center f6 black-70">
       Direccion origen:
     </p>
@@ -48,17 +34,12 @@
       {{packageOrig.persona}}
     </p>
     <p class="lh-copy measure center f6 black-70">
-      {{packageOrig.street}} {{packageOrig.houseNumber}}
+      {{packageOrig.street}} {{packageOrig.houseNumber}}, {{packageOrig.street2}}
     </p>
     <p class="lh-copy measure center f6 black-70">
-      {{packageOrig.street2}}
+      {{packageOrig.state}}, {{packageOrig.city}}, {{packageOrig.country}}, {{packageOrig.postalCode}}
     </p>
-    <p class="lh-copy measure center f6 black-70">
-      {{packageOrig.state}}, {{packageOrig.city}}
-    </p>
-    <p class="lh-copy measure center f6 black-70">
-      {{packageOrig.country}} {{packageOrig.postalCode}}
-    </p>
+
 
 
 

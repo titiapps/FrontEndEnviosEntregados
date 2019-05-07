@@ -8,7 +8,7 @@
       <mat-form-field class="example-full-width">
         <input
           matInput
-          placeholder="Nombre(s)"
+          placeholder="Nombre actual: {{namePlace}}"
           name="name"
           id="name"
           [(ngModel)]="usuario.nombre"
@@ -17,7 +17,7 @@
       <mat-form-field class="example-full-width">
         <input
           matInput
-          placeholder="Apellido paterno"
+          placeholder="Apellido paterno actual: {{lastPlace}}"
           name="lastname"
           id="lastname"
           [(ngModel)]="usuario.apellido_paterno"
@@ -26,7 +26,7 @@
       <mat-form-field class="example-full-width">
         <input
           matInput
-          placeholder="Apellido materno"
+          placeholder="Apellido materno actual: {{surPlace}}"
           name="surname"
           id="surname"
           [(ngModel)]="usuario.apellido_materno"
@@ -35,7 +35,7 @@
       <mat-form-field class="example-full-width">
         <input
           matInput
-          placeholder="Telefono"
+          placeholder="Telefono actual: {{telPlace}}"
           name="tel"
           id="tel"
           [(ngModel)]="usuario.telefono"
@@ -44,7 +44,7 @@
       <mat-form-field class="example-full-width">
         <input
           matInput
-          placeholder="Correo Electronico"
+          placeholder="Telefono actual: {{emailPlace}}"
           name="email"
           id="email"
           [(ngModel)]="usuario.email"
@@ -57,7 +57,7 @@
           id="password"
           [(ngModel)]="usuario.password"
           matInput
-          placeholder="Introduce la contraseña"
+          placeholder="Nueva contraseña"
           [type]="hide ? 'password' : 'text'"
         />
         <mat-icon matSuffix (click)="hide = !hide">{{

@@ -31,6 +31,8 @@ export class RegistrarComponent implements OnInit {
   ngOnInit() {}
 
   guardar() {
+    console.log(this.usuario);
+
 
     this._usuarioService.crearUsuario(this.usuario).subscribe(
       resp => {
@@ -41,7 +43,6 @@ export class RegistrarComponent implements OnInit {
           "success"
         );
         this._router.navigate(['/login']);
-
       },
       error => {
         console.log(error);

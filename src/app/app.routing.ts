@@ -10,6 +10,8 @@ import { HeaderComponent } from "./components/shared/header/header.component";
 import { PerfilComponent } from "./components/pruebas/perfil/perfil.component";
 import { VerificatokenGuard } from "./services/guards/verificatoken.guard";
 import { UserComponent} from './components/pruebas/user/user.component';
+import {PasswordComponent} from './components/pruebas/password/password.component';
+import {RecoverComponent} from './components/pruebas/recover/recover.component';
 
 // COMPONENTES COMPARTIDOS
 
@@ -24,14 +26,15 @@ const routes: Routes = [
   },
   { path: "card", component: CardValComponent },
   { path: "header", component: HeaderComponent },
-  { path: 'update', component: UserComponent},
-
+  { path: 'update/:id', component: UserComponent},
   {
     path: "",
     component: PrincipalesComponent,
     loadChildren:
       "./components/principales/principales.module#PrincipalesModule"
   },
+  { path: 'recupera', component: RecoverComponent },
+  {path: 'newpass', component: PasswordComponent},
   { path: "**", component: Pagina404Component }
 ];
 

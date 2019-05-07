@@ -26,7 +26,7 @@ export class PerfilComponent implements OnInit {
       console.log(this.usuarioPerfil);
     });
   }
-  usuarioMovimientos(){
+  usuarioMovimientos() {
 
   }
 }

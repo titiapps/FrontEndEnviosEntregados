@@ -1,26 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from 'src/app/services/services.index';
+import { EmailService} from 'src/app/services/services.index';
 import { Usuario } from 'src/app/models/usuario.model'
 import Swal from 'sweetalert2';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {
   MatSnackBarModule,
   MatSnackBar,
   MatSnackBarConfig
 } from '@angular/material/snack-bar';
 import {PizzaPartyComponent} from '../../login/login.component';
+import {HttpHeaders} from '@angular/common/http';
 
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css'],
-  providers: [UsuarioService]
+  providers: [UsuarioService, EmailService]
 
 })
 export class UserComponent implements OnInit {
-
-  hide = true;
+  private id: string;
+  namePlace: string;
+  lastPlace: string;
+  surPlace: string;
+  telPlace: any;
+  emailPlace: string;
+  user: Usuario;
   email: string;
   usuario: Usuario = {
     nombre: '',
@@ -32,20 +39,37 @@ export class UserComponent implements OnInit {
   };
 
   constructor( private usuarioService: UsuarioService,
+               private emailService: EmailService,
                private router: Router,
-               private snackBar: MatSnackBar) { }
+               private activatedRoute: ActivatedRoute,
+               private snackBar: MatSnackBar) {
+
+    this.activatedRoute.params.subscribe(
+      perfil => (this.id = perfil.id)
+    );
+  }
 
   ngOnInit() {
+    this.usuarioService.getUsuario(this.id).subscribe(resp => {
+      this.user = resp;
+      console.log(this.user);
+      this.namePlace = this.user.nombre;
+      this.lastPlace = this.user.apellido_paterno;
+      this.surPlace = this.user.apellido_materno;
+      this.emailPlace = this.user.email;
+      this.telPlace = this.user.telefono;
+    });
   }
 
   updateData() {
+    // this.emailService.send('password');
     const config = new MatSnackBarConfig();
     config.panelClass = 'custom-class';
     config.duration = 2000;
-    this.usuarioService.updateUser(this.usuario).subscribe(
+    this.usuarioService.updateUser(this.usuario, this.id).subscribe(
       (resp: any) => {
         if (resp.id !== undefined) {
-          this.snackBar.openFromComponent(PizzaPartyComponent, config);
+          this.snackBar.openFromComponent(AppPizzaPartyComponent, config);
           this.router
             .navigateByUrl('/header', { skipLocationChange: true })
             .then(() => this.router.navigate(['/inicio']));
@@ -57,21 +81,19 @@ export class UserComponent implements OnInit {
       }
     );
   }
-
 }
 
 
 
 @Component({
-  selector: 'snack-bar-component-example-snack',
+  selector: 'app-snack-bar-component-example-snack',
   templateUrl: 'snackbar.html',
   styles: [
     `
       .example-pizza-party {
         color: #90ee90;
         background: "#D3D3D3";
-      }
-    `
+      }`
   ]
 })
 export class AppPizzaPartyComponent {}
