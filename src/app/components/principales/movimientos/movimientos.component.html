@@ -1,11 +1,19 @@
-<br />
-<br />
-<div class="contenedor-etiqueta">
-  <img [src]="etiqueta" class="etiqueta" alt="" srcset="" />
-  <div class="contenido-imprimir">
-    <h3>Etiqueta Generada</h3>
-    <button mat-raised-button color="primary">
-      <a download [href]="etiqueta" class="btn-imprimir" target="_blank">Imprimir</a>
-    </button>
+<div class="pa3">
+  <h2 style="text-align:center">Etiqueta Generada</h2>
+  <div class="contenedor-etiqueta">
+    <img [src]="etiqueta" class="etiqueta" alt="" srcset="" />
+    <div class="contenido-imprimir">
+      <div *ngIf="etiqueta_pdf!==undefined">
+        <button
+          mat-raised-button
+          color="primary"
+          style="padding-left:0.5rem;padding-right:0.5rem;padding-top:0.5rem"
+        >
+          <a (click)="abrir_etiqueta(etiqueta_pdf)" class="btn-imprimir"
+            ><i class="fas fa-print fa-2x"></i> Imprimir</a
+          >
+        </button>
+      </div>
+    </div>
   </div>
 </div>

@@ -23,7 +23,10 @@ import { PrincipalesComponent } from "./components/principales/principales.compo
 import { CardValComponent } from "./components/pruebas/card-val/card-val.component";
 
 import { TrackComponent } from "./components/pruebas/track/track.component";
-import { PerfilComponent } from './components/pruebas/perfil/perfil.component';
+
+import { PipesModule } from "./components/pipes/pipes.module";
+
+
 
 @NgModule({
   declarations: [
@@ -35,8 +38,7 @@ import { PerfilComponent } from './components/pruebas/perfil/perfil.component';
     PrincipalesComponent,
     CardValComponent,
     PizzaPartyComponent,
-    TrackComponent,
-    PerfilComponent
+    TrackComponent
   ],
   imports: [
     appRouting,
@@ -49,7 +51,8 @@ import { PerfilComponent } from './components/pruebas/perfil/perfil.component';
     FormsModule,
     SharedModule,
     NgPaymentCardModule,
-    CreditCardDirectivesModule
+    CreditCardDirectivesModule,
+    PipesModule
   ],
   providers: [],
   bootstrap: [AppComponent],

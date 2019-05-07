@@ -6,6 +6,7 @@ import { LoginguardGuard } from "src/app/services/services.index";
 import { VerificatokenGuard } from "src/app/services/guards/verificatoken.guard";
 import { CompraEnvioComponent } from "./compra-envio/compra-envio.component";
 import { MovimientosComponent } from "./movimientos/movimientos.component";
+import { PerfilComponent } from "../pruebas/perfil/perfil.component";
 
 const routes: Routes = [
   {
@@ -14,13 +15,18 @@ const routes: Routes = [
   },
   {
     path: "tarifas",
-    canActivate:[LoginguardGuard],
+    canActivate: [LoginguardGuard],
     component: TarifasComponent
   },
   {
     path: "pago",
     canActivate: [LoginguardGuard, VerificatokenGuard],
     component: PagoComponent
+  },
+  {
+    path: "perfil/:id",
+    canActivate: [LoginguardGuard, VerificatokenGuard],
+    component: PerfilComponent
   },
 
   { path: "compraEnvio", component: CompraEnvioComponent },

@@ -1,0 +1,69 @@
+<h3 *ngIf="movimientos.length > 0" style="text-align:center">Movimientos</h3>
+<h3 *ngIf="movimientos.length === 0">
+  No se han realizado movimientos con esta cuenta
+</h3>
+<div class="movimientos-container overflow-y-auto">
+  <ul class="list pl0 mt0 measure center">
+    <li
+      class="flex items-center lh-copy pa2 ph0-l bb b--black-10"
+      *ngFor="let movimiento of movimientos"
+    >
+      <div class="pa3 flex-auto ">
+        <span class="f9 db black-90">Origen: </span>
+        <span class="f6 db black-70 text-justify"
+          >{{ movimiento.envio.o_origen.street }}
+          {{ movimiento.envio.o_origen.houseNumber }},
+          {{ movimiento.envio.o_origen.city }},
+          {{ movimiento.envio.o_origen.state }},
+          {{ movimiento.envio.o_origen.district }},
+          {{ movimiento.envio.o_origen.postalCode }}</span
+        >
+        <span class="f9 db black-90">Destino: </span>
+        <span class="f6 db black-70 text-justify"
+          >{{ movimiento.envio.o_destino.street }}
+          {{ movimiento.envio.o_destino.houseNumber }},
+          {{ movimiento.envio.o_destino.city }},
+          {{ movimiento.envio.o_destino.state }},
+          {{ movimiento.envio.o_destino.district }},
+          {{ movimiento.envio.o_destino.postalCode }}</span
+        >
+        <span class="f8 db black-80"
+          >Paqueteria:<span class=" f8 black-60">
+            {{ movimiento.envio.paqueteria }}</span
+          >
+        </span>
+
+        <span class=" f8 black-90">Num_Guia:</span
+        ><!-- recuerda se debe movimiento el pipe -->
+        <a style="display:inline-block;text-decoration: none"
+          class="f5 db  dark-blue "
+          [href]="movimiento.envio.paqueteria | rastreo: movimiento.num_guia"
+          >{{ movimiento.num_guia }}</a
+        >
+
+        <!-- {{movimiento.envio.paqueteria|rastreo:movimiento.num_guia}} -->
+      </div>
+      <div>
+        <span class="f9 db black-90">Paquete: </span>
+        <span class="f6 db black-70 f5"
+          ><span class="black-90">Tamaño:</span>
+          {{ movimiento.envio.paquete_altura }}x{{
+            movimiento.envio.paquete_anchura
+          }}x{{ movimiento.envio.paquete_longitud }} cm
+        </span>
+        <span class="f6 db  black-70 f5"
+          ><span class="black-90">Peso:</span>
+          {{ movimiento.envio.paquete_peso }} kg
+        </span>
+        <span class="f6 db  black-70 f5"
+          ><span class="black-90">Costo:</span> ${{ movimiento.pago.monto }}
+        </span>
+        <a
+          [routerLink]="['/movimientos', movimiento._id]"
+          routerLinkActive="router-link-active"
+          ><span class="f9 db dark-blue underline">Etiqueta </span></a
+        >
+      </div>
+    </li>
+  </ul>
+</div>

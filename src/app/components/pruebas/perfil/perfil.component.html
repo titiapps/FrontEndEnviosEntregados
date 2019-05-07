@@ -1,12 +1,17 @@
-<div *ngIf="usuarioPerfil">
-  <p>Nombre: {{ usuarioPerfil.nombre }}</p>
-  <p>
-    Apellidos:{{ usuarioPerfil.apellido_paterno }}
-    {{ usuarioPerfil.apellido_materno }}
-  </p>
-  <p>Telefono:{{ usuarioPerfil.telefono }}</p>
-  <p>Email:{{ usuarioPerfil.email }}</p>
-
-
-  
+<div class="hero contenedor">
+  <div class="contenido-hero contenedor">
+    <div style="padding:3.5rem">
+      <div class="contenido-perfil">
+        <div *ngIf="usuarioPerfil">
+          <app-tarjeta-perfil [usuario]="usuarioPerfil"></app-tarjeta-perfil
+          ><!--  componente tarjeta perfil -->
+        </div>
+        <div class="movimientosPerfil" *ngIf="movimientos">
+          <app-movimientos-perfil
+            [movimientos]="movimientos"
+          ></app-movimientos-perfil>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

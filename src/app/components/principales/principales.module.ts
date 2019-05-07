@@ -14,8 +14,10 @@ import { PagoComponent } from "./pago/pago.component";
 import { PipesModule } from "../pipes/pipes.module";
 import { CompraEnvioComponent } from "./compra-envio/compra-envio.component";
 import { CreditCardDirectivesModule } from "angular-cc-library";
-import { MovimientosComponent } from './movimientos/movimientos.component';
-
+import { MovimientosComponent } from "./movimientos/movimientos.component";
+import { MovimientosPerfilComponent } from '../pruebas/perfil/movimientos-perfil.component';
+import { TarjetaPerfilComponent } from '../pruebas/perfil/tarjeta-perfil.component';
+import { PerfilComponent } from '../pruebas/perfil/perfil.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,10 @@ import { MovimientosComponent } from './movimientos/movimientos.component';
     DialogDestino,
     PagoComponent,
     CompraEnvioComponent,
-    MovimientosComponent
+    MovimientosComponent,
+    MovimientosPerfilComponent,
+    TarjetaPerfilComponent,
+    PerfilComponent
   ],
   exports: [InicialComponent],
   imports: [
@@ -36,7 +41,8 @@ import { MovimientosComponent } from './movimientos/movimientos.component';
     ReactiveFormsModule,
     AgmaterialModule,
     PipesModule,
-    CreditCardDirectivesModule
+    CreditCardDirectivesModule,
+
   ],
   entryComponents: [DialogOrigen, DialogDestino]
 })
