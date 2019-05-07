@@ -20,12 +20,14 @@ import { RegistrarComponent } from "./components/registrar/registrar.component";
 import { Pagina404Component } from "./components/shared/pagina404/pagina404.component";
 import { ConektaComponent } from "./components/pruebas/conekta/conekta.component";
 import { PrincipalesComponent } from "./components/principales/principales.component";
-import { CardValComponent } from './components/pruebas/card-val/card-val.component';
-import { TrackComponent } from './components/pruebas/track/track.component';
-import { UserComponent,
-         AppPizzaPartyComponent} from './components/pruebas/user/user.component';
-import { PerfilComponent } from './components/pruebas/perfil/perfil.component';
-import { PipesModule } from './components/pipes/pipes.module';
+import { CardValComponent } from "./components/pruebas/card-val/card-val.component";
+import { TrackComponent } from "./components/pruebas/track/track.component";
+import {
+  UserComponent,
+  AppPizzaPartyComponent
+} from "./components/pruebas/user/user.component";
+import { PerfilComponent } from "./components/pruebas/perfil/perfil.component";
+import { PipesModule } from "./components/pipes/pipes.module";
 
 @NgModule({
   declarations: [
@@ -39,8 +41,7 @@ import { PipesModule } from './components/pipes/pipes.module';
     PizzaPartyComponent,
     TrackComponent,
     UserComponent,
-    AppPizzaPartyComponent,
-    PerfilComponent
+    AppPizzaPartyComponent
   ],
   imports: [
     appRouting,
@@ -58,7 +59,6 @@ import { PipesModule } from './components/pipes/pipes.module';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [PizzaPartyComponent,
-                    AppPizzaPartyComponent]
+  entryComponents: [PizzaPartyComponent, AppPizzaPartyComponent]
 })
 export class AppModule {}
