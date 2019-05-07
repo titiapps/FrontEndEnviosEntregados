@@ -72,14 +72,21 @@ export class UsuarioService {
       });
   }
 
-  updateUser(user: Usuario): Observable<any> {
-    const url = URL_ENVIOS_BACK + 'usuarios_rutas/usuario';
+  updateUser(user: Usuario, id): Observable<any> {
+    const headers = new HttpHeaders().set(
+      'Authorization',
+      this.token
+    );
+
+    const httpOptions = {
+      headers
+    };
+    const url = URL_ENVIOS_BACK + `usuario/usuario/${id}`;
     const { nombre, apellido_paterno, apellido_materno, email, password, telefono } = user;
     const data = { nombre, apellido_paterno, apellido_materno, email, password, telefono };
     return this._http
-      .put(url, data)
+      .put(url, data, httpOptions)
       .map((resp: any) => {
-
         return resp;
       })
       .catch(err => {
