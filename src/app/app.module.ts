@@ -26,7 +26,7 @@ import {
   UserComponent,
   AppPizzaPartyComponent
 } from "./components/pruebas/user/user.component";
-import { PerfilComponent } from "./components/pruebas/perfil/perfil.component";
+import { PerfilComponent } from "./components/perfil/perfil.component";
 import { PipesModule } from "./components/pipes/pipes.module";
 
 @NgModule({

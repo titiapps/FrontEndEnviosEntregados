@@ -6,7 +6,7 @@ import { LoginguardGuard } from "src/app/services/services.index";
 import { VerificatokenGuard } from "src/app/services/guards/verificatoken.guard";
 import { CompraEnvioComponent } from "./compra-envio/compra-envio.component";
 import { MovimientosComponent } from "./movimientos/movimientos.component";
-import { PerfilComponent } from "../pruebas/perfil/perfil.component";
+import { PerfilComponent } from "../perfil/perfil.component";
 
 const routes: Routes = [
   {

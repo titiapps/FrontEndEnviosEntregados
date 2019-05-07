@@ -15,9 +15,9 @@ import { PipesModule } from "../pipes/pipes.module";
 import { CompraEnvioComponent } from "./compra-envio/compra-envio.component";
 import { CreditCardDirectivesModule } from "angular-cc-library";
 import { MovimientosComponent } from "./movimientos/movimientos.component";
-import { MovimientosPerfilComponent } from '../pruebas/perfil/movimientos-perfil.component';
-import { TarjetaPerfilComponent } from '../pruebas/perfil/tarjeta-perfil.component';
-import { PerfilComponent } from '../pruebas/perfil/perfil.component';
+import { MovimientosPerfilComponent } from '../perfil/movimientos-perfil.component';
+import { TarjetaPerfilComponent } from '../perfil/tarjeta-perfil.component';
+import { PerfilComponent } from '../perfil/perfil.component';
 
 @NgModule({
   declarations: [
