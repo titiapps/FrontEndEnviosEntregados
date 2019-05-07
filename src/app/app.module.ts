@@ -28,6 +28,7 @@ import { PerfilComponent } from './components/pruebas/perfil/perfil.component';
 import { PasswordComponent } from './components/pruebas/password/password.component';
 import { ConfirmComponent } from './components/pruebas/confirm/confirm.component';
 import { RecoverComponent } from './components/pruebas/recover/recover.component';
+import { PipesModule } from "./components/pipes/pipes.module";
 
 @NgModule({
   declarations: [
@@ -58,11 +59,11 @@ import { RecoverComponent } from './components/pruebas/recover/recover.component
     FormsModule,
     SharedModule,
     NgPaymentCardModule,
-    CreditCardDirectivesModule
+    CreditCardDirectivesModule,
+    PipesModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [PizzaPartyComponent,
-                    AppPizzaPartyComponent]
+  entryComponents: [PizzaPartyComponent, AppPizzaPartyComponent]
 })
 export class AppModule {}

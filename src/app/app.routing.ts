@@ -19,11 +19,6 @@ const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "registrarse", component: RegistrarComponent },
   { path: "conekta", component: ConektaComponent },
-  {
-    path: "perfil/:id",
-    canActivate: [LoginguardGuard, VerificatokenGuard],
-    component: PerfilComponent
-  },
   { path: "card", component: CardValComponent },
   { path: "header", component: HeaderComponent },
   { path: 'update/:id', component: UserComponent},

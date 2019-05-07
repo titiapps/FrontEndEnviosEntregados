@@ -1,5 +1,5 @@
-import { Injectable } from "@angular/core";
-import { Observable } from "rxjs/Rx";
+import { Injectable, Output, EventEmitter } from "@angular/core";
+import { Observable, BehaviorSubject } from "rxjs/Rx";
 import { Router } from "@angular/router";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Usuario } from "src/app/models/usuario.model";
@@ -11,9 +11,14 @@ import Swal from "sweetalert2";
 export class UsuarioService {
   token: string;
   usuario: Usuario;
+  private messageSource = new BehaviorSubject<string>("algo");
 
   constructor(private _http: HttpClient, private _router: Router) {
     this.cargarDatos();
+  }
+
+  getUsuarioCool() {
+    return this.messageSource.asObservable();
   }
 
   getUsuario(id: String): Observable<any> {
@@ -63,7 +68,7 @@ export class UsuarioService {
         this.token = resp.token;
         this.usuario = resp.usuario;
         this.guardarStorage(resp.id, resp.token, resp.usuario);
-
+        this.messageSource.next("juanito");
         return resp;
       })
       .catch(err => {

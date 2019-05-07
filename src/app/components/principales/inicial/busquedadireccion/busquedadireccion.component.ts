@@ -233,6 +233,7 @@ export class BusquedadireccionComponent implements OnInit {
       this.lugarOrigen.persona = this.nameOrig;
       this.lugarDestino.persona = this.nameDest;
 
+
       this.paquete = {
         paquete_longitud: Math.round((this.largo.value / 2.54) * 10) / 10,
         paquete_anchura: Math.round((this.ancho.value / 2.54) * 10) / 10,

@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import {
   PagosService,
   DireccionesService
@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 import { Router } from "@angular/router";
 import { CreditCardValidator } from "angular-cc-library";
 import { FormBuilder, FormGroup, NgForm, Validators } from "@angular/forms";
-import swal from 'sweetalert2';
+import swal from "sweetalert2";
 
 declare var Conekta: any;
 
@@ -17,6 +17,7 @@ declare var Conekta: any;
   styleUrls: ["./pago.component.css"]
 })
 export class PagoComponent implements OnInit {
+  @ViewChild("pagar") btnpagar: ElementRef;
   form: FormGroup;
   submitted: boolean;
   disable: boolean;
@@ -53,7 +54,9 @@ export class PagoComponent implements OnInit {
     this.packageLong = Math.round(this.packageData[0].paquete_longitud * 2.54);
     this.packageWidth = Math.round(this.packageData[0].paquete_anchura * 2.54);
     this.packageHeight = Math.round(this.packageData[0].paquete_altura * 2.54);
-    this.packageWeight = Math.round(this.packageData[0].paquete_peso / 0.035274);
+    this.packageWeight = Math.round(
+      this.packageData[0].paquete_peso / 0.035274
+    );
     console.log(this.packageData);
     this.packageOrig = this._direccionesService.origen;
     this.packageDest = this._direccionesService.destino;
@@ -136,6 +139,11 @@ export class PagoComponent implements OnInit {
               "error"
             );
             this._router.navigate(["/inicio"]);
+          },
+          () => {
+            //este es para cuando hace el pago y que no  se le duplique
+            this.btnpagar.nativeElement.disabled = false;
+            this.btnpagar.nativeElement.style.pointerEvents = "auto";
           }
         );
       })
@@ -150,16 +158,21 @@ export class PagoComponent implements OnInit {
 
   onSubmit(form) {
     this.submitted = true;
-    if (form.get('creditCard').invalid && form.get('expDate').invalid && form.get('cvc').invalid ) {
-
+    this.btnpagar.nativeElement.disabled = true;
+    this.btnpagar.nativeElement.style.pointerEvents = "none";
+    if (
+      form.get("creditCard").invalid &&
+      form.get("expDate").invalid &&
+      form.get("cvc").invalid
+    ) {
       Swal.fire(
         "Existe un error con los datos de tu tarjeta",
         "Verifica tus datos",
         "error"
       );
+      this.btnpagar.nativeElement.disabled = true;
       // location.reload();
     } else {
-
       // this.form.disable(true);
 
       /* this.datos_pago.nombre = form.value.nombre;
@@ -175,8 +188,6 @@ export class PagoComponent implements OnInit {
       this.datos_pago.cvc = 123; //no estaba pedazo de
       /*    console.log(this.datos_pago); */
       this.realizarPago();
-
-      console.log(form);
     }
   }
 }

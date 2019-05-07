@@ -1,5 +1,12 @@
-
-.elementos{
+.elementos {
     display: flex;
     justify-content: space-around;
+}
+
+.btn-habilidado {
+    background-color: brown;
+}
+
+.btn_deshabilitado {
+    background-color: blueviolet;
 }

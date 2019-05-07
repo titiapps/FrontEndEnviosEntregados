@@ -13,6 +13,7 @@ import { Observable } from "rxjs";
 export class MovimientosComponent implements OnInit {
   id_movimiento: String;
   etiqueta: String;
+  etiqueta_pdf: String;
 
   constructor(
     private _router: Router,
@@ -26,13 +27,13 @@ export class MovimientosComponent implements OnInit {
     });
   }
 
-  async ngOnInit() {
-    let respuesta: any = await this.regresarInformacionMovimiento(
-      this.id_movimiento
+  ngOnInit() {
+    this.regresarInformacionMovimiento(this.id_movimiento).then(
+      (respuesta: any) => {
+        this.etiqueta = respuesta.res_movimiento.etiqueta;
+        this.etiqueta_pdf = respuesta.res_movimiento.etiqueta_pdf;
+      }
     );
-
-    this.etiqueta = respuesta.res_movimiento.etiqueta;
-    console.log(this.etiqueta);
   }
 
   //esta nos regresa la informacion completa ocn el movimiento que se hizo para generar la etiqueta
@@ -49,5 +50,8 @@ export class MovimientosComponent implements OnInit {
           }
         );
     });
+  }
+  abrir_etiqueta(num_etiqueta) {
+    window.open(num_etiqueta, "_blank");
   }
 }

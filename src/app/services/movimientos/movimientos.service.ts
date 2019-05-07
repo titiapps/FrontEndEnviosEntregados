@@ -10,4 +10,10 @@ export class MovimientosService {
     let url = URL_ENVIOS_BACK + "movimientos/buscarMovimiento/" + id;
     return this._http.get(url);
   }
+
+  regresarMovimientosUsuario(id: String) {
+    let url = URL_ENVIOS_BACK + "movimientos/movimientousuario/" + id;
+
+    return this._http.get(url);
+  }
 }

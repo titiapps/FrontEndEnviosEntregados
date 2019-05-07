@@ -1,15 +1,16 @@
 .etiqueta {
-    padding: 1rem;
-    width: 400px;
-    height: 700px;
+
+    max-width: 100%;
+    min-width: 18rem;
+    height: 100vh;
     text-decoration: none;
     
 }
 
 .contenedor-etiqueta {
     display: flex;
-    justify-content: flex-start;
-    margin-left: 10rem;
+    justify-content: center;
+    
 }
 .btn-imprimir{
     text-decoration: none;

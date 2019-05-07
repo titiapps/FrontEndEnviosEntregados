@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-principales',
-  templateUrl: './principales.component.html',
-  styleUrls: ['./principales.component.css']
+  selector: "app-principales",
+  templateUrl: "./principales.component.html",
+  styleUrls: ["./principales.component.css"]
 })
 export class PrincipalesComponent implements OnInit {
-
-  constructor() { }
+  cargado = false;
+  constructor() {}
 
   ngOnInit() {
+   
   }
-
 }

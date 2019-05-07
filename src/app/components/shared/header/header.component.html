@@ -1,25 +1,37 @@
 <div>
   <header class="header contenedor">
     <div class="logo">
-      <img
-        src="https://brandmark.io/logo-rank/random/beats.png"
+      <img style="width:500px"
+        src="../../../../assets/img/LOGOENTREGANDO.png"
         alt=""
         srcset=""
       />
     </div>
     <nav class="navegacion">
       <a href="">Inicio</a>
-      <a [routerLink]="['/registrarse']" routerLinkActive="router-link-active"
+      <a
+        [routerLink]="['/registrarse']"
+        routerLinkActive="router-link-active"
+        *ngIf="!logueado"
         >Registrarse</a
       >
       <a
         *ngIf="!logueado; else cerrarSesion"
-        [routerLink]="['/login']" 
+        [routerLink]="['/login']"
         routerLinkActive="router-link-active"
         >Iniciar Sesion</a
       >
-
+      <!-- {{this.usuario|json}} -->
       <ng-template #cerrarSesion>
+        <a
+          [routerLink]="['/perfil/', this.usuario._id]"
+          routerLinkActive="router-link-active" 
+        >
+          <i class="fas fa-user fa-lg"></i>
+          <label for="" *ngIf="this.usuario"
+            >Perfil ( {{ this.usuario.nombre }})
+          </label></a
+        >
         <a (click)="cerrarSesio()" routerLinkActive="router-link-active"
           >Cerrar Sesión</a
         >

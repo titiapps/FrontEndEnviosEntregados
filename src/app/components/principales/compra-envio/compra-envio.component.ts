@@ -59,7 +59,8 @@ export class CompraEnvioComponent implements OnInit {
         respEnvio.envioGuardado._id,
         respEnvio.id_pago_guardado,
         compraCompletada.compraCompletadaEtiqueta.postage_label.label_url,
-        compraCompletada.compraCompletadaEtiqueta.tracking_code
+        compraCompletada.compraCompletadaEtiqueta.tracking_code,
+        compraCompletada.etiqueta_pdf
       )
       .subscribe((respMovimiento: any) => {
         this._router.navigate([
