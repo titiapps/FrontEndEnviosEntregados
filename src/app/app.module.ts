@@ -28,6 +28,13 @@ import {
 } from "./components/pruebas/user/user.component";
 import { PerfilComponent } from "./components/perfil/perfil.component";
 import { PipesModule } from "./components/pipes/pipes.module";
+import { ReporteComponent } from "./components/pruebas/reporte/reporte.component";
+import { registerLocaleData } from "@angular/common";
+import localeMX from "@angular/common/locales/es-MX";
+import { TablareporteComponent } from './components/pruebas/reporte/tablareporte.component';
+
+// the second parameter 'fr' is optional
+registerLocaleData(localeMX,'es-MX');
 
 @NgModule({
   declarations: [
@@ -41,7 +48,9 @@ import { PipesModule } from "./components/pipes/pipes.module";
     PizzaPartyComponent,
     TrackComponent,
     UserComponent,
-    AppPizzaPartyComponent
+    AppPizzaPartyComponent,
+    ReporteComponent,
+    TablareporteComponent
   ],
   imports: [
     appRouting,

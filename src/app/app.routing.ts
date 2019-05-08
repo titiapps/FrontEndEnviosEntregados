@@ -7,7 +7,8 @@ import { ConektaComponent } from "./components/pruebas/conekta/conekta.component
 import { PrincipalesComponent } from "./components/principales/principales.component";
 import { CardValComponent } from "./components/pruebas/card-val/card-val.component";
 import { HeaderComponent } from "./components/shared/header/header.component";
-import { UserComponent } from './components/pruebas/user/user.component';
+import { UserComponent } from "./components/pruebas/user/user.component";
+import { ReporteComponent } from "./components/pruebas/reporte/reporte.component";
 // COMPONENTES COMPARTIDOS
 
 const routes: Routes = [
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: "conekta", component: ConektaComponent },
   { path: "card", component: CardValComponent },
   { path: "header", component: HeaderComponent },
-  { path: 'update', component: UserComponent},
+  { path: "reporte", component: ReporteComponent },
+  { path: "update", component: UserComponent },
 
   {
     path: "",

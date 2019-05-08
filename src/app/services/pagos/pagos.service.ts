@@ -20,7 +20,12 @@ export class PagosService {
     };
   }
 
-  realizarPagoConekta(token_conekta: any) {
+  realizarPagoConekta(
+    token_conekta: any,
+    precio: any,
+    cantidad: Number,
+    producto: String
+  ) {
     var headers = new HttpHeaders()
       .set("Authorization", this._usuarioService.token)
       .set("token_public_conekta", token_conekta);
@@ -29,7 +34,7 @@ export class PagosService {
       headers
     };
     let url = URL_ENVIOS_BACK + "conekta/pagarconekta";
-    let body = { producto: "Galletas Maria", precio: 50, cantidad: 1 };
+    let body = { producto, precio, cantidad };
     return this._http
       .post(url, body, httpOptions)
       .map(resp => {

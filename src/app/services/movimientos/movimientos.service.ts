@@ -13,7 +13,11 @@ export class MovimientosService {
 
   regresarMovimientosUsuario(id: String) {
     let url = URL_ENVIOS_BACK + "movimientos/movimientousuario/" + id;
-
     return this._http.get(url);
+  }
+  movimientosReporteFechas(fecha_inicio, fecha_fin) {
+    let url = URL_ENVIOS_BACK + "movimientos/movimientosFecha";
+    let body = { fecha_inicio, fecha_fin };
+    return this._http.post(url, body);
   }
 }

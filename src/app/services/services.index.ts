@@ -5,3 +5,4 @@ export { PagosService } from "./pagos/pagos.service";
 export { PagoEnvioService } from "./pagos/pago-envio.service";
 export { MovimientosService } from "./movimientos/movimientos.service";
 export { TrackService } from './track/track.service';
+export { ExcelService} from "./pruebas/excel.service";

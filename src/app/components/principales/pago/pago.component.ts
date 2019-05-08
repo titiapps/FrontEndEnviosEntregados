@@ -113,39 +113,45 @@ export class PagoComponent implements OnInit {
       .then((token: any) => {
         console.log(token);
         this.token_conekta = token.id;
-        this._pagoService.realizarPagoConekta(this.token_conekta).subscribe(
-          (resp: any) => {
-            //asignamos los datos  para poder mandar al backend
-            this._pagoService.pagoDataInfo = {
-              id_pago_plataforma: resp.id,
-              forma_pago: "Tarjeta",
-              monto: this.seleccionUsuario.costo //recuerda que aqui puede ser diferente porque puede enviarse mas envios
-            };
 
-            console.log(resp);
-            Swal.fire(
-              "Finalizado",
-              "Tu pago se realizo de manera correcta",
-              "success"
-            );
-            //aqui mandamos los datos al backend
-            this._router.navigate(["/compraEnvio"]);
-          },
-          error => {
-            console.log(error);
-            Swal.fire(
-              "Error de Pago",
-              "Hubo un problema al realizar la transacción",
-              "error"
-            );
-            this._router.navigate(["/inicio"]);
-          },
-          () => {
-            //este es para cuando hace el pago y que no  se le duplique
-            this.btnpagar.nativeElement.disabled = false;
-            this.btnpagar.nativeElement.style.pointerEvents = "auto";
-          }
-        );
+        let costo = this.seleccionUsuario.costo;
+        let cantidad = 1;
+        let producto:String = this.seleccionUsuario.paqueteria + "Paquete Entregando";
+        this._pagoService
+          .realizarPagoConekta(this.token_conekta, costo, cantidad, producto)
+          .subscribe(
+            (resp: any) => {
+              //asignamos los datos  para poder mandar al backend
+              this._pagoService.pagoDataInfo = {
+                id_pago_plataforma: resp.id,
+                forma_pago: "Tarjeta",
+                monto: this.seleccionUsuario.costo //recuerda que aqui puede ser diferente porque puede enviarse mas envios
+              };
+
+              console.log(resp);
+              Swal.fire(
+                "Finalizado",
+                "Tu pago se realizo de manera correcta",
+                "success"
+              );
+              //aqui mandamos los datos al backend
+              this._router.navigate(["/compraEnvio"]);
+            },
+            error => {
+              console.log(error);
+              Swal.fire(
+                "Error de Pago",
+                "Hubo un problema al realizar la transacción",
+                "error"
+              );
+              this._router.navigate(["/inicio"]);
+            },
+            () => {
+              //este es para cuando hace el pago y que no  se le duplique
+              this.btnpagar.nativeElement.disabled = false;
+              this.btnpagar.nativeElement.style.pointerEvents = "auto";
+            }
+          );
       })
       .catch(err => {
         Swal.fire(
@@ -175,18 +181,17 @@ export class PagoComponent implements OnInit {
     } else {
       // this.form.disable(true);
 
-      /* this.datos_pago.nombre = form.value.nombre;
+      this.datos_pago.nombre = form.value.nombre;
       this.datos_pago.number = form.value.creditCard;
       this.datos_pago.exp_month = form.value.expDate.slice(0, 2);
       this.datos_pago.exp_year = form.value.expDate.slice(5, 9);
-      this.datos_pago.cvc = form.value.cvc; */
+      this.datos_pago.cvc = form.value.cvc; //no estaba pedazo de
 
-      this.datos_pago.nombre = "Fulanito Perez";
+      /*   this.datos_pago.nombre = "Fulanito Perez";
       this.datos_pago.number = "4242424242424242";
       this.datos_pago.exp_month = 12;
       this.datos_pago.exp_year = 2020;
-      this.datos_pago.cvc = 123; //no estaba pedazo de
-      /*    console.log(this.datos_pago); */
+      this.datos_pago.cvc = 123; */ /*    console.log(this.datos_pago); */
       this.realizarPago();
     }
   }

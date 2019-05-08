@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, LOCALE_ID } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import {
   UsuarioService,
@@ -9,7 +9,8 @@ import {
 @Component({
   selector: "app-perfil",
   templateUrl: "./perfil.component.html",
-  styleUrls: ["./perfil.component.css"]
+  styleUrls: ["./perfil.component.css"],
+  providers:[{provide: LOCALE_ID, useValue: 'es-MX' }]
 })
 export class PerfilComponent implements OnInit {
   private id_perfil: String;

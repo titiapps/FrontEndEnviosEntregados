@@ -35,7 +35,8 @@
 
         <span class=" f8 black-90">Num_Guia:</span
         ><!-- recuerda se debe movimiento el pipe -->
-        <a style="display:inline-block;text-decoration: none"
+        <a
+          style="display:inline-block;text-decoration: none"
           class="f5 db  dark-blue "
           [href]="movimiento.envio.paqueteria | rastreo: movimiento.num_guia"
           >{{ movimiento.num_guia }}</a
@@ -63,6 +64,9 @@
           routerLinkActive="router-link-active"
           ><span class="f9 db dark-blue underline">Etiqueta </span></a
         >
+        <span class="f5 db  black-70 f5"
+          ><span class="black-90">Fecha:</span> {{movimiento.fecha_movimiento|date:"dd/MM/yyyy"}}
+        </span>
       </div>
     </li>
   </ul>

@@ -8,6 +8,7 @@ import { PagosService } from "./pagos/pagos.service";
 import { PagoEnvioService } from "./pagos/pago-envio.service";
 import { MovimientosService } from './movimientos/movimientos.service';
 import { TrackService } from './track/track.service';
+import { ExcelService } from './pruebas/excel.service';
 
 @NgModule({
   declarations: [],
@@ -19,7 +20,8 @@ import { TrackService } from './track/track.service';
     PagosService,
     PagoEnvioService,
     MovimientosService,
-    TrackService
+    TrackService,
+    ExcelService
   ]
 })
 export class ServicesModule {}
