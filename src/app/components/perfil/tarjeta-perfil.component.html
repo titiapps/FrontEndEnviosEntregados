@@ -12,5 +12,15 @@
     <h2 class="f5 fw4 gray mt0">
         {{usuario.telefono}}
       </h2>
+    <h2 class="f5 fw4 gray mt0" >
+      <a
+        [routerLink]="['/update/', this.usuario._id]"
+        routerLinkActive="router-link-active">
+        <i class="fas fa-user fa-lg"></i>
+        <label for="" *ngIf="this.usuario">
+          Editar datos
+        </label>
+      </a>
+    </h2>
   </div>
 </article>

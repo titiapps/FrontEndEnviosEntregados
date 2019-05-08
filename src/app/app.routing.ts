@@ -7,7 +7,7 @@ import { ConektaComponent } from "./components/pruebas/conekta/conekta.component
 import { PrincipalesComponent } from "./components/principales/principales.component";
 import { CardValComponent } from "./components/pruebas/card-val/card-val.component";
 import { HeaderComponent } from "./components/shared/header/header.component";
-import { PerfilComponent } from "./components/pruebas/perfil/perfil.component";
+import { PerfilComponent } from './components/perfil/perfil.component';
 import { VerificatokenGuard } from "./services/guards/verificatoken.guard";
 import { UserComponent} from './components/pruebas/user/user.component';
 import {PasswordComponent} from './components/pruebas/password/password.component';

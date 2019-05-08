@@ -63,7 +63,9 @@ export class PagoComponent implements OnInit {
     console.log(this.seleccionUsuario);
     this.form = this._fb.group({
       nombre: "",
-      creditCard: ["", [<any>CreditCardValidator.validateCCNumber]],
+      creditCard: ["", [<any>CreditCardValidator.validateCCNumber,
+                        <any>Validators.minLength(16)],
+                        <any>Validators.maxLength(17)],
       expDate: [
         "",
         [

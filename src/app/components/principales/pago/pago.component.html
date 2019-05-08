@@ -1,50 +1,49 @@
 <div class="elementos">
-  <article class="mw5  ma2 bg-white br3 pa3 pa4-ns mv3 ba b--black-10 ">
-    <div class="tc">
-      <img
-        src="assets/img/{{ seleccionUsuario.paqueteria }}.jpg"
-        class="br-100 h3 w3 dib"
-      />
-      <h1 class="f4">{{ seleccionUsuario.paqueteria }}</h1>
-      <hr class="mw3 bb bw1 b--black-10" />
-    </div>
-    <p class="lh-copy measure center f6 black-70">
-      Servicio:{{ seleccionUsuario.servicio }} Costo:{{ seleccionUsuario.costo }}
-    </p>
-    <p class="lh-copy measure center f6 black-70">
-      Paquete: {{ packageLong }} X {{ packageWidth}} X {{packageHeight}} Peso:{{ packageWeight }} kg
-    </p>
-    <p class="lh-copy measure center f6 black-70">
-      Direccion destino:
-    </p>
-    <p class="lh-copy measure center f6 black-70">
-      {{packageDest.persona}}
-    </p>
-    <p class="lh-copy measure center f6 black-70">
-      {{packageDest.street}} {{packageDest.houseNumber}}, {{packageDest.street2}}
-    </p>
-    <p class="lh-copy measure center f6 black-70">
-      {{packageDest.state}} {{packageDest.city}}, {{packageDest.country}}, {{packageDest.postalCode}}
-    </p>
+  <aside class="aside aside-1">
+    <article class="mw5  ma2 bg-white br3 pa3 pa4-ns mv3 ba b--black-10 ">
+      <div class="tc">
+        <img
+          src="assets/img/{{ seleccionUsuario.paqueteria }}.jpg"
+          class="br-100 h3 w3 dib"
+        />
+        <h1 class="f4">{{ seleccionUsuario.paqueteria }}</h1>
+        <hr class="mw3 bb bw1 b--black-10" />
+      </div>
+      <p class="item lh-copy measure center f6 black-70">
+        Servicio:{{ seleccionUsuario.servicio }} Costo:{{ seleccionUsuario.costo }}
+      </p>
+      <p class="lh-copy measure center f6 black-70">
+        Paquete: {{ packageLong }} X {{ packageWidth}} X {{packageHeight}} Peso:{{ packageWeight }} kg
+      </p>
+      <p class="lh-copy measure center f6 black-70">
+        Direccion destino:
+      </p>
+      <p class="lh-copy measure center f6 black-70">
+        {{packageDest.persona}}
+      </p>
+      <p class="lh-copy measure center f6 black-70">
+        {{packageDest.street}} {{packageDest.houseNumber}}, {{packageDest.street2}}
+      </p>
+      <p class="lh-copy measure center f6 black-70">
+        {{packageDest.state}} {{packageDest.city}}, {{packageDest.country}}, {{packageDest.postalCode}}
+      </p>
 
-    <p class="lh-copy measure center f6 black-70">
-      Direccion origen:
-    </p>
-    <p class="lh-copy measure center f6 black-70">
-      {{packageOrig.persona}}
-    </p>
-    <p class="lh-copy measure center f6 black-70">
-      {{packageOrig.street}} {{packageOrig.houseNumber}}, {{packageOrig.street2}}
-    </p>
-    <p class="lh-copy measure center f6 black-70">
-      {{packageOrig.state}}, {{packageOrig.city}}, {{packageOrig.country}}, {{packageOrig.postalCode}}
-    </p>
+      <p class="lh-copy measure center f6 black-70">
+        Direccion origen:
+      </p>
+      <p class="lh-copy measure center f6 black-70">
+        {{packageOrig.persona}}
+      </p>
+      <p class="lh-copy measure center f6 black-70">
+        {{packageOrig.street}} {{packageOrig.houseNumber}}, {{packageOrig.street2}}
+      </p>
+      <p class="lh-copy measure center f6 black-70">
+        {{packageOrig.state}}, {{packageOrig.city}}, {{packageOrig.country}}, {{packageOrig.postalCode}}
+      </p>
 
+    </article>
+  </aside>
 
-
-
-
-  </article>
   <main class="pa4 black-80">
     <form class="measure center" [formGroup]="form" (ngSubmit)="onSubmit(form)" novalidate>
       <fieldset id="sign_up" class="ba b--transparent ph0 mh0">

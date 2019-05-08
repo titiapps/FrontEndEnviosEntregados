@@ -24,7 +24,7 @@ import { CardValComponent } from './components/pruebas/card-val/card-val.compone
 import { TrackComponent } from './components/pruebas/track/track.component';
 import { UserComponent,
          AppPizzaPartyComponent} from './components/pruebas/user/user.component';
-import { PerfilComponent } from './components/pruebas/perfil/perfil.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
 import { PasswordComponent } from './components/pruebas/password/password.component';
 import { ConfirmComponent } from './components/pruebas/confirm/confirm.component';
 import { RecoverComponent } from './components/pruebas/recover/recover.component';
@@ -43,7 +43,6 @@ import { PipesModule } from "./components/pipes/pipes.module";
     TrackComponent,
     UserComponent,
     AppPizzaPartyComponent,
-    PerfilComponent,
     PasswordComponent,
     ConfirmComponent,
     RecoverComponent

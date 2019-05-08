@@ -3,6 +3,16 @@
     justify-content: space-around;
 }
 
+.item{
+flex-grow: 2;
+
+}
+
+.tc{
+  
+
+}
+
 .btn-habilidado {
     background-color: brown;
 }

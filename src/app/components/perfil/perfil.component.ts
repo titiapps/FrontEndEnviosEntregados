@@ -34,12 +34,8 @@ export class PerfilComponent implements OnInit {
     });
   }
   usuarioMovimientos() {
-<<<<<<< HEAD:src/app/components/pruebas/perfil/perfil.component.ts
-
-=======
     this._movimientosServices
       .regresarMovimientosUsuario(this.id_perfil)
       .subscribe((movimientos: Array<any>) => (this.movimientos = movimientos));
->>>>>>> 9d95de93692ff51b7b8392ab2970b59f898d0693:src/app/components/perfil/perfil.component.ts
   }
 }
