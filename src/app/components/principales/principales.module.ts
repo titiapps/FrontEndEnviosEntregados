@@ -18,6 +18,8 @@ import { MovimientosComponent } from "./movimientos/movimientos.component";
 import { MovimientosPerfilComponent } from '../perfil/movimientos-perfil.component';
 import { TarjetaPerfilComponent } from '../perfil/tarjeta-perfil.component';
 import { PerfilComponent } from '../perfil/perfil.component';
+import { ReporteComponent } from '../admin/reporte/reporte.component';
+import { TablareporteComponent } from '../admin/reporte/tablareporte.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,10 @@ import { PerfilComponent } from '../perfil/perfil.component';
     MovimientosComponent,
     MovimientosPerfilComponent,
     TarjetaPerfilComponent,
-    PerfilComponent
+    PerfilComponent,
+    ReporteComponent,
+    TablareporteComponent
+    ,
   ],
   exports: [InicialComponent],
   imports: [

@@ -1,0 +1,31 @@
+<div class="input_reporte">
+  <mat-form-field class="input_reporte_mat">
+    <input
+      [(ngModel)]="fecha"
+      name="fecha"
+      matInput
+      [matDatepicker]="picker"
+      placeholder="Fecha de Inicio"
+      required
+    />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field class="input_reporte_mat">
+    <input
+      [(ngModel)]="fecha2"
+      name="fecha2"
+      matInput
+      [matDatepicker]="picker2"
+      placeholder="Fecha Fin"
+      required
+    />
+    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+    <mat-datepicker #picker2></mat-datepicker>
+  </mat-form-field>
+  <div style="padding:1rem">
+    <button mat-raised-button color="primary" (click)="verFecha()">Ver</button>
+  </div>
+</div>
+<app-tablareporte [movimientos]="movimientos" [fecha_inicio]="fecha_inicio" [fecha_fin]="fecha_fin"></app-tablareporte>

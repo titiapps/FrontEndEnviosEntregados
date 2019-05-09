@@ -1,0 +1,75 @@
+<div class="pa4" *ngIf="movimientosReporte.length>0">
+    <button mat-raised-button color="primary" (click)="generarReporte()">Generar Reporte</button>
+  </div>
+<div class="pa4">
+  <div class="overflow-auto">
+    <table class="f6 w-100 mw9" cellspacing="0">
+      <thead>
+        <tr class="stripe-dark">
+          <th class="fw5 tl pa3 bg-white">Usuario</th>
+          <th class="fw5 tl pa3 bg-white center">Email</th>
+          <th class="fw5 tl pa3 bg-white center">Telefono</th>
+          <th class="fw5 tl pa3 bg-white center">Fecha</th>
+          <th class="fw5 tl pa3 bg-white center">Remitente</th>
+          <th class="fw5 tl pa3 bg-white center">Origen</th>
+          <th class="fw5 tl pa3 bg-white center">Destinatario</th>
+          <th class="fw5 tl pa3 bg-white center">Destino</th>
+          <th class="fw5 tl pa3 bg-white center">Paq.Tamaño</th>
+          <th class="fw5 tl pa3 bg-white center">Paq.Peso</th>
+          <th class="fw5 tl pa3 bg-white center">Paqueteria</th>
+          <th class="fw5 tl pa3 bg-white center">Pago</th>
+        </tr>
+      </thead>
+      <tbody class="lh-copy">
+        <tr class="stripe-dark" *ngFor="let movimiento of movimientos">
+          <td class="pa3">
+            {{ movimiento.usuario.nombre }}
+            {{ movimiento.usuario.apellido_paterno }}
+            {{ movimiento.usuario.apellido_materno }}
+          </td>
+          <td class="pa3">{{ movimiento.usuario.email }}</td>
+          <td class="pa3">{{ movimiento.usuario.telefono }}</td>
+          <td class="pa3">
+            {{ movimiento.fecha_movimiento | date: "dd/MM/yyyy" }}
+          </td>
+          <td class="pa3">
+            {{ movimiento.envio.o_origen.persona }}
+          </td>
+          <td class="pa3">
+            {{ movimiento.envio.o_origen.street }}
+            {{ movimiento.envio.o_origen.houseNumber }},
+            {{ movimiento.envio.o_origen.city }},
+            {{ movimiento.envio.o_origen.state }},
+            {{ movimiento.envio.o_origen.district }},
+            {{ movimiento.envio.o_origen.postalCode }}
+          </td>
+          <td class="pa3">
+            {{ movimiento.envio.o_destino.persona }}
+          </td>
+          <td class="pa3">
+            {{ movimiento.envio.o_destino.street }}
+            {{ movimiento.envio.o_destino.houseNumber }},
+            {{ movimiento.envio.o_destino.city }},
+            {{ movimiento.envio.o_destino.state }},
+            {{ movimiento.envio.o_destino.district }},
+            {{ movimiento.envio.o_destino.postalCode }}
+          </td>
+          <td class="pa3">
+            {{ movimiento.envio.paquete_altura }}x{{
+              movimiento.envio.paquete_anchura
+            }}x{{ movimiento.envio.paquete_longitud }} cm
+          </td>
+          <td class="pa3">{{ movimiento.envio.paquete_peso }} kg</td>
+          <td class="pa3">
+            {{ movimiento.envio.paqueteria }},
+            {{ movimiento.envio.servicio }}
+            Guia:{{ movimiento.num_guia }}
+          </td>
+          <td class="pa3">
+            {{ movimiento.pago.forma_pago }}, ${{ movimiento.pago.monto }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

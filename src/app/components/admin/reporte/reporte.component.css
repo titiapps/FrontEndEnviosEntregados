@@ -1,0 +1,9 @@
+.input_reporte{
+    margin-top: 1.2rem;
+    display: flex;
+    justify-content: center;
+}
+.input_reporte_mat{
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
