@@ -26,25 +26,25 @@ import { MovimientosService } from "src/app/services/services.index";
 })
 export class ReporteComponent implements OnInit {
   fecha: any;
+  fecha_inicio:any;
+  fecha_fin:any;
   fecha2: any;
-  movimientos: any;
+  movimientos: Array<any>;
 
   constructor(private _movimientoService: MovimientosService) {}
 
   ngOnInit() {
     /*  this._movimientosService.movimientosReporteFechas() */
   }
-
-  exportAsXLSX(): void {
-    /*  */
-  }
   verFecha() {
     let fecha_inicio = this.getFecha(1);
     let fecha_fin = this.getFecha(2);
+    this.fecha_inicio=fecha_inicio;
+    this.fecha_fin = fecha_fin;
 
     this._movimientoService
       .movimientosReporteFechas(fecha_inicio, fecha_fin)
-      .subscribe(resp => {
+      .subscribe((resp: Array<any>) => {
         console.log(resp);
         this.movimientos = resp;
       });

@@ -6,4 +6,5 @@ export { PagoEnvioService } from './pagos/pago-envio.service';
 export { MovimientosService } from './movimientos/movimientos.service';
 export { TrackService } from './track/track.service';
 export { EmailService } from './email/email.service';
-export { ExcelService} from "./pruebas/excel.service";
+export {VerificarRolGuard} from "./guards/verificarrol.guard";
+export { ExcelService} from "./reportes/excel.service";

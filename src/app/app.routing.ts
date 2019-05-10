@@ -12,7 +12,7 @@ import { VerificatokenGuard } from "./services/guards/verificatoken.guard";
 import { UserComponent} from './components/pruebas/user/user.component';
 import {PasswordComponent} from './components/pruebas/password/password.component';
 import {RecoverComponent} from './components/pruebas/recover/recover.component';
-import { ReporteComponent } from "./components/pruebas/reporte/reporte.component";
+import {ReporteComponent} from './components/admin/reporte/reporte.component';
 // COMPONENTES COMPARTIDOS
 
 const routes: Routes = [
@@ -23,7 +23,6 @@ const routes: Routes = [
   { path: "header", component: HeaderComponent },
   { path: 'update/:id', component: UserComponent},
   { path: "reporte", component: ReporteComponent },
-
   {
     path: "",
     component: PrincipalesComponent,

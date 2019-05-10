@@ -6,6 +6,7 @@ import { Usuario } from "src/app/models/usuario.model";
 import { URL_ENVIOS_BACK } from "src/config/config";
 import "rxjs/add/operator/map";
 import Swal from "sweetalert2";
+import { bypassSanitizationTrustResourceUrl } from "@angular/core/src/sanitization/bypass";
 
 @Injectable()
 export class UsuarioService {
@@ -67,7 +68,7 @@ export class UsuarioService {
 
   // VERIFICACION DE USUARIOS
   login(usuario: Usuario): Observable<any> {
-    let url = URL_ENVIOS_BACK + 'autorizacion/login';
+    let url = URL_ENVIOS_BACK + "autorizacion/login";
 
     let { email, password } = usuario;
 
@@ -97,21 +98,48 @@ export class UsuarioService {
     const httpOptions = {
       headers
     };
-    const url = URL_ENVIOS_BACK + `usuario/usuario/${id}`;
-    const { nombre, apellido_paterno, apellido_materno, email, password, telefono } = user;
-    const data = { nombre, apellido_paterno, apellido_materno, email, password, telefono };
+    // const url = URL_ENVIOS_BACK + `usuario/usuario/${id}`;
+    const url = URL_ENVIOS_BACK + 'usuarios_rutas/usuario';
+    const {
+      nombre,
+      apellido_paterno,
+      apellido_materno,
+      email,
+      password,
+      telefono
+    } = user;
+    const data = {
+      nombre,
+      apellido_paterno,
+      apellido_materno,
+      email,
+      password,
+      telefono
+    };
     return this._http
       .put(url, data, httpOptions)
       .map((resp: any) => {
         return resp;
       })
       .catch(err => {
-        Swal.fire('Error', 'Revisa los datos ingresados', 'error');
+        Swal.fire("Error", "Revisa los datos ingresados", "error");
         return Observable.throw(err); // ES PARA EL MANEJO DE LOS ERRORES
       });
   }
+  verificarRolAdmin() {
+    if (localStorage.getItem("usuario")) {
+      let usuario_temp: any = JSON.parse(localStorage.getItem("usuario"));
 
-
+      if (
+        usuario_temp.rol === "Administrador" ||
+        usuario_temp.rol === "Administrador_Dev"
+      ) {
+        return true;
+      }
+    } else {
+      return false;
+    }
+  }
 
   guardarStorage(id: string, token: string, usuario: Usuario) {
     localStorage.setItem("id", id);

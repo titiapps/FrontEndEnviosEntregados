@@ -4,11 +4,13 @@ import { DireccionesService } from "./services.index";
 import { HttpClientModule } from "@angular/common/http";
 import { UsuarioService } from "./usuario/usuario.service";
 import { LoginguardGuard } from "./guards/loginguard.guard";
+
 import { PagosService } from "./pagos/pagos.service";
 import { PagoEnvioService } from "./pagos/pago-envio.service";
 import { MovimientosService } from './movimientos/movimientos.service';
 import { TrackService } from './track/track.service';
-import { ExcelService } from './pruebas/excel.service';
+import { ExcelService } from './reportes/excel.service';
+import { VerificarRolGuard } from './guards/verificarrol.guard';
 
 @NgModule({
   declarations: [],
@@ -17,6 +19,7 @@ import { ExcelService } from './pruebas/excel.service';
     DireccionesService,
     UsuarioService,
     LoginguardGuard,
+    VerificarRolGuard,
     PagosService,
     PagoEnvioService,
     MovimientosService,
