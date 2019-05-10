@@ -17,9 +17,10 @@ export class RecoverComponent implements OnInit {
   ngOnInit() {
   }
   passRecovery() {
-    this.emailService.send('password').subscribe(
+    this.emailService.recovery(this.email).subscribe(
       (resp: any) => {
-        if (resp.id !== undefined) {
+        if (resp.ok) {
+          Swal.fire('Revisa tu correo!', 'Hemos mandado un email con las indicaciones para recuperar tu cuenta.');
           this.router.navigateByUrl('/header', { skipLocationChange: true }).then(() => this.router.navigate(['/inicio']));
         }
       },

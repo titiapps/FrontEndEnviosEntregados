@@ -54,6 +54,17 @@ export class UsuarioService {
       });
   }
 
+  setNewPass(pass, token): Observable<any> {
+    const url = URL_ENVIOS_BACK + 'usuario/usuario/setNewPass';
+    return this._http.post(url, token, pass)
+      .map((resp: any) => {
+      })
+      .catch(err => {
+        Swal.fire('Error', 'No fue posible cambiar el password', 'error');
+        return Observable.throw(err);
+      });
+  }
+
   // VERIFICACION DE USUARIOS
   login(usuario: Usuario): Observable<any> {
     let url = URL_ENVIOS_BACK + 'autorizacion/login';

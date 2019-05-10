@@ -29,6 +29,13 @@ import { PasswordComponent } from './components/pruebas/password/password.compon
 import { ConfirmComponent } from './components/pruebas/confirm/confirm.component';
 import { RecoverComponent } from './components/pruebas/recover/recover.component';
 import { PipesModule } from "./components/pipes/pipes.module";
+import { ReporteComponent } from "./components/pruebas/reporte/reporte.component";
+import { registerLocaleData } from "@angular/common";
+import localeMX from "@angular/common/locales/es-MX";
+import { TablareporteComponent } from './components/pruebas/reporte/tablareporte.component';
+
+// the second parameter 'fr' is optional
+registerLocaleData(localeMX,'es-MX');
 
 @NgModule({
   declarations: [
@@ -45,7 +52,9 @@ import { PipesModule } from "./components/pipes/pipes.module";
     AppPizzaPartyComponent,
     PasswordComponent,
     ConfirmComponent,
-    RecoverComponent
+    RecoverComponent,
+    ReporteComponent,
+    TablareporteComponent
   ],
   imports: [
     appRouting,

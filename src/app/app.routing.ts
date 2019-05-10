@@ -12,7 +12,7 @@ import { VerificatokenGuard } from "./services/guards/verificatoken.guard";
 import { UserComponent} from './components/pruebas/user/user.component';
 import {PasswordComponent} from './components/pruebas/password/password.component';
 import {RecoverComponent} from './components/pruebas/recover/recover.component';
-
+import { ReporteComponent } from "./components/pruebas/reporte/reporte.component";
 // COMPONENTES COMPARTIDOS
 
 const routes: Routes = [
@@ -22,6 +22,8 @@ const routes: Routes = [
   { path: "card", component: CardValComponent },
   { path: "header", component: HeaderComponent },
   { path: 'update/:id', component: UserComponent},
+  { path: "reporte", component: ReporteComponent },
+
   {
     path: "",
     component: PrincipalesComponent,
@@ -29,7 +31,7 @@ const routes: Routes = [
       "./components/principales/principales.module#PrincipalesModule"
   },
   { path: 'recupera', component: RecoverComponent },
-  {path: 'newpass', component: PasswordComponent},
+  {path: 'newpass/:token', component: PasswordComponent},
   { path: "**", component: Pagina404Component }
 ];
 

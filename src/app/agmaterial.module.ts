@@ -5,7 +5,7 @@ import {
   MatFormFieldModule,
   MatFormFieldControl
 } from "@angular/material/form-field";
-import { MatInputModule } from "@angular/material";
+import { MatInputModule, MatNativeDateModule } from "@angular/material";
 import { MatIconModule } from "@angular/material/icon";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatDialogModule } from "@angular/material/dialog";
@@ -13,6 +13,7 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
 MatGridListModule;
 import { MatGridListModule } from "@angular/material/grid-list";
 import { MatProgressBarModule } from "@angular/material/progress-bar";
+import { MatDatepickerModule } from "@angular/material/datepicker";
 
 @NgModule({
   declarations: [],
@@ -26,7 +27,9 @@ import { MatProgressBarModule } from "@angular/material/progress-bar";
     MatDialogModule,
     MatSnackBarModule,
     MatGridListModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   imports: [
     MatButtonModule,
@@ -38,7 +41,9 @@ import { MatProgressBarModule } from "@angular/material/progress-bar";
     MatDialogModule,
     MatSnackBarModule,
     MatGridListModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ]
 })
 export class AgmaterialModule {}

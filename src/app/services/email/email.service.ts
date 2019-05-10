@@ -17,18 +17,11 @@ export class EmailService {
   ) {
   }
 
-  send(type: string) {
-    const headers = new HttpHeaders().set(
-      'Authorization',
-      this.userService.token
-    );
-    const httpOptions = {
-      headers
-    };
-    const data =  {type};
+  recovery(email: string) {
+    const data =  {email};
 
-    const url = URL_ENVIOS_BACK + 'email/email';
-    return this.http.post(url, data, httpOptions);
+    const url = URL_ENVIOS_BACK + 'usuario/usuario/recovery';
+    return this.http.post(url, data);
   }
 
 
