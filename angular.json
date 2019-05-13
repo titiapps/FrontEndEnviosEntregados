@@ -65,7 +65,8 @@
           "configurations": {
             "production": {
               "browserTarget": "FrontEndEntregando:build:production"
- Return code: 1 Output: (TRUNCATED)...opt/elasticbeanstalk/containerfiles/ebnode.py”, line 180, in npm_install Return code: 1 Output: (TRUNCATED)...opt/elasticbeanstalk/containerfiles/ebnode.py”, line 180, in npm_install          }
+            }
+          }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",

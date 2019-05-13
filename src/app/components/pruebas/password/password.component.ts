@@ -12,7 +12,7 @@ import {PizzaPartyComponent} from '../../login/login.component';
   styleUrls: ['./password.component.css']
 })
 export class PasswordComponent implements OnInit {
-
+  hide = true;
   private token: any;
   password: string;
   passwordConf: string;
