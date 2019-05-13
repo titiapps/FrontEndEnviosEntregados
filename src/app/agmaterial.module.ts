@@ -5,7 +5,16 @@ import {
   MatFormFieldModule,
   MatFormFieldControl
 } from "@angular/material/form-field";
-import { MatInputModule, MatNativeDateModule } from "@angular/material";
+import {
+  MatInputModule,
+  MatNativeDateModule,
+  MatToolbarModule,
+  MatSidenavModule,
+  MatTooltipModule,
+  MatToolbar,
+  MatCardModule
+} from "@angular/material";
+import { MatMenuModule } from "@angular/material/menu";
 import { MatIconModule } from "@angular/material/icon";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatDialogModule } from "@angular/material/dialog";
@@ -29,7 +38,13 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
     MatGridListModule,
     MatProgressBarModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatMenuModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatTooltipModule,
+    MatToolbarModule,
+    MatCardModule
   ],
   imports: [
     MatButtonModule,
@@ -43,7 +58,13 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
     MatGridListModule,
     MatProgressBarModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatMenuModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatTooltipModule,
+    MatToolbarModule,
+    MatCardModule
   ]
 })
 export class AgmaterialModule {}

@@ -1,14 +1,15 @@
 <div>
   <header class="header contenedor">
     <div class="logo">
-      <img style="width:500px"
+      <img
+        style="width:500px"
         src="../../../../assets/img/LOGOENTREGANDO.png"
         alt=""
         srcset=""
       />
     </div>
     <nav class="navegacion">
-      <a href="">Inicio</a>
+      <a [routerLink]="['/']" routerLinkActive="router-link-active">Inicio</a>
       <a
         [routerLink]="['/registrarse']"
         routerLinkActive="router-link-active"
@@ -25,7 +26,7 @@
       <ng-template #cerrarSesion>
         <a
           [routerLink]="['/perfil/', this.usuario._id]"
-          routerLinkActive="router-link-active" 
+          routerLinkActive="router-link-active"
         >
           <i class="fas fa-user fa-lg"></i>
           <label for="" *ngIf="this.usuario"
@@ -37,5 +38,58 @@
         >
       </ng-template>
     </nav>
+    <mat-toolbar class="movil" color="primary">
+      <span class="fill-remaining-space">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu" [overlapTrigger]="false">
+          <button
+            mat-menu-item
+            style="width:20rem"
+            [routerLink]="['/']"
+            routerLinkActive="router-link-active"
+          >
+            <mat-icon>home</mat-icon>
+            <span>Inicio</span>
+          </button>
+
+          <button
+            mat-menu-item
+            [routerLink]="['/registrarse']"
+            routerLinkActive="router-link-active"
+            *ngIf="!logueado"
+          >
+            <mat-icon>person_add</mat-icon>
+            <span>Registrarse</span>
+          </button>
+
+          <button
+            mat-menu-item
+            *ngIf="!logueado; else cerrarSesion2"
+            [routerLink]="['/login']"
+            routerLinkActive="router-link-active"
+          >
+            <mat-icon>vpn_key</mat-icon>
+            <span>Iniciar Sesión</span>
+          </button>
+        </mat-menu>
+      </span>
+      <span class="fill-remaining-space"></span>
+    </mat-toolbar>
   </header>
 </div>
+<ng-template #cerrarSesion2>
+  <button
+    mat-menu-item
+    [routerLink]="['/perfil/', this.usuario._id]"
+    routerLinkActive="router-link-active"
+  >
+    <mat-icon>person_pin</mat-icon>
+    <span>Perfil ( {{ this.usuario.nombre }})</span>
+  </button>
+  <button mat-menu-item (click)="cerrarSesio()">
+    <mat-icon>exit_to_app</mat-icon>
+    <span>Cerrar Sesión</span>
+  </button>
+</ng-template>
