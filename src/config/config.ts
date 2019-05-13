@@ -6,4 +6,4 @@ export const URL_MAPAS_HERE =
 
 
    export const URL_ENVIOS_BACK =
-  "http://localhost:3200/api/v1/"; 
+  "http://backend-envios-node-prueba-deploy-dev.us-west-2.elasticbeanstalk.com/api/v1/"; 

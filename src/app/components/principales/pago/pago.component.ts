@@ -161,6 +161,8 @@ export class PagoComponent implements OnInit {
           "Hubo un problema con los datos de tu tarjeta verificala",
           "error"
         );
+        this.btnpagar.nativeElement.disabled = false;
+        this.btnpagar.nativeElement.style.pointerEvents = "all";
       });
   }
 
@@ -178,11 +180,11 @@ export class PagoComponent implements OnInit {
         "Verifica tus datos",
         "error"
       );
-      this.btnpagar.nativeElement.disabled = true;
+      this.btnpagar.nativeElement.disabled = false;
+      
       // location.reload();
     } else {
       // this.form.disable(true);
-
       this.datos_pago.nombre = form.value.nombre;
       this.datos_pago.number = form.value.creditCard;
       this.datos_pago.exp_month = form.value.expDate.slice(0, 2);
