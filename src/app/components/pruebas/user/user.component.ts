@@ -21,6 +21,7 @@ import {HttpHeaders} from '@angular/common/http';
 
 })
 export class UserComponent implements OnInit {
+  hide = true;
   private id: string;
   namePlace: string;
   lastPlace: string;

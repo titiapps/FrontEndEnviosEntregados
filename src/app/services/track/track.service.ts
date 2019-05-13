@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { URL_ENVIOS_BACK } from "src/config/config";
-
+// import { URL_ENVIOS_BACK } from "src/config/config";
+import { environment } from '../../../environments/environment.prod';
 
 
 @Injectable({
@@ -20,7 +20,7 @@ export class TrackService {
     const trackData = { trackCode, carrier};
     console.log(trackData);
 
-    const url = URL_ENVIOS_BACK + 'paqueterias/rastreaEnvio';
+    const url = environment.backURL + 'paqueterias/rastreaEnvio';
 
     return this._http.post(url, trackData);
 

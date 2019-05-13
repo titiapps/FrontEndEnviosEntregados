@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { URL_MAPAS_HERE, URL_ENVIOS_BACK } from "../../../config/config";
+import {environment} from '../../../environments/environment.prod';
+// import { URL_MAPAS_HERE, URL_ENVIOS_BACK } from "../../../config/config";
 import "rxjs/add/operator/map";
 import { DireccionEnvio } from "src/app/models/DireccionesEnvio.model";
 import { UsuarioService } from "../usuario/usuario.service";
@@ -19,7 +20,7 @@ export class DireccionesService {
   }
   // ESTE SE CONECTA A LOS SERVICIOS DE HERE PARA PODER TRAER DATA
   busquedaLugares(busque: string) {
-    const url = `${URL_MAPAS_HERE}&query=${busque}`;
+    const url = `${environment.hereAPIUrl}&query=${busque}`;
     return this._http.get(url).map((resultados: any) => {
       return resultados;
     });
@@ -39,7 +40,7 @@ export class DireccionesService {
       "Authorization",
       this._usuarioService.token
     );
-    let url = URL_ENVIOS_BACK + "paqueterias/cotizaEnvio";
+    let url = environment.backURL + "paqueterias/cotizaEnvio";
 
     const httpOptions = {
       headers

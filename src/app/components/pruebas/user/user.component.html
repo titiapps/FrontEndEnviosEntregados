@@ -8,45 +8,50 @@
       <mat-form-field class="example-full-width">
         <input
           matInput
-          placeholder="Nombre actual: {{namePlace}}"
+          placeholder="Nombre actual: "
           name="name"
           id="name"
+          value={{namePlace}}
           [(ngModel)]="usuario.nombre"
         />
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <input
           matInput
-          placeholder="Apellido paterno actual: {{lastPlace}}"
+          placeholder="Apellido paterno actual: "
           name="lastname"
           id="lastname"
+          value = {{lastPlace}}
           [(ngModel)]="usuario.apellido_paterno"
         />
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <input
           matInput
-          placeholder="Apellido materno actual: {{surPlace}}"
+          placeholder="Apellido materno actual: "
           name="surname"
           id="surname"
+          value={{surPlace}}
           [(ngModel)]="usuario.apellido_materno"
         />
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <input
           matInput
-          placeholder="Telefono actual: {{telPlace}}"
+          placeholder="Telefono actual: "
           name="tel"
           id="tel"
+          value = {{telPlace}}
           [(ngModel)]="usuario.telefono"
         />
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <input
           matInput
-          placeholder="Telefono actual: {{emailPlace}}"
+          placeholder="Telefono actual: "
           name="email"
           id="email"
+          value = {{telPlace}}
           [(ngModel)]="usuario.email"
         />
       </mat-form-field>
