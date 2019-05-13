@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UsuarioService } from '../usuario/usuario.service';
-import {URL_ENVIOS_BACK} from '../../../config/config';
-
+// import {URL_ENVIOS_BACK} from '../../../config/config';
+import { environment } from '../../../environments/environment.prod';
 
 
 @Injectable({
@@ -20,7 +20,7 @@ export class EmailService {
   recovery(email: string) {
     const data =  {email};
 
-    const url = URL_ENVIOS_BACK + 'usuario/usuario/recovery';
+    const url = environment.backURL + 'usuario/usuario/recovery';
     return this.http.post(url, data);
   }
 

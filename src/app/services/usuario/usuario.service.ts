@@ -3,7 +3,8 @@ import { Observable, BehaviorSubject } from "rxjs/Rx";
 import { Router } from "@angular/router";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Usuario } from "src/app/models/usuario.model";
-import { URL_ENVIOS_BACK } from "src/config/config";
+// import { URL_ENVIOS_BACK } from "src/config/config";
+import { environment } from '../../../environments/environment.prod';
 import "rxjs/add/operator/map";
 import Swal from "sweetalert2";
 import { bypassSanitizationTrustResourceUrl } from "@angular/core/src/sanitization/bypass";
@@ -23,12 +24,12 @@ export class UsuarioService {
   }
 
   getUsuario(id: String): Observable<any> {
-    let url = URL_ENVIOS_BACK + `usuario/usuario/${id}`;
+    let url = environment.backURL + `usuario/usuario/${id}`;
     return this._http.get(url);
   }
 
   crearUsuario(usuario: Usuario): Observable<any> {
-    let url = URL_ENVIOS_BACK + "usuario/usuario";
+    let url = environment.backURL + "usuario/usuario";
 
     return this._http
       .post(url, usuario)
@@ -56,7 +57,7 @@ export class UsuarioService {
   }
 
   setNewPass(pass, token): Observable<any> {
-    const url = URL_ENVIOS_BACK + 'usuario/usuario/setNewPass';
+    const url = environment.backURL + 'usuario/usuario/setNewPass';
     return this._http.post(url, token, pass)
       .map((resp: any) => {
       })
@@ -68,7 +69,7 @@ export class UsuarioService {
 
   // VERIFICACION DE USUARIOS
   login(usuario: Usuario): Observable<any> {
-    let url = URL_ENVIOS_BACK + "autorizacion/login";
+    let url = environment.backURL + "autorizacion/login";
 
     let { email, password } = usuario;
 
@@ -99,7 +100,7 @@ export class UsuarioService {
       headers
     };
     // const url = URL_ENVIOS_BACK + `usuario/usuario/${id}`;
-    const url = URL_ENVIOS_BACK + 'usuarios_rutas/usuario';
+    const url = environment.backURL + 'usuarios_rutas/usuario';
     const {
       nombre,
       apellido_paterno,
@@ -165,7 +166,7 @@ export class UsuarioService {
 
   renovarToken() {
     var headers = new HttpHeaders().set("Authorization", this.token);
-    let url = URL_ENVIOS_BACK + "autorizacion/renovartoken";
+    let url = environment.backURL + "autorizacion/renovartoken";
     const httpOptions = {
       headers
     };

@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
-import { URL_ENVIOS_BACK } from "src/config/config";
+// import { URL_ENVIOS_BACK } from "src/config/config";
+import { environment } from '../../../environments/environment.prod';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { DireccionEnvio } from "src/app/models/DireccionesEnvio.model";
 import { UsuarioService } from "../usuario/usuario.service";
@@ -24,7 +25,7 @@ export class PagoEnvioService {
     const httpOptions = {
       headers
     };
-    let url = URL_ENVIOS_BACK + "paqueterias/pagoEnvio";
+    let url = environment.backURL + "paqueterias/pagoEnvio";
     let body = {
       origen,
       destino,
@@ -39,7 +40,7 @@ export class PagoEnvioService {
     shipment_id: String,
     rate_id: String
   ) {
-    let url = URL_ENVIOS_BACK + "paqueterias/comprarEtiqueta";
+    let url = environment.backURL + "paqueterias/comprarEtiqueta";
     let body = { carrier_account_id, shipment_id, rate_id };
     return this._http.post(url, body);
   }
@@ -60,7 +61,7 @@ export class PagoEnvioService {
       num_guia,
       etiqueta_pdf
     };
-    let url = URL_ENVIOS_BACK + "paqueterias/guardarMovimientoEtiqueta";
+    let url = environment.backURL + "paqueterias/guardarMovimientoEtiqueta";
     return this._http.post(url, body);
   }
 }

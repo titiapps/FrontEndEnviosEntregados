@@ -3,7 +3,8 @@ import { HttpClient } from "@angular/common/http";
 import { UsuarioService } from "../usuario/usuario.service";
 import { HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs/Rx";
-import { URL_ENVIOS_BACK } from "src/config/config";
+// import { URL_ENVIOS_BACK } from "src/config/config";
+import { environment } from '../../../environments/environment.prod';
 import { PagoData } from "src/app/models/PagoData.model";
 
 @Injectable()
@@ -33,7 +34,7 @@ export class PagosService {
     const httpOptions = {
       headers
     };
-    let url = URL_ENVIOS_BACK + "conekta/pagarconekta";
+    let url = environment.backURL + "conekta/pagarconekta";
     let body = { producto, precio, cantidad };
     return this._http
       .post(url, body, httpOptions)
