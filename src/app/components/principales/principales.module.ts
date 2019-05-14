@@ -15,11 +15,12 @@ import { PipesModule } from "../pipes/pipes.module";
 import { CompraEnvioComponent } from "./compra-envio/compra-envio.component";
 import { CreditCardDirectivesModule } from "angular-cc-library";
 import { MovimientosComponent } from "./movimientos/movimientos.component";
-import { MovimientosPerfilComponent } from '../perfil/movimientos-perfil.component';
-import { TarjetaPerfilComponent } from '../perfil/tarjeta-perfil.component';
-import { PerfilComponent } from '../perfil/perfil.component';
-import { ReporteComponent } from '../admin/reporte/reporte.component';
-import { TablareporteComponent } from '../admin/reporte/tablareporte.component';
+import { MovimientosPerfilComponent } from "../perfil/movimientos-perfil.component";
+import { TarjetaPerfilComponent } from "../perfil/tarjeta-perfil.component";
+import { PerfilComponent } from "../perfil/perfil.component";
+import { ReporteComponent } from "../admin/reporte/reporte.component";
+import { TablareporteComponent } from "../admin/reporte/tablareporte.component";
+
 
 @NgModule({
   declarations: [
@@ -35,8 +36,8 @@ import { TablareporteComponent } from '../admin/reporte/tablareporte.component';
     TarjetaPerfilComponent,
     PerfilComponent,
     ReporteComponent,
-    TablareporteComponent
-    ,
+    TablareporteComponent,
+   
   ],
   exports: [InicialComponent],
   imports: [
@@ -46,8 +47,7 @@ import { TablareporteComponent } from '../admin/reporte/tablareporte.component';
     ReactiveFormsModule,
     AgmaterialModule,
     PipesModule,
-    CreditCardDirectivesModule,
-
+    CreditCardDirectivesModule
   ],
   entryComponents: [DialogOrigen, DialogDestino]
 })

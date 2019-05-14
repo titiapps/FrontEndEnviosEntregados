@@ -7,7 +7,8 @@
       type="text"
       placeholder="Quien envia?"
       matInput
-      [formControl]="nombreOrig"
+      [(ngModel)]="nombreOrig"
+      name="nombreOrig"
     />
   </mat-form-field>
 
@@ -43,7 +44,8 @@
       type="text"
       placeholder="Quien recibe?"
       matInput
-      [formControl]="nombreDest"
+      name="nombreOrig"
+      [(ngModel)]="nombreDest"
     />
   </mat-form-field>
 
@@ -113,7 +115,7 @@
 <div class="destinos">
   <div *ngIf="lugarOrigen.street !== ''" class="origen">
     <h5>
-      {{ lugarOrigen.persona }}
+      {{ nombreOrig }}
     </h5>
     <h5>
       {{ lugarDestino.phone }}
@@ -136,7 +138,7 @@
 
   <div *ngIf="lugarDestino.street !== ''" class="destino">
     <h5>
-      {{ lugarDestino.persona }}
+      {{ nombreDest }}
     </h5>
     <h5 for="">
       {{ lugarDestino.street }} {{ lugarDestino.houseNumber }},{{
