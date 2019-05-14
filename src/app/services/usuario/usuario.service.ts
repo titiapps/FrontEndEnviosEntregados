@@ -4,7 +4,7 @@ import { Router } from "@angular/router";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Usuario } from "src/app/models/usuario.model";
 // import { URL_ENVIOS_BACK } from "src/config/config";
-import { environment } from '../../../environments/environment.prod';
+import { environment } from "../../../environments/environment.prod";
 import "rxjs/add/operator/map";
 import Swal from "sweetalert2";
 import { bypassSanitizationTrustResourceUrl } from "@angular/core/src/sanitization/bypass";
@@ -57,12 +57,12 @@ export class UsuarioService {
   }
 
   setNewPass(pass, token): Observable<any> {
-    const url = environment.backURL + 'usuario/usuario/setNewPass';
-    return this._http.post(url, token, pass)
-      .map((resp: any) => {
-      })
+    const url = environment.backURL + "usuario/usuario/setNewPass";
+    return this._http
+      .post(url, token, pass)
+      .map((resp: any) => {})
       .catch(err => {
-        Swal.fire('Error', 'No fue posible cambiar el password', 'error');
+        Swal.fire("Error", "No fue posible cambiar el password", "error");
         return Observable.throw(err);
       });
   }
@@ -91,16 +91,16 @@ export class UsuarioService {
   }
 
   updateUser(user: Usuario, id): Observable<any> {
-    const headers = new HttpHeaders().set(
-      'Authorization',
-      this.token
-    );
+   
+    let headers = new HttpHeaders().set("Authorization", this.token);
 
     const httpOptions = {
       headers
     };
+
     // const url = URL_ENVIOS_BACK + `usuario/usuario/${id}`;
-    const url = environment.backURL + 'usuarios_rutas/usuario';
+    /*  const url = environment.backURL + 'usuario/usuario'; */
+    const url = environment.backURL + `usuario/usuario/${id}`;
     const {
       nombre,
       apellido_paterno,
