@@ -18,9 +18,9 @@ declare var Conekta: any;
 })
 export class PagoComponent implements OnInit {
   @ViewChild("pagar") btnpagar: ElementRef;
+  isShow = false;
   form: FormGroup;
   submitted: boolean;
-  disable: boolean;
   token_conekta: String;
   seleccionUsuario: any;
   packageData: Array<any>;
@@ -62,24 +62,29 @@ export class PagoComponent implements OnInit {
     this.packageDest = this._direccionesService.destino;
     console.log(this.seleccionUsuario);
     this.form = this._fb.group({
-      nombre: "",
-      creditCard: ["", [<any>CreditCardValidator.validateCCNumber,
-                        <any>Validators.minLength(16)],
-                        <any>Validators.maxLength(17)],
-      expDate: [
-        "",
+      nombre: '',
+      creditCard: [
+        '',
         [
-          <any>CreditCardValidator.validateExpDate,
-          <any>Validators.minLength(9),
-          <any>Validators.maxLength(10)
+          CreditCardValidator.validateCCNumber as any,
+          Validators.minLength(16) as any,
+          Validators.maxLength(17) as any
+        ]
+      ],
+      expDate: [
+        '',
+        [
+          CreditCardValidator.validateExpDate as any,
+          Validators.minLength(9) as any,
+          Validators.maxLength(10) as any
         ]
       ],
       cvc: [
-        "",
+        '',
         [
-          <any>Validators.required,
-          <any>Validators.minLength(3),
-          <any>Validators.maxLength(4)
+          Validators.required as any,
+          Validators.min(3) as any,
+          Validators.max(3) as any,
         ]
       ]
     });
@@ -161,6 +166,7 @@ export class PagoComponent implements OnInit {
           "Hubo un problema con los datos de tu tarjeta verificala",
           "error"
         );
+        this.isShow = false;
         this.btnpagar.nativeElement.disabled = false;
         this.btnpagar.nativeElement.style.pointerEvents = "all";
       });
@@ -168,6 +174,7 @@ export class PagoComponent implements OnInit {
 
   onSubmit(form) {
     this.submitted = true;
+    this.isShow = !this.isShow;
     this.btnpagar.nativeElement.disabled = true;
     this.btnpagar.nativeElement.style.pointerEvents = "none";
     if (
@@ -181,7 +188,8 @@ export class PagoComponent implements OnInit {
         "error"
       );
       this.btnpagar.nativeElement.disabled = false;
-      
+      this.isShow = false;
+
       // location.reload();
     } else {
       // this.form.disable(true);

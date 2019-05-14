@@ -102,13 +102,13 @@
           />
         </div>
       </fieldset>
-      <div class="">
+      <div class="" *ngIf = "!isShow">
         <button
           type="submit"
           class="btn btn-lg btn-primary b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"  #pagar>Pagar</button>
 
       </div>
-      <div class="errors" *ngIf="submitted">
+      <div class="errors" *ngIf="submitted && !isShow">
         <div *ngIf="!form.controls.creditCard.valid" class="alert alert-danger">La tarjeta es invalida</div>
         <div *ngIf="!form.controls.expDate.valid" class="alert alert-danger">La fecha de expiracion es necesaria</div>
         <div *ngIf="!form.controls.cvc.valid" class="alert alert-danger">el numero CVC es requerido</div>
