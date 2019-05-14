@@ -2,6 +2,8 @@ import { Component, OnInit, ChangeDetectorRef, NgZone } from "@angular/core";
 import { UsuarioService } from "src/app/services/services.index";
 import { Observable } from "rxjs";
 
+
+
 @Component({
   selector: "app-header",
   templateUrl: "./header.component.html",

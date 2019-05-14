@@ -23,25 +23,24 @@ export class BusquedadireccionComponent implements OnInit {
   lugarDestino: DireccionEnvio;
   paquete: Paquete;
   busquedaDir: FormControl;
-  nombreOrig: FormControl;
-  nombreDest: FormControl;
   telOrig: FormControl;
   telDest: FormControl;
   alto: FormControl;
   largo: FormControl;
   ancho: FormControl;
   peso: FormControl;
-  nameOrig: string;
-  nameDest: string;
+
+  nombreOrig: string;
+  nombreDest: string;
 
   constructor(
     private _direccionesService: DireccionesService,
     private _router: Router,
     public dialog: MatDialog
   ) {
+    this.nombreOrig = "";
+    this.nombreDest = "";
     this.busquedaDir = new FormControl();
-    this.nombreOrig = new FormControl();
-    this.nombreDest = new FormControl();
     this.alto = new FormControl();
     this.largo = new FormControl();
     this.ancho = new FormControl();
@@ -80,9 +79,6 @@ export class BusquedadireccionComponent implements OnInit {
 
     this.busquedaDir.valueChanges.subscribe(termino => {
       if (termino != "") {
-        this.nameOrig = this.nombreOrig.value;
-        this.nameDest = this.nombreDest.value;
-
         this._direccionesService.busquedaLugares(termino).subscribe(data => {
           this.lugares = data.suggestions as any[];
         });
@@ -96,7 +92,7 @@ export class BusquedadireccionComponent implements OnInit {
     if (this.lugarOrigen === undefined || this.lugarOrigen === null) {
       Swal.fire("Error", "No puedes dejar el lugar de origen vacio", "error");
     } else {
-      this.lugarOrigen.persona = this.nameOrig;
+      this.lugarOrigen.persona = this.nombreOrig;
 
       this.lugarOrigen.countryCode =
         this.lugares[index].countryCode !== undefined
@@ -152,7 +148,7 @@ export class BusquedadireccionComponent implements OnInit {
   }
 
   seleccionarDestino(index) {
-    this.lugarDestino.persona = this.nameDest;
+    this.lugarDestino.persona = this.nombreDest;
     this.lugarDestino.street =
       this.lugares[index].address.street !== undefined
         ? this.lugares[index].address.street
@@ -207,7 +203,6 @@ export class BusquedadireccionComponent implements OnInit {
 
     const arrayorigen = [
       ori.persona,
-
       ori.street,
       ori.houseNumber,
       ori.city,
@@ -217,7 +212,6 @@ export class BusquedadireccionComponent implements OnInit {
     ];
     const arraydestino = [
       dest.persona,
-
       dest.street,
       dest.houseNumber,
       dest.city,
@@ -230,15 +224,14 @@ export class BusquedadireccionComponent implements OnInit {
     const resultadodestino = arraydestino.filter(elemento => elemento !== "");
 
     if (resultadoorigen.length === 7 && resultadodestino.length === 7) {
-      this.lugarOrigen.persona = this.nameOrig;
-      this.lugarDestino.persona = this.nameDest;
-
+      this.lugarOrigen.persona = this.nombreOrig;
+      this.lugarDestino.persona = this.nombreDest;
 
       this.paquete = {
         paquete_longitud: Math.round((this.largo.value / 2.54) * 10) / 10,
         paquete_anchura: Math.round((this.ancho.value / 2.54) * 10) / 10,
         paquete_altura: Math.round((this.alto.value / 2.54) * 10) / 10,
-        paquete_peso: Math.round((this.peso.value * 0.035274) * 10) / 10
+        paquete_peso: Math.round(this.peso.value * 0.035274 * 10) / 10
       };
 
       this._direccionesService.datosParaCotizacion(
@@ -256,7 +249,6 @@ export class BusquedadireccionComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogOrigen, {
       width: "250px",
       data: {
-        persona: this.lugarOrigen.persona,
         street: this.lugarOrigen.street,
         houseNumber: this.lugarOrigen.houseNumber,
         street2: this.lugarOrigen.street2,
@@ -270,8 +262,6 @@ export class BusquedadireccionComponent implements OnInit {
       console.log(result);
       if (result !== undefined) {
         const {
-          persona,
-          phone,
           street,
           houseNumber,
           street2,
@@ -290,7 +280,7 @@ export class BusquedadireccionComponent implements OnInit {
           district,
           state: this.lugarOrigen.state,
           postalCode,
-          persona: this.lugarOrigen.persona,
+          persona: this.nombreOrig,
           countryCode: this.lugarOrigen.countryCode
         };
       }
@@ -302,8 +292,6 @@ export class BusquedadireccionComponent implements OnInit {
       width: "250px",
 
       data: {
-        persona: this.lugarDestino.persona,
-
         street: this.lugarDestino.street,
         houseNumber: this.lugarDestino.houseNumber,
         street2: this.lugarDestino.street2,
@@ -317,8 +305,6 @@ export class BusquedadireccionComponent implements OnInit {
       console.log(result);
       if (result !== undefined) {
         const {
-          persona,
-          phone,
           street,
           houseNumber,
           street2,

@@ -8,24 +8,44 @@ header {
     align-items: center;
 }
 
+.movil {
+    order: 1;
+}
+
+.logo {
+    order: 2;
+}
+
 .header .logo img {
     max-width: 8.5rem;
 }
 
 .header .navegacion {
-    color: white;
-    padding: 1rem;
+    display: none;
 }
 
-.header .navegacion a {
-    padding: 0.5rem;
-    text-decoration: none;
-    color: white;
-    margin-right: 1rem;
-    border-bottom: 2px solid transparent;
-    transition: width .5s ease, border-bottom .5s ease;
-}
-
-.header .navegacion a:hover {
-    border-bottom: 2px solid white;
+@media(min-width:768px) {
+    .movil {
+        display: none;
+    }
+    .logo {
+        order: 1;
+    }
+    .header .navegacion {
+        display: block;
+        color: white;
+        padding: 1rem;
+        order: 2;
+    }
+    .header .navegacion a {
+        padding: 0.5rem;
+        text-decoration: none;
+        color: white;
+        margin-right: 1rem;
+        border-bottom: 2px solid transparent;
+        transition: width .5s ease, border-bottom .5s ease;
+    }
+    .header .navegacion a:hover {
+        border-bottom: 2px solid white;
+    }
 }

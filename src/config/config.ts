@@ -5,5 +5,5 @@ export const URL_MAPAS_HERE =
   "https://backendentregandoprueba.herokuapp.com/api/v1/"; */
 
 
-export const URL_ENVIOS_BACK =
-  "http://backend-envios-node-prueba-deploy-dev.us-west-2.elasticbeanstalk.com/api/v1/";
+   export const URL_ENVIOS_BACK =
+  "http://backend-envios-node2-dev.us-west-2.elasticbeanstalk.com/api/v1/"; 
