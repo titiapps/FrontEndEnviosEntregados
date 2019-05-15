@@ -22,8 +22,7 @@ import { ConektaComponent } from "./components/pruebas/conekta/conekta.component
 import { PrincipalesComponent } from "./components/principales/principales.component";
 import { CardValComponent } from './components/pruebas/card-val/card-val.component';
 import { TrackComponent } from './components/pruebas/track/track.component';
-import { UserComponent,
-         AppPizzaPartyComponent} from './components/pruebas/user/user.component';
+
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { PasswordComponent } from './components/pruebas/password/password.component';
 import { ConfirmComponent } from './components/pruebas/confirm/confirm.component';
@@ -49,8 +48,6 @@ registerLocaleData(localeMX,'es-MX');
     CardValComponent,
     PizzaPartyComponent,
     TrackComponent,
-    UserComponent,
-    AppPizzaPartyComponent,
     PasswordComponent,
     ConfirmComponent,
     RecoverComponent,
@@ -71,6 +68,6 @@ registerLocaleData(localeMX,'es-MX');
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [PizzaPartyComponent, AppPizzaPartyComponent]
+  entryComponents: [PizzaPartyComponent]
 })
 export class AppModule {}

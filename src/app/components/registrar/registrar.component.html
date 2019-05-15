@@ -72,14 +72,16 @@
           hide ? "visibility_off" : "visibility"
         }}</mat-icon>
       </mat-form-field>
+      <div class="botonsin">
+        <button
+          mat-flat-button
+          color="primary"
+          (click)="guardar()"
+          class="btn-ingresar"
+        >
+          Registrarse
+        </button>
+      </div>
     </div>
-    <button
-      mat-flat-button
-      color="primary"
-      (click)="guardar()"
-      class="btn-ingresar"
-    >
-      Ingresar
-    </button>
   </div>
 </div>

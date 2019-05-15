@@ -1,53 +1,11 @@
 <body>
 <div class="elementos">
-  <aside class="aside aside-1">
-  <!--  <article class="mw5  ma2 bg-white br3 pa3 pa4-ns mv3 ba b--black-10 ">
-      <div class="tc">
-        <img
-          src="assets/img/{{ seleccionUsuario.paqueteria }}.jpg"
-          class="br-100 h3 w3 dib"
-        />
-        <h1 class="f4">{{ seleccionUsuario.paqueteria }}</h1>
-        <hr class="mw3 bb bw1 b--black-10" />
-      </div>
-      <p class="item lh-copy measure center f6 black-70">
-        Servicio:{{ seleccionUsuario.servicio }} Costo:{{ seleccionUsuario.costo }}
-      </p>
-      <p class="lh-copy measure center f6 black-70">
-        Paquete: {{ packageLong }} X {{ packageWidth}} X {{packageHeight}} Peso:{{ packageWeight }} kg
-      </p>
-      <p class="lh-copy measure center f6 black-70">
-        Direccion destino:
-      </p>
-      <p class="lh-copy measure center f6 black-70">
-        {{packageDest.persona}}
-      </p>
-      <p class="lh-copy measure center f6 black-70">
-        {{packageDest.street}} {{packageDest.houseNumber}}, {{packageDest.street2}}
-      </p>
-      <p class="lh-copy measure center f6 black-70">
-        {{packageDest.state}} {{packageDest.city}}, {{packageDest.country}}, {{packageDest.postalCode}}
-      </p>
-
-      <p class="lh-copy measure center f6 black-70">
-        Direccion origen:
-      </p>
-      <p class="lh-copy measure center f6 black-70">
-        {{packageOrig.persona}}
-      </p>
-      <p class="lh-copy measure center f6 black-70">
-        {{packageOrig.street}} {{packageOrig.houseNumber}}, {{packageOrig.street2}}
-      </p>
-      <p class="lh-copy measure center f6 black-70">
-        {{packageOrig.state}}, {{packageOrig.city}}, {{packageOrig.country}}, {{packageOrig.postalCode}}
-      </p>
-
-    </article> -->
-    <app-items
-      [items]= "items"
-    ></app-items>
-  </aside>
-
+  <div>
+    <aside class="aside aside-1">
+      <app-items [items]="items"></app-items>
+    </aside>
+  </div>
+  <div>
   <main class="pa4 black-80">
     <div class="card-container"></div>
     <form card class="measure center"
@@ -60,8 +18,8 @@
           formatting="false"
           debug="true">
       <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
-
-      <div class="form-group mt3">
+        <legend class="f4 fw6 ph0 mh0">Pagar</legend>
+        <div class="form-group mt3">
         <label class="control-label db fw6 lh-copy f6"
         >Numero de Tarjeta</label>
         <input class="input-lg form-control pa2 input-reset ba bg-transparent  w-100"
@@ -122,54 +80,87 @@
                  for="nombre"
             >Nombre Completo Titular</label
           >
+=======
+            <input
+              class="input-lg form-control pa2 input-reset ba bg-transparent  w-100"
+              type="text"
+              formControlName="nombre"
+              id="nombre"
+              name="nombre"
+            />
+          </div>
+          <div class="form-group mt3">
+            <label for="cc-number" class="control-label db fw6 lh-copy f6"
+              >Numero de Tarjeta<small class="text-muted"
+                >[<span class="cc-brand"></span>]</small
+              ></label
+            >
+            <input
+              id="cc-number"
+              formControlName="creditCard"
+              type="tel"
+              class="input-lg form-control cc-number pa2 input-reset ba bg-transparent  w-100"
+              autocomplete="off"
+              placeholder="•••• •••• •••• ••••"
+              ccNumber
+            />
+          </div>
+          <div class="form-group mt3">
+            <label for="cc-exp" class="control-label db fw6 lh-copy f6"
+              >Fecha de expiracion</label
+            >
+            <input
+              id="cc-exp"
+              formControlName="expDate"
+              type="tel"
+              class="input-lg form-control cc-exp pa2 input-reset ba bg-transparent  w-50"
+              autocomplete="off"
+              placeholder="•• / ••••"
+              ccExp
+            />
+          </div>
+>>>>>>> b18110efba32e06d30339c01d06560b4ae9a0f49
 
-          <input
-            class="input-lg form-control pa2 input-reset ba bg-transparent  w-100"
-            type="text"
-            formControlName="nombre"
-            id="nombre" name="nombre"
-          />
-        </div>
-        <div class="form-group mt3">
-          <label for="cc-number"
-                 class="control-label db fw6 lh-copy f6"
-            >Numero de Tarjeta<small class="text-muted">[<span class="cc-brand"></span>]</small></label
+          <div class="form-group mt3">
+            <label for="cc-cvc" class="control-label db fw6 lh-copy f6"
+              >CVC</label
+            >
+            <input
+              id="cc-cvc"
+              formControlName="cvc"
+              type="tel"
+              class="input-lg form-control cc-cvc pa2 input-reset ba bg-transparent  w-50"
+              autocomplete="off"
+              placeholder="•••"
+              required
+              ccCVC
+            />
+          </div>
+        </fieldset>
+        <div class="" *ngIf="!isShow">
+          <button
+            type="submit"
+            class="btn btn-lg btn-primary b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
+            #pagar
           >
-          <input
-            id="cc-number" formControlName="creditCard"
-            type="tel"
-            class="input-lg form-control cc-number pa2 input-reset ba bg-transparent  w-100"
-            autocomplete="off"
-            placeholder="•••• •••• •••• ••••"
-            ccNumber
-          />
+            Pagar
+          </button>
         </div>
-        <div class="form-group mt3">
-          <label for="cc-exp" class="control-label db fw6 lh-copy f6">Fecha de expiracion</label>
-          <input
-            id="cc-exp"
-            formControlName="expDate"
-            type="tel"
-            class="input-lg form-control cc-exp pa2 input-reset ba bg-transparent  w-50"
-            autocomplete="off"
-            placeholder="•• / ••••"
-            ccExp
-          />
+        <div class="errors" *ngIf="submitted && !isShow">
+          <div
+            *ngIf="!form.controls.creditCard.valid"
+            class="alert alert-danger"
+          >
+            La tarjeta es invalida
+          </div>
+          <div *ngIf="!form.controls.expDate.valid" class="alert alert-danger">
+            La fecha de expiracion es necesaria
+          </div>
+          <div *ngIf="!form.controls.cvc.valid" class="alert alert-danger">
+            el numero CVC es requerido
+          </div>
         </div>
-
-        <div class="form-group mt3">
-          <label for="cc-cvc" class="control-label db fw6 lh-copy f6" >CVC</label>
-          <input
-            id="cc-cvc"
-            formControlName="cvc"
-            type="tel"
-            class="input-lg form-control cc-cvc pa2 input-reset ba bg-transparent  w-50"
-            autocomplete="off"
-            placeholder="•••"
-            required ccCVC
-
-          />
-        </div>
+<<<<<<< HEAD
       </fieldset>
       <div class="" *ngIf = "!isShow">
         <button
@@ -186,5 +177,5 @@
     </form> -->
   </main>
 </div>
+</div>
 </body>
-

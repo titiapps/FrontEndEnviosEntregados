@@ -1,82 +1,32 @@
 .contenido_principal {
-  display: grid;
-  height: 80vh;
-  grid-template-rows: 10% 70% 20%;
-  background-size: cover;
-}
-
-.contenido_principal>* {
-  font-family: "Questrial";
+  width: 80%;
+  margin: 0 auto;
 }
 
 .contenido_login {
-  grid-row: 2/3;
-  display: grid;
-  grid-template-columns: 5% auto 5%;
-  grid-template-rows: 40% 20% 40%;
-}
-
-.contenido_login .encabezados {
-  grid-column: 2/3;
-  grid-row: 1/3;
-  justify-self: center;
-}
-
-.contenido_login .encabezados>* {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-align: center;
 }
 
-.contenido_login .formulario {
-  padding-top: 1rem;
-  justify-self: center;
-  grid-column: 2/3;
-  grid-row: 2/3;
-}
-
-.contenido_login .formulario {
+.formulario {
   display: flex;
   flex-direction: column;
-  width: 100%;
 }
 
-.btn-ingresar {
-  justify-self: center;
-  margin-top: 6rem;
-  font-size: 1.0rem;
-  font-weight: 400;
-  width: 100%;
-  max-width: 85%;
-  max-height: 3rem;
-  grid-column: 2/3;
-  grid-row: 3/3;
+.botonsin button {
+  margin-top: 1rem;
+  width: 80%;
 }
 
 @media(min-width:768px) {
-  .btn-ingresar {
-    justify-self: center;
-    margin-top: 6.4rem;
-    font-size: 1.0rem;
-    font-weight: 400;
-    max-width: 59%;
-    width: 35%;
-    max-height: 3rem;
-    grid-column: 2/3;
-    grid-row: 3/3;
+  .contenido_principal {
+     width: 50%;
+     margin: 0 auto;
   }
-  .contenido_login .formulario {
-    width: 50%;
+  .botonsin button {
+     margin-top: 1rem;
+     width: 50%;
   }
-}
-
-.contenido_login form input, .contenido_login form button {
-  margin: 0 auto;
-  width: 20rem;
-}
-
-::ng-deep snack-bar-container.custom-class {
-  background: #228B22;
-}
-
-::ng-deep .custom-class .mat-simple-snackbar {
-  color: white;
 }
