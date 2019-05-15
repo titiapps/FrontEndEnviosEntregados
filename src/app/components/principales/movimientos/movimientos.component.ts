@@ -36,7 +36,7 @@ export class MovimientosComponent implements OnInit {
     );
   }
 
-  //esta nos regresa la informacion completa ocn el movimiento que se hizo para generar la etiqueta
+  //esta nos regresa la informacion completa ocn el item que se hizo para generar la etiqueta
   regresarInformacionMovimiento(id_movimiento) {
     return new Promise((resolve, reject) => {
       this._movimientosService

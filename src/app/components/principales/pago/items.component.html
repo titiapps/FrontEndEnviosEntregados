@@ -1,0 +1,64 @@
+<h3 *ngIf="items.length > 0" style="text-align:center">Paquetes</h3>
+<h3 *ngIf="items.length === 0">
+  No se han realizado pedidos
+</h3>
+<div class="movimientos-container overflow-y-auto">
+  <ul class="list pl0 mt0 measure center">
+    <li
+      class="flex items-center lh-copy pa2 ph0-l bb b--black-10"
+      *ngFor="let item of items"
+    >
+      <div class="pa3 flex-auto ">
+        <div class="tc">
+          <span class="f9 db black-90">
+          <img
+            src="assets/img/{{ item[0].paqueteria }}.jpg"
+            class="br-100 h3 w3 dib"
+          />
+          <h1 class="f4">{{ item[0].paqueteria }}</h1>
+          </span>
+        </div>
+        <span class="f9 db black-90">Origen: </span>
+        <span class="f6 db black-70 text-justify"
+        >{{ item[1].street }}
+          {{ item[1].houseNumber }},
+          {{ item[1].city }},
+          {{ item[1].state }},
+          {{ item[1].district }},
+          {{ item[1].postalCode }}</span
+        >
+        <span class="f9 db black-90">Destino: </span>
+        <span class="f6 db black-70 text-justify"
+        >{{ item[2].street }}
+          {{ item[2].houseNumber }},
+          {{ item[2].city }},
+          {{ item[2].state }},
+          {{ item[2].district }},
+          {{ item[2].postalCode }}</span
+        >
+        <span class="f8 db black-80"
+        >Paqueteria:<span class=" f8 black-60">
+            {{ item[0].paqueteria }},{{item[0].servicio}}</span
+        >
+        </span>
+        <!-- {{item.envio.paqueteria|rastreo:item.num_guia}} -->
+      </div>
+      <div>
+        <span class="f9 db black-90">Paquete: </span>
+        <span class="f6 db black-70 f5"
+        ><span class="black-90">Tamaño:</span>
+          {{ item[0].paquete.paquete_altura | conversion: 'cm' }}x{{
+          item[0].paquete.paquete_anchura | conversion: 'cm'
+          }}x{{ item[0].paquete.paquete_longitud | conversion: 'cm'}} cm
+        </span>
+        <span class="f6 db  black-70 f5"
+        ><span class="black-90">Peso:</span>
+          {{ item[0].paquete.paquete_peso | conversion: 'g'}} gr
+        </span>
+        <span class="f6 db  black-70 f5"
+        ><span class="black-90">Costo:</span> ${{ item[0].costo }}
+        </span>
+      </div>
+    </li>
+  </ul>
+</div>

@@ -8,6 +8,7 @@ import { Router } from "@angular/router";
 import { CreditCardValidator } from "angular-cc-library";
 import { FormBuilder, FormGroup, NgForm, Validators } from "@angular/forms";
 import swal from "sweetalert2";
+import {forEach} from '@angular/router/src/utils/collection';
 
 declare var Conekta: any;
 
@@ -19,6 +20,8 @@ declare var Conekta: any;
 export class PagoComponent implements OnInit {
   @ViewChild("pagar") btnpagar: ElementRef;
   isShow = false;
+  items: Array<any>;
+  item: Array<any>;
   form: FormGroup;
   submitted: boolean;
   token_conekta: String;
@@ -54,13 +57,18 @@ export class PagoComponent implements OnInit {
     this.packageLong = Math.round(this.packageData[0].paquete_longitud * 2.54);
     this.packageWidth = Math.round(this.packageData[0].paquete_anchura * 2.54);
     this.packageHeight = Math.round(this.packageData[0].paquete_altura * 2.54);
-    this.packageWeight = Math.round(
-      this.packageData[0].paquete_peso / 0.035274
-    );
+    this.packageWeight = Math.round(this.packageData[0].paquete_peso / 0.035274);
     console.log(this.packageData);
     this.packageOrig = this._direccionesService.origen;
     this.packageDest = this._direccionesService.destino;
     console.log(this.seleccionUsuario);
+    this.item = [];
+    this.item.push(this.seleccionUsuario);
+    this.item.push(this.packageOrig);
+    this.item.push(this.packageDest);
+    console.log(this.item);
+    this.items = [];
+    this.items.push(this.item);
     this.form = this._fb.group({
       nombre: '',
       creditCard: [

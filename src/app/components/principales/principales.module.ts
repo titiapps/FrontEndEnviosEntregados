@@ -20,6 +20,8 @@ import { TarjetaPerfilComponent } from "../perfil/tarjeta-perfil.component";
 import { PerfilComponent } from "../perfil/perfil.component";
 import { ReporteComponent } from "../admin/reporte/reporte.component";
 import { TablareporteComponent } from "../admin/reporte/tablareporte.component";
+import { ItemsComponent } from './pago/items.component';
+import { DatosComponent, DataPizzaPartyComponent } from '../datos/datos.component';
 
 
 @NgModule({
@@ -37,7 +39,10 @@ import { TablareporteComponent } from "../admin/reporte/tablareporte.component";
     PerfilComponent,
     ReporteComponent,
     TablareporteComponent,
-   
+    ItemsComponent,
+    DatosComponent,
+    DataPizzaPartyComponent,
+
   ],
   exports: [InicialComponent],
   imports: [
@@ -49,6 +54,6 @@ import { TablareporteComponent } from "../admin/reporte/tablareporte.component";
     PipesModule,
     CreditCardDirectivesModule
   ],
-  entryComponents: [DialogOrigen, DialogDestino]
+  entryComponents: [DialogOrigen, DialogDestino, DataPizzaPartyComponent]
 })
 export class PrincipalesModule {}

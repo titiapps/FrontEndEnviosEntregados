@@ -9,7 +9,6 @@ import { CardValComponent } from "./components/pruebas/card-val/card-val.compone
 import { HeaderComponent } from "./components/shared/header/header.component";
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { VerificatokenGuard } from "./services/guards/verificatoken.guard";
-import { UserComponent} from './components/pruebas/user/user.component';
 import {PasswordComponent} from './components/pruebas/password/password.component';
 import {RecoverComponent} from './components/pruebas/recover/recover.component';
 
@@ -21,8 +20,6 @@ const routes: Routes = [
   { path: "conekta", component: ConektaComponent },
   { path: "card", component: CardValComponent },
   { path: "header", component: HeaderComponent },
-  { path: 'update/:id', component: UserComponent}
- ,
   {
     path: "",
     component: PrincipalesComponent,

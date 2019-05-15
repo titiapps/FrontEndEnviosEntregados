@@ -54,7 +54,6 @@ registerLocaleData(localeMX,'es-MX');
     PasswordComponent,
     ConfirmComponent,
     RecoverComponent,
-  
   ],
   imports: [
     appRouting,

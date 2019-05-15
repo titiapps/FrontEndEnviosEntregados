@@ -8,6 +8,7 @@ import { CompraEnvioComponent } from "./compra-envio/compra-envio.component";
 import { MovimientosComponent } from "./movimientos/movimientos.component";
 import { PerfilComponent } from "../perfil/perfil.component";
 import { ReporteComponent } from "../admin/reporte/reporte.component";
+import { DatosComponent } from '../datos/datos.component';
 
 const routes: Routes = [
   {
@@ -29,12 +30,12 @@ const routes: Routes = [
     canActivate: [LoginguardGuard, VerificatokenGuard],
     component: PerfilComponent
   },
-
+  { path: 'update/:id', component: DatosComponent},
   { path: "compraEnvio", component: CompraEnvioComponent },
   { path: "movimientos/:id", component: MovimientosComponent },
 
   //este es para josafad
-  { path: "reporte",canActivate:[VerificarRolGuard] ,component: ReporteComponent },
+  { path: "reporte",canActivate:[VerificarRolGuard], component: ReporteComponent },
 
   { path: "", pathMatch: "full", redirectTo: "/inicio" }
 ];

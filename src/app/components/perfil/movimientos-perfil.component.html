@@ -34,7 +34,7 @@
         </span>
 
         <span class=" f8 black-90">Num_Guia:</span
-        ><!-- recuerda se debe movimiento el pipe -->
+        ><!-- recuerda se debe item el pipe -->
         <a
           style="display:inline-block;text-decoration: none"
           class="f5 db  dark-blue "
@@ -42,19 +42,19 @@
           >{{ movimiento.num_guia }}</a
         >
 
-        <!-- {{movimiento.envio.paqueteria|rastreo:movimiento.num_guia}} -->
+        <!-- {{item.envio.paqueteria|rastreo:item.num_guia}} -->
       </div>
       <div>
         <span class="f9 db black-90">Paquete: </span>
         <span class="f6 db black-70 f5"
           ><span class="black-90">Tamaño:</span>
-          {{ movimiento.envio.paquete_altura * 2.54 }}x{{
-            movimiento.envio.paquete_anchura * 2.54
-          }}x{{ movimiento.envio.paquete_longitud * 2.54}} cm
+          {{ movimiento.envio.paquete_altura | conversion: 'cm' }}x{{
+            movimiento.envio.paquete_anchura | conversion: 'cm'
+          }}x{{ movimiento.envio.paquete_longitud | conversion: 'cm'}} cm
         </span>
         <span class="f6 db  black-70 f5"
           ><span class="black-90">Peso:</span>
-          {{ movimiento.envio.paquete_peso }} gr
+          {{ movimiento.envio.paquete_peso | conversion: 'g' }} gr
         </span>
         <span class="f6 db  black-70 f5"
           ><span class="black-90">Costo:</span> ${{ movimiento.pago.monto }}
