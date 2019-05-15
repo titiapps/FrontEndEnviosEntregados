@@ -10,7 +10,7 @@
           placeholder="Nombre actual: "
           name="name"
           id="name"
-          value={{namePlace}}
+          value="{{ namePlace }}"
           [(ngModel)]="usuario.nombre"
         />
       </mat-form-field>
@@ -20,7 +20,7 @@
           placeholder="Apellido paterno actual: "
           name="lastname"
           id="lastname"
-          value = {{lastPlace}}
+          value="{{ lastPlace }}"
           [(ngModel)]="usuario.apellido_paterno"
         />
       </mat-form-field>
@@ -30,7 +30,7 @@
           placeholder="Apellido materno actual: "
           name="surname"
           id="surname"
-          value={{surPlace}}
+          value="{{ surPlace }}"
           [(ngModel)]="usuario.apellido_materno"
         />
       </mat-form-field>
@@ -40,7 +40,7 @@
           placeholder="Telefono actual: "
           name="tel"
           id="tel"
-          value = {{telPlace}}
+          value="{{ telPlace }}"
           [(ngModel)]="usuario.telefono"
         />
       </mat-form-field>
@@ -50,7 +50,7 @@
           placeholder="Correo actual: "
           name="email"
           id="email"
-          value = {{emailPlace}}
+          value="{{ emailPlace }}"
           [(ngModel)]="usuario.email"
         />
       </mat-form-field>
@@ -66,11 +66,18 @@
         />
         <mat-icon matSuffix (click)="hide = !hide">{{
           hide ? "visibility_off" : "visibility"
-          }}</mat-icon>
+        }}</mat-icon>
       </mat-form-field>
+      <div class="botonsin">
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="updateData()"
+          class="btn-ingresar"
+        >
+          Actualizar
+        </button>
+      </div>
     </div>
   </div>
 </div>
-<button mat-raised-button color="primary" (click)="updateData()" class="btn-ingresar">
-  Actualizar
-</button>

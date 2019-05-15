@@ -1,16 +1,18 @@
 .elementos {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
 }
 
-.item{
-flex-grow: 2;
-
+@media(min-width:768px) {
+    .elementos {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
 }
 
-.tc{
-  
-
+.item {
+    flex-grow: 2;
 }
 
 .btn-habilidado {

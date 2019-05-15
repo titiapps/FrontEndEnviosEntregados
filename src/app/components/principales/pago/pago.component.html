@@ -1,6 +1,7 @@
 <div class="elementos">
-  <aside class="aside aside-1">
-  <!--  <article class="mw5  ma2 bg-white br3 pa3 pa4-ns mv3 ba b--black-10 ">
+  <div>
+    <aside class="aside aside-1">
+      <!--  <article class="mw5  ma2 bg-white br3 pa3 pa4-ns mv3 ba b--black-10 ">
       <div class="tc">
         <img
           src="assets/img/{{ seleccionUsuario.paqueteria }}.jpg"
@@ -42,82 +43,103 @@
       </p>
 
     </article> -->
-    <app-items
-      [items]= "items"
-    ></app-items>
-  </aside>
+      <app-items [items]="items"></app-items>
+    </aside>
+  </div>
+  <div>
+    <main class="pa4 black-80">
+      <form
+        class="measure center"
+        [formGroup]="form"
+        (ngSubmit)="onSubmit(form)"
+        novalidate
+      >
+        <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
+          <legend class="f4 fw6 ph0 mh0">Pagar</legend>
+          <div class="form-group mt3">
+            <label class="control-label db fw6 lh-copy f6" for="nombre"
+              >Nombre Completo Titular</label
+            >
 
-  <main class="pa4 black-80">
-    <form class="measure center" [formGroup]="form" (ngSubmit)="onSubmit(form)" novalidate>
-      <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
-        <legend class="f4 fw6 ph0 mh0">Pagar</legend>
-        <div class="form-group mt3">
-          <label class="control-label db fw6 lh-copy f6"
-                 for="nombre"
-            >Nombre Completo Titular</label
+            <input
+              class="input-lg form-control pa2 input-reset ba bg-transparent  w-100"
+              type="text"
+              formControlName="nombre"
+              id="nombre"
+              name="nombre"
+            />
+          </div>
+          <div class="form-group mt3">
+            <label for="cc-number" class="control-label db fw6 lh-copy f6"
+              >Numero de Tarjeta<small class="text-muted"
+                >[<span class="cc-brand"></span>]</small
+              ></label
+            >
+            <input
+              id="cc-number"
+              formControlName="creditCard"
+              type="tel"
+              class="input-lg form-control cc-number pa2 input-reset ba bg-transparent  w-100"
+              autocomplete="off"
+              placeholder="•••• •••• •••• ••••"
+              ccNumber
+            />
+          </div>
+          <div class="form-group mt3">
+            <label for="cc-exp" class="control-label db fw6 lh-copy f6"
+              >Fecha de expiracion</label
+            >
+            <input
+              id="cc-exp"
+              formControlName="expDate"
+              type="tel"
+              class="input-lg form-control cc-exp pa2 input-reset ba bg-transparent  w-50"
+              autocomplete="off"
+              placeholder="•• / ••••"
+              ccExp
+            />
+          </div>
+
+          <div class="form-group mt3">
+            <label for="cc-cvc" class="control-label db fw6 lh-copy f6"
+              >CVC</label
+            >
+            <input
+              id="cc-cvc"
+              formControlName="cvc"
+              type="tel"
+              class="input-lg form-control cc-cvc pa2 input-reset ba bg-transparent  w-50"
+              autocomplete="off"
+              placeholder="•••"
+              required
+              ccCVC
+            />
+          </div>
+        </fieldset>
+        <div class="" *ngIf="!isShow">
+          <button
+            type="submit"
+            class="btn btn-lg btn-primary b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
+            #pagar
           >
-
-          <input
-            class="input-lg form-control pa2 input-reset ba bg-transparent  w-100"
-            type="text"
-            formControlName="nombre"
-            id="nombre" name="nombre"
-          />
+            Pagar
+          </button>
         </div>
-        <div class="form-group mt3">
-          <label for="cc-number"
-                 class="control-label db fw6 lh-copy f6"
-            >Numero de Tarjeta<small class="text-muted">[<span class="cc-brand"></span>]</small></label
+        <div class="errors" *ngIf="submitted && !isShow">
+          <div
+            *ngIf="!form.controls.creditCard.valid"
+            class="alert alert-danger"
           >
-          <input
-            id="cc-number" formControlName="creditCard"
-            type="tel"
-            class="input-lg form-control cc-number pa2 input-reset ba bg-transparent  w-100"
-            autocomplete="off"
-            placeholder="•••• •••• •••• ••••"
-            ccNumber
-          />
+            La tarjeta es invalida
+          </div>
+          <div *ngIf="!form.controls.expDate.valid" class="alert alert-danger">
+            La fecha de expiracion es necesaria
+          </div>
+          <div *ngIf="!form.controls.cvc.valid" class="alert alert-danger">
+            el numero CVC es requerido
+          </div>
         </div>
-        <div class="form-group mt3">
-          <label for="cc-exp" class="control-label db fw6 lh-copy f6">Fecha de expiracion</label>
-          <input
-            id="cc-exp"
-            formControlName="expDate"
-            type="tel"
-            class="input-lg form-control cc-exp pa2 input-reset ba bg-transparent  w-50"
-            autocomplete="off"
-            placeholder="•• / ••••"
-            ccExp
-          />
-        </div>
-
-        <div class="form-group mt3">
-          <label for="cc-cvc" class="control-label db fw6 lh-copy f6" >CVC</label>
-          <input
-            id="cc-cvc"
-            formControlName="cvc"
-            type="tel"
-            class="input-lg form-control cc-cvc pa2 input-reset ba bg-transparent  w-50"
-            autocomplete="off"
-            placeholder="•••"
-            required ccCVC
-
-          />
-        </div>
-      </fieldset>
-      <div class="" *ngIf = "!isShow">
-        <button
-          type="submit"
-          class="btn btn-lg btn-primary b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"  #pagar>Pagar</button>
-
-      </div>
-      <div class="errors" *ngIf="submitted && !isShow">
-        <div *ngIf="!form.controls.creditCard.valid" class="alert alert-danger">La tarjeta es invalida</div>
-        <div *ngIf="!form.controls.expDate.valid" class="alert alert-danger">La fecha de expiracion es necesaria</div>
-        <div *ngIf="!form.controls.cvc.valid" class="alert alert-danger">el numero CVC es requerido</div>
-
-      </div>
-    </form>
-  </main>
+      </form>
+    </main>
+  </div>
 </div>
-

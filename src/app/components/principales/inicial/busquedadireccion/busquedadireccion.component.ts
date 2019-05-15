@@ -241,7 +241,7 @@ export class BusquedadireccionComponent implements OnInit {
       );
       this._router.navigate(["/tarifas"]);
     } else {
-      console.log("incompleta direccion");
+      Swal.fire("Error", "Direccion Incompleta Verificar", "error");
     }
   }
 
