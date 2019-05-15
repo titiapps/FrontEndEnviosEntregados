@@ -1,4 +1,10 @@
-import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  ɵConsole
+} from "@angular/core";
 import {
   PagosService,
   DireccionesService
@@ -7,10 +13,10 @@ import Swal from "sweetalert2";
 import { Router } from "@angular/router";
 import { CreditCardValidator } from "angular-cc-library";
 import { FormBuilder, FormGroup, NgForm, Validators } from "@angular/forms";
-import {environment} from '../../../../environments/environment.prod';
+import { environment } from "../../../../environments/environment.prod";
 import swal from "sweetalert2";
-import {forEach} from '@angular/router/src/utils/collection';
-import {Card} from '../../../models/card.model';
+import { forEach } from "@angular/router/src/utils/collection";
+import { Card } from "../../../models/card.model";
 
 declare var Conekta: any;
 
@@ -44,7 +50,7 @@ export class PagoComponent implements OnInit {
     private _fb: FormBuilder,
     private _pagoService: PagosService,
     private _router: Router,
-    private _direccionesService: DireccionesService,
+    private _direccionesService: DireccionesService
   ) {
     Conekta.setPublicKey(environment.conektaKey);
 
@@ -58,9 +64,14 @@ export class PagoComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.placeholders = {number: '•••• •••• •••• ••••', name: 'Nombre', expiry: '••/••', cvc: '•••'};
+    this.placeholders = {
+      number: "•••• •••• •••• ••••",
+      name: "Nombre",
+      expiry: "••/••",
+      cvc: "•••"
+    };
     // this.mask = {cardNumber: '•'};
-    this.messages = {validDate: 'valid\ndate', monthYear: 'mm/yyyy'};
+    this.messages = { validDate: "valid\ndate", monthYear: "mm/yyyy" };
     this.seleccionUsuario = this._direccionesService.seleccionTarifaPaquete; //esta es la seleccion de paquete que hizo el usuario
     if (this.seleccionUsuario === undefined) {
       this._router.navigate(["/inicio"]);
@@ -89,7 +100,7 @@ export class PagoComponent implements OnInit {
         "",
         [
           // CreditCardValidator.validateCCNumber as any,
-          Validators.required as any,
+          Validators.required as any
           // Validators.minLength(16) as any,
           // Validators.maxLength(17) as any
         ]
@@ -98,7 +109,7 @@ export class PagoComponent implements OnInit {
         "",
         [
           // CreditCardValidator.validateExpDate as any,
-          Validators.required as any,
+          Validators.required as any
           // Validators.minLength(9) as any,
           // Validators.maxLength(10) as any
         ]
@@ -106,13 +117,15 @@ export class PagoComponent implements OnInit {
       cvc: [
         "",
         [
-          Validators.required as any,
+          Validators.required as any
           // Validators.min(3) as any,
           // Validators.max(4) as any,
-
         ]
       ]
     });
+    setTimeout(() => {
+      console.log(this.btnpagar);
+    }, 500);
   }
 
   conseguirTokenConekta() {
@@ -181,12 +194,15 @@ export class PagoComponent implements OnInit {
             },
             () => {
               //este es para cuando hace el pago y que no  se le duplique
-              this.btnpagar.nativeElement.disabled = false;
-              this.btnpagar.nativeElement.style.pointerEvents = "auto";
+              if (this.btnpagar !== undefined) {
+                this.btnpagar.nativeElement.disabled = false;
+                this.btnpagar.nativeElement.style.pointerEvents = "auto";
+              }
             }
           );
       })
       .catch(err => {
+        console.log(err);
         Swal.fire(
           "Error de Validacion",
           "Hubo un problema con los datos de tu tarjeta verificala",
@@ -201,8 +217,8 @@ export class PagoComponent implements OnInit {
   onSubmit(form) {
     this.submitted = true;
     this.isShow = !this.isShow;
-    // this.btnpagar.nativeElement.disabled = true;
-    // this.btnpagar.nativeElement.style.pointerEvents = "none";
+    this.btnpagar.nativeElement.disabled = true;
+    this.btnpagar.nativeElement.style.pointerEvents = "none";
     if (
       form.get("creditCard").invalid &&
       form.get("expDate").invalid &&
@@ -213,19 +229,25 @@ export class PagoComponent implements OnInit {
         "Verifica tus datos",
         "error"
       );
-      // this.btnpagar.nativeElement.disabled = false;
+      this.btnpagar.nativeElement.disabled = false;
       this.isShow = false;
 
       // location.reload();
     } else {
       // this.form.disable(true);
+      let number = form.value.creditCard;
+      let tarjeta = number.replace(/\s/g, "");
+      console.log(tarjeta);
       this.datos_pago.nombre = form.value.nombre;
-      this.datos_pago.number = form.value.creditCard;
+      this.datos_pago.number = tarjeta;
       this.datos_pago.exp_month = form.value.expDate.slice(0, 2);
       this.datos_pago.exp_year = form.value.expDate.slice(5, 9);
       this.datos_pago.cvc = form.value.cvc;
 
-      /*   this.datos_pago.nombre = "Fulanito Perez";
+      console.log(this.datos_pago);
+      /*  
+
+this.datos_pago.nombre = "Fulanito Perez";
       this.datos_pago.number = "4242424242424242";
       this.datos_pago.exp_month = 12;
       this.datos_pago.exp_year = 2020;
