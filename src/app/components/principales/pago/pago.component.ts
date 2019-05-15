@@ -58,8 +58,8 @@ export class PagoComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.placeholders = {number: '•••• •••• •••• ••••', name: 'Full Name', expiry: '••/••', cvc: '•••'};
-    this.mask = {cardNumber: '•'};
+    this.placeholders = {number: '•••• •••• •••• ••••', name: 'Nombre', expiry: '••/••', cvc: '•••'};
+    // this.mask = {cardNumber: '•'};
     this.messages = {validDate: 'valid\ndate', monthYear: 'mm/yyyy'};
     this.seleccionUsuario = this._direccionesService.seleccionTarifaPaquete; //esta es la seleccion de paquete que hizo el usuario
     if (this.seleccionUsuario === undefined) {
@@ -201,8 +201,8 @@ export class PagoComponent implements OnInit {
   onSubmit(form) {
     this.submitted = true;
     this.isShow = !this.isShow;
-    this.btnpagar.nativeElement.disabled = true;
-    this.btnpagar.nativeElement.style.pointerEvents = "none";
+    // this.btnpagar.nativeElement.disabled = true;
+    // this.btnpagar.nativeElement.style.pointerEvents = "none";
     if (
       form.get("creditCard").invalid &&
       form.get("expDate").invalid &&
@@ -213,7 +213,7 @@ export class PagoComponent implements OnInit {
         "Verifica tus datos",
         "error"
       );
-      this.btnpagar.nativeElement.disabled = false;
+      // this.btnpagar.nativeElement.disabled = false;
       this.isShow = false;
 
       // location.reload();
