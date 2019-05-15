@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import {environment} from '../../../../environments/environment.prod';
 
 declare var Conekta: any;
 
@@ -9,7 +10,7 @@ declare var Conekta: any;
 })
 export class ConektaComponent implements OnInit {
   constructor() {
-    Conekta.setPublicKey("key_EypWVrLqbLYcrmkqE5r9rqQ");
+    Conekta.setPublicKey(environment.conektaKey);
   }
 
   ngOnInit() {
@@ -17,7 +18,7 @@ export class ConektaComponent implements OnInit {
       .then(token => {
         console.log(token);
 
-      
+
       })
       .catch(error => {
         console.log(error);

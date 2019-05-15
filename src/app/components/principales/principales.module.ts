@@ -22,6 +22,7 @@ import { ReporteComponent } from "../admin/reporte/reporte.component";
 import { TablareporteComponent } from "../admin/reporte/tablareporte.component";
 import { ItemsComponent } from './pago/items.component';
 import { DatosComponent, DataPizzaPartyComponent } from '../datos/datos.component';
+import { CardModule } from 'ngx-card';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { DatosComponent, DataPizzaPartyComponent } from '../datos/datos.componen
     ReactiveFormsModule,
     AgmaterialModule,
     PipesModule,
-    CreditCardDirectivesModule
+    CreditCardDirectivesModule,
+    CardModule
   ],
   entryComponents: [DialogOrigen, DialogDestino, DataPizzaPartyComponent]
 })

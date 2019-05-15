@@ -7,8 +7,10 @@ import Swal from "sweetalert2";
 import { Router } from "@angular/router";
 import { CreditCardValidator } from "angular-cc-library";
 import { FormBuilder, FormGroup, NgForm, Validators } from "@angular/forms";
+import {environment} from '../../../../environments/environment.prod';
 import swal from "sweetalert2";
 import {forEach} from '@angular/router/src/utils/collection';
+import {Card} from '../../../models/card.model';
 
 declare var Conekta: any;
 
@@ -19,6 +21,9 @@ declare var Conekta: any;
 })
 export class PagoComponent implements OnInit {
   @ViewChild("pagar") btnpagar: ElementRef;
+  placeholders: any;
+  mask: any;
+  messages: any;
   isShow = false;
   items: Array<any>;
   item: Array<any>;
@@ -39,9 +44,9 @@ export class PagoComponent implements OnInit {
     private _fb: FormBuilder,
     private _pagoService: PagosService,
     private _router: Router,
-    private _direccionesService: DireccionesService
+    private _direccionesService: DireccionesService,
   ) {
-    Conekta.setPublicKey("key_EypWVrLqbLYcrmkqE5r9rqQ");
+    Conekta.setPublicKey(environment.conektaKey);
     this.datos_pago = {
       number: "",
       exp_month: "",
@@ -52,6 +57,9 @@ export class PagoComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.placeholders = {number: '•••• •••• •••• ••••', name: 'Full Name', expiry: '••/••', cvc: '•••'};
+    this.mask = {cardNumber: '•'};
+    this.messages = {validDate: 'valid\ndate', monthYear: 'mm/yyyy'};
     this.seleccionUsuario = this._direccionesService.seleccionTarifaPaquete; //esta es la seleccion de paquete que hizo el usuario
     this.packageData = this._direccionesService.paquetes;
     this.packageLong = Math.round(this.packageData[0].paquete_longitud * 2.54);
@@ -74,25 +82,27 @@ export class PagoComponent implements OnInit {
       creditCard: [
         '',
         [
-          CreditCardValidator.validateCCNumber as any,
-          Validators.minLength(16) as any,
-          Validators.maxLength(17) as any
+          // CreditCardValidator.validateCCNumber as any,
+          Validators.required as any,
+          // Validators.minLength(16) as any,
+          // Validators.maxLength(17) as any
         ]
       ],
       expDate: [
         '',
         [
-          CreditCardValidator.validateExpDate as any,
-          Validators.minLength(9) as any,
-          Validators.maxLength(10) as any
+          // CreditCardValidator.validateExpDate as any,
+          Validators.required as any,
+          // Validators.minLength(9) as any,
+          // Validators.maxLength(10) as any
         ]
       ],
       cvc: [
         '',
         [
           Validators.required as any,
-          Validators.min(3) as any,
-          Validators.max(3) as any,
+          // Validators.min(3) as any,
+          // Validators.max(4) as any,
         ]
       ]
     });
@@ -205,8 +215,7 @@ export class PagoComponent implements OnInit {
       this.datos_pago.number = form.value.creditCard;
       this.datos_pago.exp_month = form.value.expDate.slice(0, 2);
       this.datos_pago.exp_year = form.value.expDate.slice(5, 9);
-      this.datos_pago.cvc = form.value.cvc; //no estaba pedazo de
-
+      this.datos_pago.cvc = form.value.cvc;
       /*   this.datos_pago.nombre = "Fulanito Perez";
       this.datos_pago.number = "4242424242424242";
       this.datos_pago.exp_month = 12;

@@ -1,3 +1,4 @@
+<body>
 <div class="elementos">
   <aside class="aside aside-1">
   <!--  <article class="mw5  ma2 bg-white br3 pa3 pa4-ns mv3 ba b--black-10 ">
@@ -48,6 +49,71 @@
   </aside>
 
   <main class="pa4 black-80">
+    <div class="card-container"></div>
+    <form card class="measure center"
+          [formGroup]="form" (ngSubmit)="onSubmit(form)"
+          container=".card-container"
+          card-width="350"
+          [messages]="messages"
+          [placeholders]="placeholders"
+          [masks]="mask"
+          formatting="false"
+          debug="true">
+      <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
+
+      <div class="form-group mt3">
+        <label class="control-label db fw6 lh-copy f6"
+        >Numero de Tarjeta</label>
+        <input class="input-lg form-control pa2 input-reset ba bg-transparent  w-100"
+               type="text" name="number"
+               formControlName="creditCard"
+               placeholder="•••• •••• •••• ••••"
+               card-number/>
+      </div>
+      <div class="form-group mt3">
+        <label class="control-label db fw6 lh-copy f6"
+        >Nombre Completo del Titular</label
+        >
+        <input class="input-lg form-control pa2 input-reset ba bg-transparent  w-100"
+               type="text"
+               name="first-name"
+               formControlName="nombre"
+               card-name/>
+      </div>
+      <div class="form-group mt3">
+        <label class="control-label db fw6 lh-copy f6">Fecha de expiracion</label>
+        <input class="input-lg form-control cc-exp pa2 input-reset ba bg-transparent  w-50"
+               formControlName="expDate"
+               type="text"
+               name="expiry"
+               placeholder="•• / ••••"
+               card-expiry/>
+      </div>
+      <div class="form-group mt3">
+        <label class="control-label db fw6 lh-copy f6" >CVC</label>
+        <input class="input-lg form-control cc-cvc pa2 input-reset ba bg-transparent  w-50"
+               type="text"
+               formControlName="cvc"
+               name="cvc"
+               placeholder="•••"
+               card-cvc/>
+      </div>
+      </fieldset>
+      <div class="" *ngIf = "!isShow">
+        <button
+          type="submit"
+          class="btn btn-lg btn-primary b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"  #pagar>Pagar</button>
+
+      </div>
+    <!--  <div class="errors" *ngIf="submitted && !isShow">
+        <div *ngIf="!form.controls.creditCard.valid" class="alert alert-danger">La tarjeta es invalida</div>
+        <div *ngIf="!form.controls.expDate.valid" class="alert alert-danger">La fecha de expiracion es necesaria</div>
+        <div *ngIf="!form.controls.cvc.valid" class="alert alert-danger">el numero CVC es requerido</div>
+
+      </div> -->
+    </form>
+
+<!--
     <form class="measure center" [formGroup]="form" (ngSubmit)="onSubmit(form)" novalidate>
       <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
         <legend class="f4 fw6 ph0 mh0">Pagar</legend>
@@ -117,7 +183,8 @@
         <div *ngIf="!form.controls.cvc.valid" class="alert alert-danger">el numero CVC es requerido</div>
 
       </div>
-    </form>
+    </form> -->
   </main>
 </div>
+</body>
 
