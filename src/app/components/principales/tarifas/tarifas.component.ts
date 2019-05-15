@@ -32,7 +32,7 @@ export class TarifasComponent implements OnInit {
 
   ngOnInit() {
     if (this.origen === undefined && this.destino == undefined) {
-      console.log("bailaste muñeco");
+      this._router.navigate(["/inicio"]);
     } else {
       this._direccionesService
         .cotizacion(this.origen, this.destino, this.paquetes[0])

@@ -8,7 +8,7 @@ import { Router } from "@angular/router";
 import { CreditCardValidator } from "angular-cc-library";
 import { FormBuilder, FormGroup, NgForm, Validators } from "@angular/forms";
 import swal from "sweetalert2";
-import {forEach} from '@angular/router/src/utils/collection';
+import { environment } from "../../../../environments/environment.prod";
 
 declare var Conekta: any;
 
@@ -41,7 +41,7 @@ export class PagoComponent implements OnInit {
     private _router: Router,
     private _direccionesService: DireccionesService
   ) {
-    Conekta.setPublicKey("key_EypWVrLqbLYcrmkqE5r9rqQ");
+    Conekta.setPublicKey(environment.conektaPublicKey);
     this.datos_pago = {
       number: "",
       exp_month: "",
@@ -53,11 +53,16 @@ export class PagoComponent implements OnInit {
 
   ngOnInit() {
     this.seleccionUsuario = this._direccionesService.seleccionTarifaPaquete; //esta es la seleccion de paquete que hizo el usuario
+    if (this.seleccionUsuario === undefined) {
+      this._router.navigate(["/inicio"]);
+    }
     this.packageData = this._direccionesService.paquetes;
     this.packageLong = Math.round(this.packageData[0].paquete_longitud * 2.54);
     this.packageWidth = Math.round(this.packageData[0].paquete_anchura * 2.54);
     this.packageHeight = Math.round(this.packageData[0].paquete_altura * 2.54);
-    this.packageWeight = Math.round(this.packageData[0].paquete_peso / 0.035274);
+    this.packageWeight = Math.round(
+      this.packageData[0].paquete_peso / 0.035274
+    );
     console.log(this.packageData);
     this.packageOrig = this._direccionesService.origen;
     this.packageDest = this._direccionesService.destino;
@@ -70,9 +75,9 @@ export class PagoComponent implements OnInit {
     this.items = [];
     this.items.push(this.item);
     this.form = this._fb.group({
-      nombre: '',
+      nombre: "",
       creditCard: [
-        '',
+        "",
         [
           CreditCardValidator.validateCCNumber as any,
           Validators.minLength(16) as any,
@@ -80,7 +85,7 @@ export class PagoComponent implements OnInit {
         ]
       ],
       expDate: [
-        '',
+        "",
         [
           CreditCardValidator.validateExpDate as any,
           Validators.minLength(9) as any,
@@ -88,11 +93,11 @@ export class PagoComponent implements OnInit {
         ]
       ],
       cvc: [
-        '',
+        "",
         [
           Validators.required as any,
           Validators.min(3) as any,
-          Validators.max(3) as any,
+          Validators.max(3) as any
         ]
       ]
     });
@@ -131,7 +136,8 @@ export class PagoComponent implements OnInit {
 
         let costo = this.seleccionUsuario.costo;
         let cantidad = 1;
-        let producto:String = this.seleccionUsuario.paqueteria + "Paquete Entregando";
+        let producto: String =
+          this.seleccionUsuario.paqueteria + "Paquete Entregando";
         this._pagoService
           .realizarPagoConekta(this.token_conekta, costo, cantidad, producto)
           .subscribe(
@@ -205,14 +211,14 @@ export class PagoComponent implements OnInit {
       this.datos_pago.number = form.value.creditCard;
       this.datos_pago.exp_month = form.value.expDate.slice(0, 2);
       this.datos_pago.exp_year = form.value.expDate.slice(5, 9);
-      this.datos_pago.cvc = form.value.cvc; //no estaba pedazo de
+      this.datos_pago.cvc =
+        form.value.cvc; /*    console.log(this.datos_pago); */ //no estaba pedazo de
 
       /*   this.datos_pago.nombre = "Fulanito Perez";
       this.datos_pago.number = "4242424242424242";
       this.datos_pago.exp_month = 12;
       this.datos_pago.exp_year = 2020;
-      this.datos_pago.cvc = 123; */ /*    console.log(this.datos_pago); */
-      this.realizarPago();
+      this.datos_pago.cvc = 123; */ this.realizarPago();
     }
   }
 }
