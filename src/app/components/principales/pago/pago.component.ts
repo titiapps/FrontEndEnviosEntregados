@@ -74,7 +74,7 @@ export class PagoComponent implements OnInit {
     this.messages = { validDate: "valid\ndate", monthYear: "mm/yyyy" };
     this.seleccionUsuario = this._direccionesService.seleccionTarifaPaquete; //esta es la seleccion de paquete que hizo el usuario
     if (this.seleccionUsuario === undefined) {
-      this._router.navigate(["/inicio"]);
+      /*     this._router.navigate(["/inicio"]); */
     }
     this.packageData = this._direccionesService.paquetes;
     this.packageLong = Math.round(this.packageData[0].paquete_longitud * 2.54);
@@ -190,14 +190,15 @@ export class PagoComponent implements OnInit {
                 "Hubo un problema al realizar la transacción",
                 "error"
               );
-              this._router.navigate(["/inicio"]);
+              this.btnpagar.nativeElement.disabled = false;
+              this.btnpagar.nativeElement.style.pointerEvents = "all";
+              /*   this._router.navigate(["/inicio"]); */
             },
             () => {
               //este es para cuando hace el pago y que no  se le duplique
-              if (this.btnpagar !== undefined) {
-                this.btnpagar.nativeElement.disabled = false;
-                this.btnpagar.nativeElement.style.pointerEvents = "auto";
-              }
+
+              this.btnpagar.nativeElement.disabled = false;
+              this.btnpagar.nativeElement.style.pointerEvents = "all";
             }
           );
       })

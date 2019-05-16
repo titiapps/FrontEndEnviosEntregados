@@ -88,8 +88,7 @@ export class TablareporteComponent implements OnInit {
         "," +
         movimiento.envio.o_destino.postalCode;
 
-      let paq_tamano: String =
-        paquete_altura + "x" + paquete_anchura + +"x" + paquete_longitud + "cm";
+      let paq_tamano: String = `${paquete_altura}*${paquete_anchura}*${paquete_longitud}cm`;
       let paquetepeso = paquete_peso + "kg";
 
       let paqueteria_datos: String =
@@ -125,7 +124,6 @@ export class TablareporteComponent implements OnInit {
 
     let fecha1 = dia_fecha1 + "-" + mes_fecha1 + "-" + año_fecha1;
     let fecha2 = dia_fecha2 + "-" + mes_fecha2 + "-" + año_fecha2;
-
 
     this._excelService.exportAsExcelFile(
       this.movimientosReporte,
