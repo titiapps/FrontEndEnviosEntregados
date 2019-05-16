@@ -197,10 +197,14 @@ export class BusquedadireccionComponent implements OnInit {
 
   // SE EVALUA QUE TENGA UNA DIRECCION RELATIVAMENTE COMPLETA
   evaluarDatosDireccion() {
+    this.lugarOrigen.persona = this.nombreOrig;
+    this.lugarDestino.persona = this.nombreDest;
     const ori = this.lugarOrigen; // origen de los datos buscados
 
     const dest = this.lugarDestino; // destino de los datos buscados
 
+    console.log(ori);
+    console.log(dest);
     const arrayorigen = [
       ori.persona,
       ori.street,
